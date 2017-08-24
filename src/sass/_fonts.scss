@@ -1,0 +1,38 @@
+//@mixin fontFace($FontName, $FontPathName ) {
+//
+//  @font-face {
+//
+//    font-family: '#{$FontName}';
+//    src:	url('/assets/fonts/#{$FontPathName}.eot');
+//    src:	url('/assets/fonts/#{$FontPathName}.eot?#iefix') format('embedded-opentype'),
+//    url('/assets/fonts/#{$FontPathName}.woff2') format('woff2'),
+//    url('/assets/fonts/#{$FontPathName}.woff') format('woff'),
+//    url('/assets/fonts/#{$FontPathName}.ttf') format('truetype');
+//
+//    font-weight: normal;
+//    font-style: normal;
+//  }
+//}
+//
+//
+//@mixin font($family,$fs,$lh:$fs) {
+//  font-family: $family;
+//  font-size: $fs;
+//
+//  @if $lh {
+//    line-height: $lh;
+//  }
+//}
+//@include fontFace('SFUIDisplayRegular','SFUIDisplay-Regular');
+//@include fontFace('SFUIDisplayBlack','SFUIDisplay-Black');
+//
+//
+//$bold: 'SFUIDisplayBlack';
+//$regular: 'SFUIDisplayRegular';
+///* USAGE
+//@include fontFace('MyriadProSemibold','MyriadProSemibold');
+//@include fontFace('MyriadProRegular','MyriadProRegular');
+//$myriad-bold: 'MyriadProSemibold';
+//$myriad-r: 'MyriadProRegular';
+//
+//*/

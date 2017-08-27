@@ -8,7 +8,7 @@ export default class Posts extends React.Component {
             <section className="posts-container">
                 <h2>Posts</h2>
                 <div className="items">
-                    {this.props.posts.map((item, index) => <Post key={index} data={item} /> )}
+                    {this.props.posts.map((item, index) => <Post key={index} data={item}/>)}
                 </div>
             </section>
         )

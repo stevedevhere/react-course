@@ -9,7 +9,7 @@ export default class MainLayout extends React.Component {
         super(props);
 
         this.state = {
-            data: [
+            posts: [
                 {title: "react"},
                 {title: "react-router"},
                 {title: "redux"},
@@ -27,7 +27,7 @@ export default class MainLayout extends React.Component {
                 <h1>React Lesson: 1 [ Components & JSX ]</h1>
                 <Header />
 
-                <Posts posts={ this.state.data } />
+                <Posts posts={ this.state.posts } />
             </div>
         );
     }

@@ -38,16 +38,19 @@ export default class Post extends React.Component {
     }
 
     render() {
-
         return (
             <article className={this.state.contentToggler ? "item" : "item active"}>
                 <h1>{this.props.data.title}</h1>
                 <p>{this.contentView(this.props.data.description)}</p>
-                <button onClick={this.handleShowMore}>Show more</button>
+                <ul className="links">
+                    {(this.props.data.links) ? this.props.data.links.map((item, index) => <li key={index} className="link"><a href={item.link} target="_blank">{item.title}</a></li>) : null}
+                </ul>
+                <button onClick={this.handleShowMore}>{this.state.contentToggler ? "Show more" : "Show less" }</button>
                 <button>Delete</button>
                 <button>Update</button>
             </article>
         );
+
     }
 
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Header = (props) => (
-    <div className="header">
+    <header>
         <h3>Урок первый</h3>
         <p className="description">
             Что вы должны осознать сегодня: сomponents, JSX, props <br/>
@@ -17,7 +17,7 @@ const Header = (props) => (
             <li>Создать компонент с помощью которого можно будет добавлять новый пост</li>
             <li>Добавить возможность удалять посты</li>
         </ul>
-    </div>
+    </header>
 );
 
 export default Header;

@@ -1,4 +1,15 @@
 header{
-  height: 60px;
-  background-color: rgba(255, 255, 255, 0.2);
+  .description {
+    margin: 0;
+  }
+  ul.tasks {
+    margin: 0;
+    li {
+      padding-top: 8px;
+      padding-bottom: 8px;
+      &:not(:last-child) {
+        border-bottom: solid 1px #444;
+      }
+    }
+  }
 }

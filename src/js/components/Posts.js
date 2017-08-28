@@ -7,6 +7,8 @@ export default class Posts extends React.Component {
         return (
             <section className="posts-container">
                 <h2>Posts</h2>
+                {/* <AddPost /> */}
+
                 <div className="items">
                     {this.props.posts.map((item, index) => {
                         // Тут мы перебираем функцией .map() каждый объект из массива переданого в этот компонент и передаем

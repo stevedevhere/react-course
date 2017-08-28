@@ -13,7 +13,7 @@ import '../sass/common.scss';
 import MainLayout from "./containers/MainLayout";
 
 
-render(
+ReactDOM.render(
     <Provider store={store}>
         <MainLayout />
     </Provider>

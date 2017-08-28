@@ -5,8 +5,7 @@ const Header = (props) => (
         <p className="description">
             <b>This is {`<Header/>`}</b>
         </p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus dicta
-            dolorum hic illo optio perspiciatis quasi quisquam reprehenderit! Explicabo, sint?</p>
+        <p>Описание сегодняшнего урока - тут, но его еще нет</p>
     </div>
 );
 

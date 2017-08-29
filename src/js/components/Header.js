@@ -4,10 +4,11 @@ const Header = (props) => (
     <header>
         <h3>Урок первый</h3>
         <p className="description">
-            Что вы должны осознать сегодня: сomponents, JSX, props <br/>
+            Что вы должны осознать сегодня: сomponents, JSX, state, props <br/>
             <b>Задания на сегодня:</b>
         </p>
         <ul className="tasks">
+            <li>Вывести все посты которые лежат в state компонента MainLayout</li>
             <li>
                 Добавить в массив, с объектами постов, свойство "description" в котором будет
                 описание каждого объекта (пример: <i>{ `{title: "react", description: "React это ... "}` }</i>)

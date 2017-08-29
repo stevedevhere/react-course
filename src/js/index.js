@@ -8,7 +8,6 @@ import '../sass/common.scss';
 import MainLayout from "./containers/MainLayout";
 
 
-
 // Метод render() -> взятый из отдельного модуля от React. ReactDOM является дополнительным пакетом входящим
 // в экосистему React, которая отвечает за работу с DOM элементами, как виртуального DOM, так и настоящего ()
 ReactDOM.render(<MainLayout />, document.getElementById('app'));

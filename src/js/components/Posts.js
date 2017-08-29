@@ -2,7 +2,7 @@ import React from 'react';
 import Post from '../components/Post';
 import AddPost from './AddPost';
 
-import { addPost, test } from '../actions';
+import { addPost } from '../actions';
 
 // Функция connect является связующим между компонентом и store из redux,
 // эта функция принимает два параметра:
@@ -22,7 +22,7 @@ const mapStateToProps = state => ({ posts: state.posts });
 
 // mapDispatchToProps - передаем все нужные нам actions в оборачеваемый компонент, но перед этим оборачиваем
 // все actions в функцию dispatch
-const mapDispatchToProps = dispatch => ( bindActionCreators({ addPost, test }, dispatch) );
+const mapDispatchToProps = dispatch => ( bindActionCreators({ addPost }, dispatch) );
 
 // @connect - "@" - обозначает декоратор, это es7. Функция "connect" декорирует объект, имеется ввиду что на
 // выходе мы получаем новый, измененный компонент который содержит в себе дополнительные функции и свойства,

@@ -10,7 +10,7 @@ html, body {
 
 body {
     min-height: 100%;
-    background: $grey;
+    background: #eee;
     background-size: 100% 100%;
     * {
         box-sizing: border-box;
@@ -25,4 +25,5 @@ h1 {
     margin: auto;
     width: 80%;
     display: table;
+    padding-top: 30px;
 }

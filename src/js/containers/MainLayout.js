@@ -6,7 +6,7 @@ export default class MainLayout extends React.Component {
             <div className="wrapper" onClick="">
                 <h1>[ Playground ]</h1>
 
-                {/* <Menu/> */}
+                <p>Начало: сейчас мы сделаем самый простой компонент меню, который можно будет скрыть и отобразить.</p>
             </div>
         );
     }

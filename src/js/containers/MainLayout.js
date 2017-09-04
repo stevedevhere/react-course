@@ -4,8 +4,9 @@ export default class MainLayout extends React.Component {
     render() {
         return (
             <div className="wrapper" onClick="">
-                <h1>React Lesson: 1 [ Playgroound ]</h1>
+                <h1>[ Playground ]</h1>
 
+                {/* <Menu/> */}
             </div>
         );
     }

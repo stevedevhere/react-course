@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// благодаря настройкам webpack мы можем собирать и стили тоже.
 import '../sass/common.scss';
 
 // На текущий момент, этот компонент является основным корневым

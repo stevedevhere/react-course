@@ -3,6 +3,9 @@ import React from 'react';
 import Header from '../components/Header';
 import Posts from '../components/Posts';
 
+// Основной компонент который в котором находиться все наше
+// приложение, в дальнейшем именно этот компонент будет использован
+// параметром функции ReactDOM.render();
 export default class MainLayout extends React.Component {
 
     constructor(props) {
@@ -20,10 +23,9 @@ export default class MainLayout extends React.Component {
         };
     }
 
-
     render() {
         return (
-            <div className="wrapper" onClick="">
+            <div className="wrapper">
                 <h1>React Lesson: 1 [ Components, JSX, state & props ]</h1>
                 <Header />
 

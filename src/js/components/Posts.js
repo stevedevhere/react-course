@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Post from '../components/Post';
 
 export default class Posts extends React.Component {
@@ -10,7 +11,7 @@ export default class Posts extends React.Component {
                 {/* <AddPost /> */}
 
                 <div className="items">
-                    <Post data={ {title: 'react'} } />
+                    <Post data={ {title: 'react.'} } />
                 </div>
             </section>
         )

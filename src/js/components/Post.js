@@ -26,17 +26,6 @@ export default class Post extends React.Component {
         }
     };
 
-    handleDelete() {
-        // нам нужно удалить пост. но так как все посты хранятся в redux - нам нужно
-        // написать функцию, которая сделает запрос в store, и изменит там данные.
-        // Как именно это реализовать - можно узнать
-
-    }
-    handleUpdate() {
-        // А тут я даже коментировать не буду, дерзайте.
-
-    }
-
     render() {
         return (
             <article className={this.state.contentToggler ? "item" : "item active"}>
@@ -50,8 +39,6 @@ export default class Post extends React.Component {
                 <button>Update</button>
             </article>
         );
-
     }
-
 }
 

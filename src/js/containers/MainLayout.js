@@ -31,23 +31,35 @@ export default class MainLayout extends React.Component {
 
     }
 
+    // lifecycle methods !
 
-    componentWillReceiveProps() {
-        console.log("componentWillReceiveProps", this);
+    componentWillMount() {
+        console.log("Component Will Mount | MainLayout.js");
+    }
+
+    componentDidMount() {
+        console.log("Component Did Mount | MainLayout.js");
     }
 
     componentWillUpdate() {
-        console.log("componentWillUpdate: ", this);
+        console.log("Component Will Update | MainLayout.js");
     };
 
     shouldComponentUpdate() {
-        console.log("shouldComponentUpdate: ", this);
+        console.log("Should Component Update | MainLayout.js");
         return true;
     };
 
     componentDidUpdate() {
-        console.log("componentDidUpdate: ", this);
+        console.log("Component Did Update | MainLayout.js");
     };
+
+    componentWillUnmount() {
+        console.log("componentWillUnmount | MainLayout.js");
+    }
+
+    //lifecycle methods ends here ~~~
+
 
     render() {
         return (

@@ -26,9 +26,16 @@ export default class Post extends React.Component {
         }
     };
 
+    forceUpdate = () => {
+        console.log("?");
+        this.forceUpdate( function() {
+            console.log(arguments);
+        } );
+    };
+
     render() {
         return (
-            <article className={this.state.contentToggler ? "item" : "item active"}>
+            <article className={this.state.contentToggler ? "item" : "item active"} onClick={this.forceUpdate}>
                 <h1>{this.props.data.title}</h1>
                 <p>{this.contentView(this.props.data.description)}</p>
                 <ul className="links">

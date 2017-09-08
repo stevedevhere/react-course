@@ -1,11 +1,42 @@
 import React from 'react';
+
 import Post from '../components/Post';
 import AddPost from './AddPost';
 
-
 export default class Posts extends React.Component {
 
+    // lifecycle methods !
 
+    componentWillMount() {
+        console.log("Component Will Mount | Posts.js")
+    }
+
+    componentDidMount() {
+        console.log("Component Did Mount | Posts.js")
+    }
+
+    componentWillUpdate() {
+        console.log("Component Will Update | Posts.js");
+    };
+
+    shouldComponentUpdate() {
+        console.log("Should Component Update | Posts.js");
+        return true;
+    };
+
+    componentDidUpdate() {
+        console.log("Component Did Update | Posts.js");
+    };
+
+    componentWillUnmount() {
+        console.log("componentWillUnmount | Posts.js");
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log("Component Will Receive Props | Posts.js", nextProps);
+    }
+
+    //lifecycle methods ends here ~~~
 
     render() {
         return (

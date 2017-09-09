@@ -11,37 +11,30 @@ String.prototype.lessThan = function (max) {
 export default class Post extends React.Component {
 
     state = {
-        contentToggler: true
+        contentToggle: true
     };
 
     handleShowMore = () => {
-        this.setState({ contentToggler: !this.state.contentToggler })
+        this.setState({ contentToggle: !this.state.contentToggle });
     };
 
     contentView = (content) => {
-        if(this.state.contentToggler) {
+        if(this.state.contentToggle && content.length > 120) {
             return content.lessThan(120) + '... ';
         } else {
             return content;
         }
     };
 
-    forceUpdate = () => {
-        console.log("?");
-        this.forceUpdate( function() {
-            console.log(arguments);
-        } );
-    };
-
     render() {
         return (
-            <article className={this.state.contentToggler ? "item" : "item active"} onClick={this.forceUpdate}>
+            <article className={this.state.contentToggle ? "item" : "item active"}>
                 <h1>{this.props.data.title}</h1>
                 <p>{this.contentView(this.props.data.description)}</p>
                 <ul className="links">
                     {(this.props.data.links) ? this.props.data.links.map((item, index) => <li key={index} className="link"><a href={item.link} target="_blank">{item.title}</a></li>) : null}
                 </ul>
-                <button onClick={this.handleShowMore}>{this.state.contentToggler ? "Show more" : "Show less" }</button>
+                <button onClick={this.handleShowMore}>{this.state.contentToggle ? "Show more" : "Show less" }</button>
                 <button>Delete</button>
                 <button>Update</button>
             </article>

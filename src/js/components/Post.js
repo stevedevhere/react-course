@@ -29,8 +29,8 @@ export default class Post extends React.Component {
     render() {
         return (
             <article className={this.state.contentToggle ? "item" : "item active"}>
-                <h1>{this.props.data.title}</h1>
-                <p>{this.contentView(this.props.data.description)}</p>
+                <h1  ref={instance => this.title = instance}>{this.props.data.title}</h1>
+                <p  ref={instance => this.desc = instance}>{this.contentView(this.props.data.description)}</p>
                 <ul className="links">
                     {(this.props.data.links) ? this.props.data.links.map((item, index) => <li key={index} className="link"><a href={item.link} target="_blank">{item.title}</a></li>) : null}
                 </ul>

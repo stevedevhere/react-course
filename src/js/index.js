@@ -1,7 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { BrowserRouter, Route } from 'react-router-dom';
+
+import { Provider } from 'react-redux';
+
 import '../sass/common.scss';
 import MainLayout from "./containers/MainLayout";
 
-ReactDOM.render(<MainLayout />, document.getElementById('app'));
+import store from './store';
+
+ReactDOM.render(
+    <Provider store={store}>
+        <BrowserRouter>
+            <MainLayout />
+        </BrowserRouter>
+    </Provider>
+    , document.getElementById('app'));

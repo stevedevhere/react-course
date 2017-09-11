@@ -9,8 +9,7 @@ String.prototype.lessThan = function (max) {
     return tmp;
 };
 
-
-export default class Post extends React.Component {
+export default class PostView extends React.Component {
 
     state = {
         contentToggle: true
@@ -29,17 +28,16 @@ export default class Post extends React.Component {
     };
 
     render() {
+        console.log(this);
         return (
-            <article className={this.state.contentToggle ? "item" : "item active"}>
-                <h1>{this.props.data.title}</h1>
-                <p>{this.contentView(this.props.data.description)}</p>
+            <article className="post-view">
+                <h1>{/*this.props.data.title*/}</h1>
+                <p>{/*this.contentView(this.props.data.description)*/}</p>
                 <ul className="links">
-                    {(this.props.data.links) ? this.props.data.links.map((item, index) => <li key={index} className="link"><a href={item.link} target="_blank">{item.title}</a></li>) : null}
                 </ul>
                 <button onClick={this.handleShowMore}>{this.state.contentToggle ? "Show more" : "Show less" }</button>
                 <button>Delete</button>
                 <button>Update</button>
-                <Link to={`/post-${this.props.index}`}>View</Link>
             </article>
         );
     }

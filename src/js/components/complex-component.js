@@ -25,7 +25,7 @@ export default class ComplexComponent extends React.Component {
 
     // Пользовательская функция, которая получая определенный параметр - меняет state,
     // Изменение state с помощью функции setState влечет за собой перерисовку всего компонента в котором изменился state
-    handleOnClick = (index) => {
+    handleOnClick(index){
         this.setState({ selectedIndex: index });
     };
 
@@ -40,14 +40,14 @@ export default class ComplexComponent extends React.Component {
 
 
                 {/*Это два простых компонента, коментарии и сам компонент
-                        находятся в файле simple-component.js */}
-                <SimpleComponent index={0} selectedIndex={this.state.selectedIndex} />
+                 находятся в файле simple-component.js */}
+                <SimpleComponent index={0} selectedIndex={this.state.selectedIndex}/>
                 {/* index={0} => так мы передаем свойства в компонент,
-                    они приходят в первый параметр компонента, в виде
-                    свойства объекта, где название (в нашем случае - index и selectedIndex) будет ключем, а то
-                    что мы указываем внутри скобок - значением */}
+                 они приходят в первый параметр компонента, в виде
+                 свойства объекта, где название (в нашем случае - index и selectedIndex) будет ключем, а то
+                 что мы указываем внутри скобок - значением */}
 
-                <SimpleComponent index={1} selectedIndex={this.state.selectedIndex} />
+                <SimpleComponent index={1} selectedIndex={this.state.selectedIndex}/>
             </div>
         )
     }

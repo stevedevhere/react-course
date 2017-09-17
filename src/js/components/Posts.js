@@ -4,14 +4,19 @@ import Post from '../components/Post';
 import AddPost from './AddPost';
 import Header from '../components/Header';
 
-import {addPost} from '../actions';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+//import {addPost} from '../actions';
+//import { connect } from 'react-redux';
+//import { bindActionCreators } from 'redux';
 
-@connect(
-    (state) => ({posts: state.posts}),
-    dispatch => ( bindActionCreators({ addPost }, dispatch) )
-)
+//const mapStateToProps = state => {
+//    return {posts: state.posts}
+//};
+//
+//const mapDispatchToProps = dispatch => {
+//    return bindActionCreators({ addPost }, dispatch);
+//};
+//
+//@connect( mapStateToProps, mapDispatchToProps )
 export default class Posts extends React.Component {
 
     renderPosts() {

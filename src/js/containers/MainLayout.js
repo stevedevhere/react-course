@@ -1,10 +1,9 @@
 import React from 'react';
 
 import Posts from '../components/Posts';
-// import Post from '../components/ Post';
 import PostView from '../components/PostView';
 
-import { Route, Switch, Link } from 'react-router-dom';
+//import { Route, Switch, Link } from 'react-router-dom';
 
 export default class MainLayout extends React.Component {
 
@@ -15,14 +14,6 @@ export default class MainLayout extends React.Component {
 
     handleAddPost(post) {
         this.setState({ posts: [ ...this.state.posts, post ] })
-    }
-
-    handleDelete() {
-
-    }
-
-    handleUpdate() {
-
     }
 
     render() {

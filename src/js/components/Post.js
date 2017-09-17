@@ -29,6 +29,7 @@ export default class Post extends React.Component {
     };
 
     render() {
+        console.log(this);
         return (
             <article className={this.state.contentToggle ? "item" : "item active"}>
                 <h1>{this.props.data.title}</h1>

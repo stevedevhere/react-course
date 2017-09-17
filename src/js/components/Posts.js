@@ -8,7 +8,10 @@ import {addPost} from '../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-@connect((state) => ({posts: state.posts}), dispatch => ( bindActionCreators({ addPost }, dispatch) ))
+@connect(
+    (state) => ({posts: state.posts}),
+    dispatch => ( bindActionCreators({ addPost }, dispatch) )
+)
 export default class Posts extends React.Component {
 
     renderPosts() {
@@ -29,7 +32,6 @@ export default class Posts extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <section className="posts-container">
                 <Header />

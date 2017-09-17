@@ -2,9 +2,10 @@ import React from 'react';
 
 const Header = (props) => (
     <header>
-        <h3>Урок второй</h3>
+        <h1>React Lesson: 3 [ router, redux ]</h1>
+        <h3>Урок третий</h3>
         <p className="description">
-            Что вы должны осознать сегодня:  react-router <br/>
+            Что вы должны осознать сегодня: router, redux <br/>
             <b>Задания на сегодня:</b>
         </p>
         <ul className="tasks">

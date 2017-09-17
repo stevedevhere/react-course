@@ -4,14 +4,33 @@ import Post from '../components/Post';
 import AddPost from './AddPost';
 import Header from '../components/Header';
 
-import {addPost} from '../actions';
+
+import { addPost } from '../actions';
+
+// Функция connect является связующим между компонентом и store из redux,
+// эта функция принимает два параметра:
+// 1. функция, в которую аргументом приходит state из store, которая возвращает объект, в котором
+//    мы должны указать какие данные хотим получить в своем компоненте
+// 2. функция, которая должна вернуть ваши actions, которые в дальнейшем тоже попадут в свойства компонента который оборачиваете.
 import { connect } from 'react-redux';
+
+// Это специальная функция которая все полученые в объекте actions будет оборачивать в функцию dispatch,
+// это нужно для того чтобы вызывая свои actions вы не просто получали объект, а обращались с ним в глобальный store,
+// где с помощью reducers будет идти обработка этого action'a
 import { bindActionCreators } from 'redux';
 
-@connect(
-    (state) => ({posts: state.posts}),
-    dispatch => ( bindActionCreators({ addPost }, dispatch) )
-)
+// mapStateToProps - выбираем какие данные нам нужны из store, которые в дальнейшем запишутся в props
+// компонента который мы оборачиваем.
+const mapStateToProps = state => ({ posts: state.posts });
+
+// mapDispatchToProps - передаем все нужные нам actions в оборачеваемый компонент, но перед этим оборачиваем
+// все actions в функцию dispatch
+const mapDispatchToProps = dispatch => ( bindActionCreators({ addPost }, dispatch) );
+
+// @connect - "@" - обозначает декоратор, это es7. Функция "connect" декорирует объект, имеется ввиду что на
+// выходе мы получаем новый, измененный компонент который содержит в себе дополнительные функции и свойства,
+// а какие именно - мы определяем в функциях передаваемых внутрь функции connect.
+@connect(mapStateToProps, mapDispatchToProps)
 export default class Posts extends React.Component {
 
     renderPosts() {

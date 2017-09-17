@@ -1,14 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { BrowserRouter } from 'react-router-dom';
 
-import { Provider } from 'react-redux';
+// BrowserRouter это основной компонент react-router'a который
+// дает нашему приложению работать с url
+import { BrowserRouter } from 'react-router-dom';
 
 import '../sass/common.scss';
 import MainLayout from "./containers/MainLayout";
 
+// Provider - это обертка которая позволяет всем компонентам коннектится к store и получать все необходимые
+// для работы с redux функции. Уровень вложености обязателно должен быть таким как в примере - самый корневой
+// компонент - Provider, потом наш контейнер, а в нем уже все что нам  нужно.
+import {Provider} from 'react-redux';
+
+// Cобранный store redux, он здесь нужен чтобы передать его в Provider.
 import store from './store';
+
+
 
 ReactDOM.render(
     <Provider store={store}>
@@ -19,12 +28,3 @@ ReactDOM.render(
     , document.getElementById('app'));
 
 
- /**
- *
- * разница скорости загрузки страницы при использовании виртуального дом и обычного.
- * пример. если спросят в чем прикол реакта - в том что у него есть свой стандарт
-  * который легко модифицировать потому что для всех один. а так же в  реакте есть
-  * возможность удобно отлсежитьвать изменения засчет компонентного подхода и жиз	ненного цикла, но об этом позже
-  *
- *
- */

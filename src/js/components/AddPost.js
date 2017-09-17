@@ -12,6 +12,7 @@ export default class AddPost extends React.Component {
             };
 
             this.props.addPost(new_post);
+
             this.title.value = '';
             this.description.value = '';
         }

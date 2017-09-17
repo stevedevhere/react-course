@@ -1,7 +1,8 @@
-# react-course
-## lesson 2
+# `react-course`
+## React Lesson: 3 [ router, redux ]
 
-`npm install` -- Устанавливаем все необходимые для работы пакеты из package.json (зависимости) <br/>
+`npm install` -- Устанавливаем все необходимые для работы пакеты из package.json (зависимости)
 `npm run dev` -- Запускаем проект (запускается скрипт прописаный внутри package.json с ключем "dev")
 
-Задания к уроку находятся в файле `tasks.md`
+
+

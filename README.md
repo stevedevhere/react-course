@@ -1,7 +1,7 @@
 # react-course
-## lesson 1
+## This is master branch. Please checkout to current lesson!
 
 `npm install` -- Устанавливаем все необходимые для работы пакеты из package.json (зависимости) <br/>
 `npm run dev` -- Запускаем проект (запускается скрипт прописаный внутри package.json с ключем "dev")
 
-Задания к уроку находятся в файле `tasks.md`
+

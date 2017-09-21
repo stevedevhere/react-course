@@ -18,7 +18,8 @@
 На текущий момент последней версией `react-router` является `v4` которую мы собственно и используем. Стоит учесть, что различия 
 в версиях этого модуля влечут за собой определенные изменения в структуре а также логике использования этого модуля. Об этом можно более детально 
 прочесть в статьях посвещенных этому вопросе.
-<br/><br/>
+<br/>
+
 **BrowserRouter** -  это основной компонент react-router'a который позволяет нашему приложению работать с url с помощью 
 History API который позволяет меняеть url без перезагрузки страницы.
 [Детальнее](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/BrowserRouter.md)
@@ -30,7 +31,7 @@ History API который позволяет меняеть url без пере
 вкладывать в него другие теги и компоненты. Нужен для того чтобы отоборажать определенные 
 компоненты при определенных url.
 [Детальнее](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Route.md)
-<br/>
+
 **Switch** - вспомогательный компонент который позволяет групировать определенные
 `Route` и переключаться между ними. 
 [Детальнее](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Switch.md)

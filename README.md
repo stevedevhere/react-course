@@ -24,13 +24,12 @@
 History API который позволяет меняеть url без перезагрузки страницы.
 [Детальнее](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/BrowserRouter.md)
 <br/>
-**Route** -  Route - компонент принимающий два свойства:
+**Route** -  компонент принимающий два свойства: [Детальнее](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Route.md)
 1. path - url
 2. component - компонент который отобразиться по указаному в path url.
 так-же присуствует возможность делать компонент парным, что дает возможность
 вкладывать в него другие теги и компоненты. Нужен для того чтобы отоборажать определенные 
 компоненты при определенных url.
-[Детальнее](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Route.md)
 
 **Switch** - вспомогательный компонент который позволяет групировать определенные
 `Route` и переключаться между ними. 

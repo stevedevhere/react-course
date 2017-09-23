@@ -24,7 +24,7 @@
 History API который позволяет меняеть url без перезагрузки страницы.
 [Детальнее](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/BrowserRouter.md)
 <br/>
-**Route** -  Route - компонент принимающий два свойства:
+**Route** -  компонент принимающий два свойства:
 1. path - url
 2. component - компонент который отобразиться по указаному в path url.
 так-же присуствует возможность делать компонент парным, что дает возможность

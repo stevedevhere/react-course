@@ -10,7 +10,7 @@
 
 Ребята из facebook, знают о том что DOM c которым вы работаете очень медленный, так как ресурсоемкий и изначально был предназначен просто для отображения элементов. 
 По этому они и написали виртуальный аналог DOM на JavaScript, с которым делать различные манипуляции стало гораздо приятнее, так как это работает быстрее
-<center>![Виртуальный DOM](https://image.slidesharecdn.com/reactreduxintroduction-151124165017-lva1-app6891/95/react-redux-introduction-9-638.jpg?cb=1448383914)</center>
+![Виртуальный DOM](https://image.slidesharecdn.com/reactreduxintroduction-151124165017-lva1-app6891/95/react-redux-introduction-9-638.jpg?cb=1448383914)
 <br/>
 Виртуальный DOM это то к чему обращается реакт тогда когда мы создаем элемент средствами Реакта. 
 

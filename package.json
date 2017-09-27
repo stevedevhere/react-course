@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node webpack-dev-server.js",
-    "build": "webpack --config webpack.config.prod.js",
-    "lint": "eslint ./src/js --ext .js"
+    "build": "webpack --config webpack.config.prod.js"
   },
   "repository": {
     "type": "git",

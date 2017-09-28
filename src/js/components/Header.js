@@ -4,7 +4,7 @@ const Header = (props) => (
     <header>
         <h3>Урок второй</h3>
         <p className="description">
-            Что вы должны осознать сегодня:  props & state, lifecycle <br/>
+            Что вы должны осознать сегодня:  props & state, ReactDOM, lifecycle <br/>
             <b>Задания на сегодня:</b>
         </p>
         <ul className="tasks">

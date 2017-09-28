@@ -37,15 +37,18 @@
 
 **Этот метод подходит для решения нашей задачи:**
 ```javascript
-var TestInput = React.createClass({
-  componentDidMount: function() { //ставим фокус в input
+class TestInput extends React.Component {
+  
+  componentDidMount() { // ставим фокус в input
     ReactDOM.findDOMNode(this.refs.myTestInput).focus();
-  },
-  onBtnClickHandler: function() {
+  }
+  
+  onBtnClickHandler() {
     console.log(this.refs);
     alert(ReactDOM.findDOMNode(this.refs.myTestInput).value);
-  },
-  render: function() {
+  }
+
+  render() {
     return (
       <div>
         <input
@@ -58,7 +61,9 @@ var TestInput = React.createClass({
       </div>
     );
   }
-});
+
+}
+
 ```
 
 **Принцип прежний:** мы находим DOM-узел, считывам его свойство / вызываем его нативный метод, в данном случае - вызывем метод [focus()](https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/focus).
@@ -66,7 +71,7 @@ var TestInput = React.createClass({
 - **[componentWillReceiveProps](https://facebook.github.io/react/docs/react-component.html#componentwillreceiveprops)** - компонент получает новые props. Этод метод не вызывается в момент первого render'a. В официальной документации очень хороший пример, пожалуй скопирую его:
 
 ```javascript
-componentWillReceiveProps: function(nextProps) {
+componentWillReceiveProps(nextProps) {
   this.setState({
     likesIncreasing: nextProps.likeCount > this.props.likeCount
   });

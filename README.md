@@ -6,6 +6,8 @@
 
 > #### PS: Материал про "жизненный цикл" был честно взят [отсюда](https://maxfarseer.gitbooks.io/react-course-ru/content/zhiznennii_tsikl_komponenta.html), и немного откоректирован.
 
+<!-- ![s](https://translate.google.com.ua/?hl=ru&tab=TT) -->
+
 ## Component Lifecycle
 <!-- 
 
@@ -29,11 +31,11 @@
 
 У всех этих фаз есть методы, так называемые *lifecycle-methods*. Полный [список](https://facebook.github.io/react/docs/react-component.html) в документации выглядит крайне просто, предлагаю вам в конце урока еще раз его посмотреть, а пока хватит информации и здесь:
 
-- **componentWillMount** - компонент будет примонтирован. В данный момент у нас нет возможности посмотреть DOM элементы.
+- **[componentWillMount](https://facebook.github.io/react/docs/react-component.html#componentwillmount)** - компонент будет примонтирован. В данный момент у нас нет возможности посмотреть DOM элементы.
 
-- **componentDidMount** - компонент примонтировался. В данный момент у нас есть возможность использовать refs, а следовательно это то самое место, где мы хотели бы указать установку фокуса. Так же, таймауты, ajax-запросы и взаимодействие с другими библиотеками стоит обрабатывать **здесь**. 
+- **[componentDidMount](https://facebook.github.io/react/docs/react-component.html#componentdidmount)** - компонент   примонтировался. В данный момент у нас есть возможность использовать refs, а следовательно это то самое место, где мы хотели бы указать установку фокуса. Так же, таймауты, ajax-запросы и взаимодействие с другими библиотеками стоит обрабатывать **здесь**. 
 
-Этот метод подходит для решения нашей задачи:
+**Этот метод подходит для решения нашей задачи:**
 ```javascript
 var TestInput = React.createClass({
   componentDidMount: function() { //ставим фокус в input
@@ -59,9 +61,9 @@ var TestInput = React.createClass({
 });
 ```
 
-Принцип прежний: мы находим DOM-узел, считывам его свойство / вызываем его нативный метод, в данном случае - вызывем метод [focus()](https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/focus).
+**Принцип прежний:** мы находим DOM-узел, считывам его свойство / вызываем его нативный метод, в данном случае - вызывем метод [focus()](https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/focus).
 
-- **componentWillReceiveProps** - компонент получает новые props. Этод метод не вызывается в момент первого render'a. В официальной документации очень хороший пример, пожалуй скопирую его:
+- **[componentWillReceiveProps](https://facebook.github.io/react/docs/react-component.html#componentwillreceiveprops)** - компонент получает новые props. Этод метод не вызывается в момент первого render'a. В официальной документации очень хороший пример, пожалуй скопирую его:
 
 ```javascript
 componentWillReceiveProps: function(nextProps) {
@@ -71,17 +73,17 @@ componentWillReceiveProps: function(nextProps) {
 }
 ```
 
-**Обратите внимание:** в этот момент, старые props доступны как this.props, а новые props доступны в виде nextProps аргумента функции.
+**Обратите внимание:** в этот момент, старые `props` доступны как `this.props`, а новые props доступны в виде `nextProps` аргумента функции.
 
-Так же, если вы вызываете setState внутри этого метода - не будет вызван дополнительный render.
+Так же, если вы вызываете `setState` внутри этого метода - не будет вызван дополнительный `render`.
 
-- **shouldComponentUpdate** - должен ли компонент обновиться? На самом деле, обычно реакт сам отлично разбирается. Но иногда ручное управление позволяет существенно ускорить работу в "узких местах". С этим методом нужно работать очень аккуратно.
+- **[shouldComponentUpdate](https://facebook.github.io/react/docs/react-component.html#shouldcomponentupdate)** - должен ли компонент обновиться? На самом деле, обычно реакт сам отлично разбирается. Но иногда ручное управление позволяет существенно ускорить работу в "узких местах". С этим методом нужно работать очень аккуратно.
 
-- **componentWillUpdate** - вызывается прямо перед render, когда новые props и state получены. В этом методе нельзя вызывать `setState`.
+- **[componentWillUpdate](https://facebook.github.io/react/docs/react-component.html#componentwillupdate)** - вызывается прямо перед render, когда новые props и state получены. В этом методе нельзя вызывать `setState`.
 
-- **componentDidUpdate** - вызывается сразу после render. Не вызывается в момент первого render'а компонента.
+- **[componentDidUpdate](https://facebook.github.io/react/docs/react-component.html#componentdidupdate)** - вызывается сразу после render. Не вызывается в момент первого render'а компонента.
 
-- **componentWillUnmount** - вызывается сразу перед тем, как компонент будет удален из DOM.
+- **[componentWillUnmount](https://facebook.github.io/react/docs/react-component.html#componentwillunmount)** - вызывается сразу перед тем, как компонент будет удален из DOM.
 
 Конечно, в документации все описано немного подробнее. Я рекомендую с ней ознакомиться.
 
@@ -95,4 +97,18 @@ componentWillReceiveProps: function(nextProps) {
 
 ## ReactDOM
 
-В первом уроке 
+#### В первом уроке я уже в кратце рассказывал о том что такое `ReactDOM`, сейчас пройдемся более детально. 
+
+ReactDOM - это модуль для работы с элементами DOM при этом не ломая идеологии React со своим виртуальным DOM. 
+
+У него есть такие методы:
+- **[render](https://facebook.github.io/react/docs/react-dom.html#render)** - обращается к DOM для того чтобы отобразить наше приложение. Отрисовывает только один компонент, по этому принято создавать один родительский компонент в котором будет находиться все наше приложение, чтобы отрисовать его одним запросом к `DOM` и не тратить на это больше ресурсы. 
+
+- **[hydrate](https://facebook.github.io/react/docs/react-dom.html#hydrate)** - аналог функции `render` но используется в случае если мы используем рендеринг с сервера
+
+- **[unmountComponentAtNode](https://facebook.github.io/react/docs/react-dom.html#unmountcomponentatnode)** - Используется для удаления компонента из реального DOM, в последствии вызывает метод   
+
+- **[findDOMNode](https://facebook.github.io/react/docs/react-dom.html#finddomnode)** - функция для поиска DOM элементов с учетом использования виртуального DOM.
+
+<!-- - **[createPortal](https://facebook.github.io/react/docs/react-dom.html#createportal)** -  -->
+

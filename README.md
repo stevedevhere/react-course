@@ -16,25 +16,25 @@
 
 На текущий момент последней версией `react-router` является `v4` которую мы собственно и используем. Стоит учесть, что различия в версиях этого модуля влечут за собой определенные изменения в структуре а также логике использования этого модуля. Об этом можно более детально прочесть в статьях посвещенных этому вопросе.
 
-**BrowserRouter** -  это основной компонент react-router'a который позволяет нашему приложению работать с url с помощью 
+[**BrowserRouter**](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/BrowserRouter.md) -  это основной компонент react-router'a который позволяет нашему приложению работать с url с помощью
 History API который позволяет меняеть url без перезагрузки страницы.
-[Детальнее](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/BrowserRouter.md)
 
-**Route** -  компонент принимающий два свойства: [Детальнее](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Route.md)
+
+[**Route**](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Route.md) -  компонент принимающий два свойства:
 1. path - url
 2. component - компонент который отобразиться по указаному в path url.
 так-же присуствует возможность делать компонент парным, что дает возможность
 вкладывать в него другие теги и компоненты. Нужен для того чтобы отоборажать определенные 
 компоненты при определенных url.
 
-**Switch** - вспомогательный компонент который позволяет групировать определенные
+[**Switch**](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Switch.md) - вспомогательный компонент который позволяет групировать определенные
 `Route` и переключаться между ними. 
-[Детальнее](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Switch.md)
 
-**Link** - необходим для того чтобы переключатся между "страницами", по факту - аналог 
+
+[**Link**](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/Link.md) - необходим для того чтобы переключатся между "страницами", по факту - аналог
 обычного `<a>`, но работает с помощью BrowserHistory или hashHistory вместо привычного нам href нужно 
 писать `to={"/some-url"}` 
-[Детальнее](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/Link.md)
+
 
 Все это - компоненты, и мы можем использовать их там где нам необходимо.
 
@@ -198,5 +198,45 @@ ReactDOM.render(
 ```
 
 <!-- TODO: @connect -->
+Но, этого всеравно не достаточно, нам нужны определенные данные из store в каком-то определенном компоненте.
+Для этого нам нужно подписать нужный нам component на наш store, делается это по средствам декоратора connect.
+
+```javascript
+// Функция connect является связующим между компонентом и store из redux,
+// эта функция принимает два параметра:
+// 1. функция, в которую аргументом приходит state из store, которая возвращает объект, в котором
+//    мы должны указать какие данные хотим получить в своем компоненте
+// 2. функция, которая должна вернуть ваши actions, которые в дальнейшем тоже попадут в свойства компонента который оборачиваете.
+import { connect } from 'react-redux';
+
+// Это специальная функция которая все полученые в объекте actions будет оборачивать в функцию dispatch,
+// это нужно для того чтобы вызывая свои actions вы не просто получали объект, а обращались с ним в глобальный store,
+// где с помощью reducers будет идти обработка этого action'a
+import { bindActionCreators } from 'redux';
+
+// mapStateToProps - выбираем какие данные нам нужны из store, которые в дальнейшем запишутся в props
+// компонента который мы оборачиваем.
+const mapStateToProps = state => ({ posts: state.posts });
+
+// mapDispatchToProps - передаем все нужные нам actions в оборачеваемый компонент, но перед этим оборачиваем
+// все actions в функцию dispatch
+const mapDispatchToProps = dispatch => ( bindActionCreators({ addPost }, dispatch) );
+
+// @connect - "@" - обозначает декоратор, это es7. Функция "connect" декорирует объект, имеется ввиду что на
+// выходе мы получаем новый, измененный компонент который содержит в себе дополнительные функции и свойства,
+// а какие именно - мы определяем в функциях передаваемых внутрь функции connect.
+```
+Мы можем написать это ввиде декоратора (es7 `@`) так и простой функцией:
+```javascript
+export default connect(mapStateToProps, mapDispatchToProps)(WrappedComponent)
+```
 
 <!-- TODO: Action dispatch -->
+### Dispatch Actions
+Как я уже писал выше, чтобы изменить наши данные нам нужно вызвать `action`, теперь, когда мы подписались на изменения в
+store с помощью функции connect мы можем это сделать, поскольку при подписке на store мы указали какие именно action мы хотим иметь в нашем компоненте.
+и как я уже описал выше вызывая action который мы передали в props нашего компонента с помощью функции connect мы донесем информацию
+о нашем событии в store:
+```javascript
+this.props.addPost(data) -> middleware -> reducer -> reducer update store -> subscribed component re-rendering
+```

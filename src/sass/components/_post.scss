@@ -1,17 +1,17 @@
 article.item {
-    padding: 15px;
-    margin: 5px auto;
+  padding: 15px;
+  margin: 5px auto;
 
-    background-color: #111;
-    color: #ccc;
-    transition: 0.1s;
-    text-decoration: none;
-    display: block;
-    border: solid 5px transparent;
-    &:hover {
-      //background-color: #0d0d0d;
-      border-color: #32567e;
-    }
+  background-color: #111;
+  color: #ccc;
+  transition: 0.1s;
+  text-decoration: none;
+  display: block;
+  border: solid 5px transparent;
+  &:hover {
+    //background-color: #0d0d0d;
+    border-color: #32567e;
+  }
 
   ul.links {
     li.link {

@@ -20,7 +20,6 @@ import * as types from '../constants/ActionTypes';
 * Чистая функция — это функция, которая при одинаковых аргументах всегда
 * возвращает одни и те же значения и не имеет видимых побочных эффектов.
 *
-*
 */
 
 export default function posts(state = InitialState.posts, action) {
@@ -29,6 +28,11 @@ export default function posts(state = InitialState.posts, action) {
     switch(type) {
         case types.ADD_POST:
             return [...state, payload];
+        case types.UPDATE_CONTENT_TOGGLER:
+            return state.map((item, index) => {
+                if(index === payload) return {...item, contentToggle: !item.contentToggle}
+                else return {...item, contentToggle: false};
+            });
         default:
             return state;
     }

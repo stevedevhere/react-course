@@ -9,7 +9,9 @@ export default ({
             links: [{title: "React", link: "https://facebook.github.io/react/"}, {
                 title: "MonsterLessons",
                 link: "https://monsterlessons.com/project/lessons/?page=2&search=react"
-            }]
+            }],
+            contentToggle: false,
+
         },
         {
             title: "Virtual DOM",
@@ -40,7 +42,9 @@ export default ({
             виртуальным DOM. Таким образом, вы получаете возможность не думать о производительности при работе с DOM
             элементами — React всё сделает за вас максимально качественно и быстро, и вы сможете сосредоточиться на
             действительно важных задачах, а не бороться с оптимизацией.`,
-            links: [{title: "habr: Что такое Virtual DOM?", link: "https://habrahabr.ru/post/256965/"}]
+            links: [{title: "habr: Что такое Virtual DOM?", link: "https://habrahabr.ru/post/256965/"}],
+            contentToggle: false,
+
         },
         {
             title: "jsx",
@@ -57,7 +61,9 @@ export default ({
             links: [{
                 title: "habr: Перевод официальной документации React про JSX",
                 link: "https://habrahabr.ru/post/319270"
-            }]
+            }],
+            contentToggle: false,
+
         },
         {
             title: "components",
@@ -79,7 +85,9 @@ export default ({
                     title: "Complex component example",
                     link: "https://github.com/uppermanis/react-course/blob/components-examples/src/js/components/complex-component.js"
                 }
-            ]
+            ],
+            contentToggle: false,
+
         },
         {
             title: "react-router",
@@ -93,7 +101,9 @@ export default ({
                 },
                 {title: "REACT TRAINING (video)", link: "https://reacttraining.com/react-router/"},
                 {title: "npm", link: "https://www.npmjs.com/package/react-router"}
-            ]
+            ],
+            contentToggle: false,
+
         },
         {
             title: "redux",
@@ -101,7 +111,8 @@ export default ({
             JavaScript-приложениях. Он подходит для одностраничных приложений, в которых управление состоянием может
             со временем становиться сложным. Redux не связан с каким-то определенным фреймворком, и хотя разрабатывался
             для React, может использоваться с Angular или jQuery.`,
-            links: [{title: "Redux", link: "http://redux.js.org/"}]
+            links: [{title: "Redux", link: "http://redux.js.org/"}],
+            contentToggle: false,
         }
     ]
 });

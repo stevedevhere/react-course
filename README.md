@@ -239,6 +239,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(WrappedComponent)
 store с помощью функции connect мы можем это сделать, поскольку при подписке на store мы указали какие именно action мы хотим иметь в нашем компоненте.
 и как я уже описал выше вызывая action который мы передали в props нашего компонента с помощью функции connect мы донесем информацию
 о нашем событии в store:
-```coffescript
+```
 this.props.addPost(data) -> middleware -> reducer -> reducer update store -> subscribed component re-rendering
 ```

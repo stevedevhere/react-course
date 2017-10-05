@@ -5,7 +5,7 @@ const Header = (props) => (
         <h1>React Lesson: 3 [ router, redux ]</h1>
         <h3>Урок третий</h3>
         <p className="description">
-            Что вы должны осознать сегодня: router, redux <br/>
+            Темы сегодняшнего урока: router, redux <br/>
             <b>Задания на сегодня:</b>
         </p>
         <ul className="tasks">
@@ -23,10 +23,6 @@ const Header = (props) => (
                 Добавить компоненту AddPost возможность добавлять `links` (3 балла)
             </li>
         </ul>
-
-        <p>
-            Дополнительно:
-        </p>
     </header>
 );
 

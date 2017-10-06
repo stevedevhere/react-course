@@ -4,6 +4,8 @@
 `npm install` -- Устанавливаем все необходимые для работы пакеты из `package.json` (зависимости) <br/>
 `npm run dev` -- Запускаем проект (запускается скрипт прописаный внутри `package.json` с ключем "dev")
 
+---
+
 > #### PS: Материал про "жизненный цикл" был честно взят [отсюда](https://maxfarseer.gitbooks.io/react-course-ru/content/zhiznennii_tsikl_komponenta.html), и немного откоректирован.
 
 <!-- ![s](https://translate.google.com.ua/?hl=ru&tab=TT) -->

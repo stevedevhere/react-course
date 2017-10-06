@@ -39,7 +39,7 @@
 
 Есть обязательная особенность, названия компонентов всегда должны начинатся с большой буквы.
 Пример (для каждого компонента принято создавать свою папку):
-```javascript
+```jsx
 import React from 'react';
 
 export default class ComponentExample extends React.Component {
@@ -98,7 +98,7 @@ React.createElement('h1', null, 'hello world');
 
 Есть у него еще одна обязательная особенность, все теги обязательно нужно закрывать, как одинарные так и парные. <br/>
 Пример: 
-```javascript
+```jsx
 <input type="text" />
 <textarea></textarea>
 ```

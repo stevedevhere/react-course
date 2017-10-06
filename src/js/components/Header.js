@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = (props) => (
     <header>
-        <h1>React Lesson: 4 [ practice ]</h1>
+        <h1>React Lesson: 4 [ practice, work with API ]</h1>
         <h3>Урок четвертый</h3>
         <p className="description">
             Практика<br/>

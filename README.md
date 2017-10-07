@@ -239,7 +239,7 @@ git checkout components-examples
 ```jsx
 import React from 'react';
 // Например, у нас есть компонент `Posts` и я хочу чтобы внутри него отображались посты, но с 
-// учетом определенной структуры которую я прописал внутри компонента Post. 
+// учетом определенной структуры которую я прописал внутри компонента Posts. 
 class Posts extends React.Component {
     render() {
         <main className="articles">

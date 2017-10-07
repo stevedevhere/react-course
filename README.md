@@ -178,7 +178,7 @@ class Nav extends React.Component {
 ```jsx
 import React from 'react';
 
-const NavItem = (props) => ( // просто функция. которая просто возвращает view (в нашем случае ввиде jsx элементов)
+const NavItem = (props) => (
     <li class={props.type}>
         <Link to={`/${props.href}`}>{props.children}</Link>
     </li>

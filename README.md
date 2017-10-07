@@ -71,9 +71,9 @@ with JSX:
 var jsx = (
 	<Container>
 		<Nav>
-			<NavItem href="/home">Home</NavItem>
-			<NavItem href="/posts">Posts</NavItem>
-			<NavItem href="/about">About</NavItem>
+			<NavItem href="home">Home</NavItem>
+			<NavItem href="posts">Posts</NavItem>
+			<NavItem href="about">About</NavItem>
 		</Nav>
 	</Container>
 )
@@ -89,17 +89,17 @@ var jsx = React.createElement(
 		null,
 		React.createElement(
 			NavItem,
-			{ href: "/home" },
+			{ href: "home" },
 			"Home"
 		),
 		React.createElement(
 			NavItem,
-			{ href: "/posts" },
+			{ href: "posts" },
 			"Posts"
 		),
 		React.createElement(
 			NavItem,
-			{ href: "/about" },
+			{ href: "about" },
 			"About"
 		)
 	)
@@ -159,26 +159,42 @@ var app = <h1>
 
 **Сложный компонент** - это класс, который наследуется от класса `Component` находящегося в библиотеке `React`, благодаря чему этот класс обретает определенные возможности, в частности такие как состояние и жизненный цикл.
 У него есть обязательный метод который называется `render()` который обязательно должен возвращать наше представление (view)
-
-**Простой компонент** - это функция, которая ни от чего не наследуется, которая принимает на вход свойства, которые привыкли именовать как `props` (объект) и лишь возвращает jsx используя эти `props`, ну или не использует, это зависит от задачи.
-
-Есть **обязательное условие**, названия компонентов всегда должны начинатся с большой буквы, иначе babel компилируя наш jsx в месте где мы хотим использовать этот компонент, сочтет этот компонент обычным тегом.
-
-Пример:
 ```jsx
 import React from 'react';
-import User from 'path/to/User';
-export default class ComponentExample extends React.Component {
-    render() {
-        return (
-            <div className="wrapper">
-                <h1>Example</h1>
-                <User/>
-                {/* если бы вы написали <user/> babel скомпилировал бы это в обычный тег html */}
-            </div>
+class Nav extends React.Component {
+    render() { // обязательный метод render() который должен возвращать наше view
+        return ( 
+            <nav class={this.props.type}>
+                <ul class={this.props.listType}>
+                    {this.props.children}  
+                </ul>
+            </nav>
         )
     }
 }
+```
+
+**Простой компонент** - это функция, которая ни от чего не наследуется, которая принимает на вход свойства, которые привыкли именовать как `props` (объект) и лишь возвращает jsx используя эти `props`, ну или не использует, это зависит от задачи.
+```jsx
+import React from 'react';
+
+const NavItem = (props) => ( // просто функция. которая просто возвращает view (в нашем случае ввиде jsx элементов)
+    <li class={props.type}>
+        <Link to={`/${props.href}`}>{props.children}</Link>
+    </li>
+);
+```
+
+Есть **обязательное условие**, названия компонентов всегда должны начинатся с большой буквы, иначе babel компилируя наш jsx в месте где мы хотим использовать этот компонент, сочтет этот компонент обычным тегом.
+
+обычный тег инпута: 
+```jsx
+<input type="text"/>
+```
+
+Компонент с названием Input: 
+```jsx
+<Input type="text" />
 ```
 
 Отлично, мы описали компонент, но для того чтобы этот компонент где-то отобразился - этого не достаточно. Для того чтобы наш компонент появился у нас на странице, нам необходимо его вывести, это делается так:

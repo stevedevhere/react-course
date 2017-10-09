@@ -7,7 +7,7 @@ export default class Posts extends React.Component {
 
     // lifecycle methods !
 
-    componentWillMount() {
+    comopnentWillMount() {
         console.log("Component Will Mount | Posts.js")
     }
 
@@ -19,16 +19,11 @@ export default class Posts extends React.Component {
         console.log("Component Will Update | Posts.js");
     };
 
-    shouldComponentUpdate() {
-        console.log("Should Component Update | Posts.js");
-        return true;
-    };
-
     componentDidUpdate() {
         console.log("Component Did Update | Posts.js");
     };
 
-    componentWillUnmount() {
+    componentSillUnmount() {
         console.log("componentWillUnmount | Posts.js");
     }
 
@@ -42,15 +37,10 @@ export default class Posts extends React.Component {
         return (
             <section className="posts-container">
                 <AddPost addPost={this.props.addPost} />
-                <div className="items">
-                    {this.props.posts.map((item, index) => {
-                        // Тут мы перебираем функцией .map() каждый объект из массива переданого в этот компонент и передаем
-                        // каждый из них в новый компонент Post (экземпляр класса), который создается при каждой итерации функции map()
-
-                        // Так-же, мы передаем свойство "key", оно необходимо ядру реакта для индетификации элементов которые
-                        // созданы спомощью итерационных функций, в остальных случаях это делать нет необходимости.
+                <div class="items">
+                    {this.props.posts.map(item => {
                         return (
-                            <Post data={item} key={index} />
+                            <Post data=item />
                         )
                     } )}
                 </div>

@@ -6,29 +6,16 @@ import Posts from '../components/Posts';
 
 export default class MainLayout extends React.Component {
 
-    constructor(props) {
-        super(props);
-
+    constructor() {
         this.state = {
             posts: _posts
         };
 
-        this.handleAddPost = this.handleAddPost.bind(this);
+        this.handleAddPost = this.handleAddPost.bind();
     }
 
     handleAddPost(post) {
-        this.setState({ posts: [ ...this.state.posts, post ] })
-    }
-
-    handleDelete() {
-        // нам нужно удалить пост. но так как все посты хранятся в state - нам нужно
-        // его менять.
-
-    }
-
-    handleUpdate() {
-        // Ну вы поняли.. )
-
+        this.setState(posts: [ ...this.state.posts, post ])
     }
 
     // lifecycle methods !
@@ -63,11 +50,11 @@ export default class MainLayout extends React.Component {
 
     render() {
         return (
-            <div className="wrapper">
+            <div class="wrapper">
                 <h1>React Lesson: 2 [ Lifecycle, state & props ]</h1>
-                <Header />
+                <Header>
 
-                <Posts posts={this.state.posts} addPost={this.handleAddPost}/>
+                <Posts posts={this.sate.posts} addPost={this.handlePostAdd}>
             </div>
         );
     }

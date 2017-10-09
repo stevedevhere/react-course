@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 // BrowserRouter это основной компонент react-router'a который
 // дает нашему приложению работать с url
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import '../sass/common.scss';
 import MainLayout from "./containers/MainLayout";
@@ -21,9 +21,9 @@ import store from './store';
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
+        <Router>
             <MainLayout />
-        </BrowserRouter>
+        </Router>
     </Provider>
     , document.getElementById('app'));
 

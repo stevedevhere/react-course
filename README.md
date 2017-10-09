@@ -7,6 +7,66 @@
 
 ---
 
+
+## Components context 
+[context](https://reactjs.org/docs/context.html) - это настраиваемый объект который позволяет родительскому компоненту влиять на дочерний компонент без передачи `props`.
+
+Предположим: <br>
+В контексте какого-то возможного большого приложения помимо всего остального, у нас есть - рут-компонент сообщений, компонент сообщения, и компонент кнопки. Нужно чтобы в зависимости от родительского элемента кнопка обретала определенный цвет: 
+```jsx
+import React from 'react';
+import PropTypes from 'prop-types';
+
+class Button extends React.Component {
+  render() {
+    return (
+      <button style={{background: this.context.color}}>
+        {this.props.children}
+      </button>
+    );
+  }
+}
+
+Button.contextTypes = {
+  color: PropTypes.string
+};
+
+class Message extends React.Component {
+  render() {
+    return (
+      <div>
+        {this.props.text} <Button>Delete</Button>
+      </div>
+    );
+  }
+}
+
+class MessageList extends React.Component {
+  getChildContext() {
+    return {color: "purple"};
+  }
+
+  render() {
+    const children = this.props.messages.map((message) =>
+      <Message text={message.text} />
+    );
+    return <div>{children}</div>;
+  }
+}
+
+MessageList.childContextTypes = {
+  color: PropTypes.string
+};
+
+```
+
+Для того чтобы передавать контекст в дочерний компонент необходимо сделать определенные действия:
+1. В дочернем компоненте запросить конкретные свойства из родительского элемента, и тем самым проверить их на соотвествие нужному нам типу. (`contextTypes`)
+2. Описать все передаваемые свойства в компоненте (`getChildContext()`)
+3. Проверить на соответствие по типу в родительском компоненте (`childContextTypes`)
+
+***Запомните:*** *объект context есть только у сложных компонентов.*
+
 ### Работа с API
 
 [**API**](https://www.wikiwand.com/ru/API) - API (программный интерфейс приложения, интерфейс прикладного программирования) (англ. application programming interface, API) — набор готовых классов, процедур, функций, структур и констант, предоставляемых приложением (библиотекой, сервисом) или операционной системой для использования во внешних программных продуктах. Используется программистами при написании всевозможных приложений.

@@ -2,7 +2,7 @@ import React from 'react';
 
 import Posts from '../components/Posts';
 import PostView from '../components/PostView';
-
+import Menu from '../components/Menu';
 
 // Route - компонент принимающий два свойства:
 // 1. path - url
@@ -30,18 +30,10 @@ export default class MainLayout extends React.Component {
         this.setState({ posts: [ ...this.state.posts, post ] })
     }
 
-    handleDelete() {
-
-    }
-
-    handleUpdate() {
-
-    }
-
     render() {
         return (
             <div className="wrapper">
-
+                {/* <Menu/> */}
                 <Switch>
                     <Route exact path="/" component={Posts}/>
                     <Route path="/post-:postId" component={PostView}/>
@@ -50,7 +42,7 @@ export default class MainLayout extends React.Component {
                 </Switch>
 
             </div>
-        );
+        ); 
     }
 }
 

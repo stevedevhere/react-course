@@ -1,71 +1,12 @@
 # react-course
-## React Lesson: 2 [ Components, ReactDOM, lifecycle ]
+## React Lesson: 2 [ Refs, ReactDOM, lifecycle ]
 
 `npm install` -- Устанавливаем все необходимые для работы пакеты из `package.json` (зависимости) <br/>
 `npm run dev` -- Запускаем проект (запускается скрипт прописаный внутри `package.json` с ключем "dev")
 
 ---
 
-## Компоненты [ context, refs ]
-
-### [Context](https://reactjs.org/docs/context.html) 
-это настраиваемый объект который позволяет родительскому компоненту влиять на дочерний компонент без передачи `props`.
-
-Предположим: <br>
-В контексте какого-то возможного большого приложения помимо всего остального, у нас есть - рут-компонент сообщений, компонент сообщения, и компонент кнопки. Нужно чтобы в зависимости от родительского элемента кнопка обретала определенный цвет: 
-```jsx
-import React from 'react';
-import PropTypes from 'prop-types';
-
-class Button extends React.Component {
-  render() {
-    return (
-      <button style={{background: this.context.color}}>
-        {this.props.children}
-      </button>
-    );
-  }
-}
-
-Button.contextTypes = {
-  color: PropTypes.string
-};
-
-class Message extends React.Component {
-  render() {
-    return (
-      <div>
-        {this.props.text} <Button>Delete</Button>
-      </div>
-    );
-  }
-}
-
-class MessageList extends React.Component {
-  getChildContext() {
-    return {color: "purple"};
-  }
-
-  render() {
-    const children = this.props.messages.map((message) =>
-      <Message text={message.text} />
-    );
-    return <div>{children}</div>;
-  }
-}
-
-MessageList.childContextTypes = {
-  color: PropTypes.string
-};
-
-```
-
-Для того чтобы передавать контекст в дочерний компонент необходимо сделать определенные действия:
-1. В дочернем компоненте запросить конкретные свойства из родительского элемента, и тем самым проверить их на соотвествие нужному нам типу. (`contextTypes`)
-2. Описать все передаваемые свойства в компоненте (`getChildContext()`)
-3. Проверить на соответствие по типу в родительском компоненте (`childContextTypes`)
-
-***Запомните:*** *объект context есть только у сложных компонентов.*
+## Компоненты [ refs ]
 
 ### [this.refs](https://reactjs.org/docs/refs-and-the-dom.html#when-to-use-refs)
 Это специальное своство которое позволяет записывать в свойства класса элемент dom. Это необходимо для работы с нативными методами этого элемента и соответственно для влияние на элемент вне жизненного цикла. Чтобы поменять например цвет блока, нам нужно например записать цвет в обект state, а затем изменив это свойство объекта state - менять цвет. Но как вы помните, изменение state влечет за собой re-render компонента, если нам это не нужно, это уже будет проблемой. Вообщем-то для того чтобы проблеммы не было, у нас есть аттрибут refs (or ref) который позволяет записывать элемент в свойство нашего компонента.

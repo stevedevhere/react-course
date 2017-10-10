@@ -11,10 +11,18 @@ import {createLogger} from 'redux-logger';
 import reducers from '../reducers';
 
 
+// Custom middleware !
+const extendPostData = store => next => action => {
+    if(action.type === "ADD_POST") {
+        action = {...action, payload: {...action.payload, contentToggle: false}}    
+    }
+    next(action);
+}
+
 // Middleware это прослойка между вызовом события и его
 // обработкой, middleware есть готовые и есть возможность
 // написать свой.
-const middleware = applyMiddleware(createLogger());
+const middleware = applyMiddleware(createLogger(), extendPostData);
 
 
 // Используя функцию createStore описаную в библиотеке

@@ -2,7 +2,6 @@ import React from 'react';
 
 import Posts from '../components/Posts';
 import PostView from '../components/PostView';
-import Menu from '../components/Menu';
 
 // Route - компонент принимающий два свойства:
 // 1. path - url
@@ -20,16 +19,6 @@ import Menu from '../components/Menu';
 import { Route, Switch, Link } from 'react-router-dom';
 
 export default class MainLayout extends React.Component {
-
-    constructor(props) {
-        super(props);
-            this.handleAddPost = this.handleAddPost.bind(this);
-    }
-
-    handleAddPost(post) {
-        this.setState({ posts: [ ...this.state.posts, post ] })
-    }
-
     render() {
         return (
             <div className="wrapper">

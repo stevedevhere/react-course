@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default class AddPost extends React.Component {
-
+    
     handleOnSubmit = (e) => {
         e.preventDefault();
 

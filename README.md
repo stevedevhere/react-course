@@ -21,21 +21,21 @@
 History API который позволяет меняеть url без перезагрузки страницы.
 
 
-[**Route**](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Route.md) -  компонент принимающий два свойства:
-1. path - url
+[**Route**](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Route.md) - нужен для того чтобы отоборажать определенные
+компоненты при определенных url, это компонент принимающий два свойства:
+1. path - тут мы должны указать url по которому отобразиться указанный нами компонент
 2. component - компонент который отобразиться по указаному в path url.
-так-же присуствует возможность делать компонент парным, что дает возможность
-вкладывать в него другие теги и компоненты. Нужен для того чтобы отоборажать определенные
-компоненты при определенных url.
+
+Так-же присуствует возможность делать компонент парным, что дает возможность
+вкладывать в него другие теги и компоненты. 
 
 [**Switch**](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Switch.md) - вспомогательный компонент который позволяет групировать определенные
-`Route` и переключаться между ними.
+`Route`.
 
 
 [**Link**](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/Link.md) - необходим для того чтобы переключатся между "страницами", по факту - аналог
-обычного `<a>`, но работает с помощью BrowserHistory или hashHistory вместо привычного нам href нужно
-писать `to={"/some-url"}`
-
+обычного `<a>`, но работает с помощью History API вместо привычного нам href нужно
+писать `to="/some-url"`
 
 Все это - компоненты, и мы можем использовать их там где нам необходимо.
 
@@ -99,6 +99,10 @@ class User extends React.Component {
 Но просто так работать это не будет, нам нужно сказать нашему приложению что мы используем Router. Для этого нам нужно обернуть наше приложение (которое мы обернули в один основной компонент) в еще один компонент - `BrowserRouter`.
 ```jsx
 // ./index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {BrowserRouter} from 'react-router-dom';
+import MainLayout from './container/MainLayout';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -174,6 +178,8 @@ Reducer это функция (всегда), которая принимает 
 
 Для того чтобы наш редьюсер отработал нам нужно добавить его в наш объект  `store`, сделать это можно только тогда когда мы этот `store` создаем, делаем мы это с помощью функции `createStore` взятой из модуля `redux`.
 ```javascript
+// ./store/index.js
+import {createStore} from 'redux';
 import reducers from './reducers';
 
 const store = createStore(reducers);
@@ -185,6 +191,11 @@ const store = createStore(reducers);
 Чтобы наше приложение понимало что такое `store` и могло с ним взаимодействовать нам необходимо обернуть наш основной компонент в компонент `Provider` который находиться в модуле `react-redux`, и передать в него наш `store` (example: `store={store}`). Таким образом наше приложение получает возможность взаимодействовать со `store`.
 ```jsx
 // ./index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import {BrowserRouter} from 'react-router-dom';
+import MainLayout from './container/MainLayout';
 
 ReactDOM.render(
     <Provider store={store}>
@@ -196,7 +207,6 @@ ReactDOM.render(
 ```
 *На заметку, у компонента `Provider` может быть только один дочерний дом узел (элемент).*
 
-<!-- TODO: @connect -->
 ### Component connecting to store
 Но, этого всеравно не достаточно, нам нужны определенные данные из store в каком-то определенном компоненте.
 Для этого нам нужно подписать нужный нам component на наш store, делается это по средствам декоратора connect.
@@ -232,11 +242,10 @@ const mapDispatchToProps = dispatch => ( bindActionCreators({ addPost }, dispatc
 export default connect(mapStateToProps, mapDispatchToProps)(WrappedComponent)
 ```
 
-<!-- TODO: Action dispatch -->
 ### Dispatch Actions
-Как я уже писал выше, чтобы изменить наши данные нам нужно вызвать `action`, теперь, когда мы подписались на изменения в store с помощью функции connect мы можем это сделать, поскольку при подписке на store мы указали какие именно action мы хотим иметь в нашем компоненте. И как я уже описал выше вызывая action который мы передали в props нашего компонента с помощью функции connect мы донесем информацию о нашем событии в store:
+Как я уже писал выше, чтобы изменить наши данные нам нужно вызвать `action`, теперь, когда мы подписались на изменения в store с помощью функции connect мы можем это сделать, поскольку при подписке на store мы указали какие именно action мы хотим иметь в нашем компоненте. И как я уже описал выше, вызывая action, который мы передали в props нашего компонента с помощью функции connect, мы донесем информацию о нашем событии в store:
 ```
-this.props.addPost(data) -> middleware -> reducer -> reducer update store -> subscribed component re-rendering
+this.props.addPost(data) -> middleware -> reducer -> update store -> subscribed component re-rendering 
 ```
 
 **Задания (Делать в ветке lesson-3):**

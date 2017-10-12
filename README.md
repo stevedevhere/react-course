@@ -297,7 +297,7 @@ class Layout extends React.Component {
 
 У нас есть возможность не только передавать свойства как атрибут, но и указывать свои свойства по умолчанию, для этого у компонента есть свойство `defaultProps`, а так-же мы можем валидировать свойства которые мы передаем в компонент с помощью специальной тулзы которая называется `propTypes`, начиная если я не ошибаюсь, с 15й версии, эту фичу вырезали из ядра реакта, и вынесли в отдельный модуль "prop-types" который без проблем ставится с помощью npm.
 
-[*defaultProps*](https://reactjs.org/docs/react-without-es6.html#declaring-default-props) - свойство класса в котором мы можем указать своства класса по умолчанию.
+[*defaultProps*](https://reactjs.org/docs/react-without-es6.html#declaring-default-props) - свойство класса в котором мы можем указать свойства(props) класса по умолчанию.
 ```jsx
 Button.defaultProps = { 
     type: 'default'

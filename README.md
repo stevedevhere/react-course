@@ -58,13 +58,40 @@ MessageList.childContextTypes = {
 };
 
 ```
-
 Для того чтобы передавать контекст в дочерний компонент необходимо сделать определенные действия:
 1. В дочернем компоненте запросить конкретные свойства из родительского элемента, и тем самым проверить их на соотвествие нужному нам типу. (`contextTypes`)
 2. Описать все передаваемые свойства в компоненте (`getChildContext()`)
 3. Проверить на соответствие по типу в родительском компоненте (`childContextTypes`)
 
 ***Запомните:*** *объект context есть только у сложных компонентов.*
+
+## Middleware (redux)
+Middleware - это специальная прослойка между нашим действием (action) и его обработчиком (reducer). 
+
+Функция middleware пишется вот так: 
+```javascript
+import * as types from '../constants/ActionTypes';
+
+// Custom middleware - logger 
+function logger(store) {
+  return function wrapDispatchToAddLogging(next) {
+    return function dispatchAndLog(action) {
+      console.log('dispatching', action)
+      let result = next(action)
+      console.log('next state', store.getState())
+      return result;
+    }
+  }
+}
+
+///////////////////////////////////////////// 
+const middleware = applyMiddleware(logger);
+const store = createStore(reducers, middleware);
+
+export default store;
+```
+
+Прочитать детальнее о том как нужно писать middleware можно [здесь](http://redux.js.org/docs/advanced/Middleware.html)
 
 **Задания: (Делать в ветке lesson-4)**
 1. Написать `middleware` который будет обновлять данные в localStorage. (данные == посты) (3 балла)

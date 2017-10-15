@@ -42,7 +42,7 @@ export default class Posts extends React.Component {
                 // Так-же, мы передаем свойство "key", оно необходимо ядру реакта для индетификации элементов которые
                 // созданы спомощью итерационных функций, в остальных случаях это делать нет необходимости.
                 return (
-                    <Post data={item} key={index} index={index} />
+                    <Post data={item} key={index} index={index} push={this.props.history.push} />
                 )
             })
         } else {

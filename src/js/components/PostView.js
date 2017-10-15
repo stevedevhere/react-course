@@ -27,12 +27,20 @@ export default class PostView extends React.Component {
         if(this.props.data) {
             return (
                 <article className="post-view">
-                    <Link to="/" className="go-home">Go Home</Link>
-                    <h1>{this.props.data.title}</h1>
-                    <p>{this.props.data.description}</p>
-                    <ul className="links">
-                        {this.renderLinks()}
-                    </ul>
+                    <header>
+                        <h1 className="page-title">
+                            <Link to="/" className="go-home">home</Link>
+                            {' / '+this.props.data.title}
+                        </h1>
+                    </header>
+
+                    <main>
+                        <p>{this.props.data.description}</p>
+                        <ul className="links">
+                            {this.renderLinks()}
+                        </ul>
+                    </main>
+                    
                 </article>
             );
         } else {

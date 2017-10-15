@@ -1,5 +1,12 @@
 $blue: #006ec5;
 $grey: #585858;
+$accent: rgb(243, 239, 24);
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
 
 html, body {
     font-family: "Tahoma";
@@ -7,17 +14,38 @@ html, body {
     line-height: 1.125;
 }
 
+ul {
+    margin: 10px 0;
+}
+
+ul li {
+    display: table;
+}
 
 body {
     min-height: 100%;
-    background: #eee;
+    background: $accent;
     background-size: 100% 100%;
+    * {
+        box-sizing: border-box;
+    }
 }
-
 
 .wrapper {
     margin: auto;
-    padding-top: 30px;
     width: 80%;
     display: table;
+    // padding-top: 30px;
 }
+
+h1.page-title {
+    display: table;
+    margin: auto;
+    text-align: center;
+    padding: 20px 50px;
+    background: #000;
+    color: #fff;
+    border-radius: 0 0 7px 7px;
+    margin-bottom: 35px;
+  }
+  

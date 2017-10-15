@@ -1,12 +1,8 @@
 import React from 'react';
 
 const Header = (props) => (
-    <header>
-        <h3>Урок первый</h3>
-        <p className="description">
-            Что вы должны осознать сегодня: сomponents, JSX, state, props <br/>
-            <b>Задания на сегодня:</b>
-        </p>
+    <header className="header">
+        <h3>Задания на сегодня:</h3>
         <ul className="tasks">
             <li>Вывести все посты которые лежат в state компонента MainLayout используя специально созданный для этого компонент. (2 балла)</li>
             <li>

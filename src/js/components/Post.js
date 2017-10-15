@@ -1,12 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {updateContentToggler} from '../actions';
-// Link - необходим для того чтобы переключатся между "страницами", по факту - аналог
-// обычного <a>, но работает с помощью BrowserHistory или hashHistory
-// вместо привычного нам href нужно писать to={`/some-url`}
-import {Link} from 'react-router-dom';
-
 
 String.prototype.lessThan = function (max) {
     let tmp = this;
@@ -41,11 +33,11 @@ export default class Post extends React.Component {
                 </ul>
                <div className="buttons">
                     <button onClick={this.handleShowMore}>{this.props.data.contentToggle ? "Show more" : "Show less"}</button>
-                    <button >Delete</button>
-                    <button>Edit</button>
-                    <button onClick={() => this.props.push(`/post-${this.props.index}`)}>
-                        View
-                    </button>
+                    <button onClick={() => this.props.delete(this.props.index)}>Delete</button>
+                    <button onClick={() => this.props.edit(this.props.index)}>Edit</button>
+                    <button 
+                        onClick={() => this.props.push(`/post-${this.props.index}`)}>
+                        View </button>
                </div>
             </article>
         );

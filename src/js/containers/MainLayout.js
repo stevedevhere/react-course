@@ -2,6 +2,7 @@ import React from 'react';
 
 import Posts from '../components/Posts';
 import PostView from '../components/PostView';
+import PostEdit from '../components/PostEdit';
 
 // Route - компонент принимающий два свойства:
 // 1. path - url
@@ -23,9 +24,10 @@ export default class MainLayout extends React.Component {
         return (
             <div className="wrapper">
                 {/* <Menu/> */}
-                <Switch>
+                <Switch> {/* posts group */}
                     <Route exact path="/" component={Posts}/>
                     <Route path="/post-:postId" component={PostView}/>
+                    {/* <Route path="/edit-:postId" component={PostEdit}/> */}
 
                     <Route path="*" component={() => <div>Page Not Found</div>}/>
                 </Switch>

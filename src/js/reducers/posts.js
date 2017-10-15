@@ -33,6 +33,8 @@ export default function posts(state = InitialState.posts, action) {
                 if(index === payload) return {...item, contentToggle: !item.contentToggle}
                 else return {...item, contentToggle: false};
             });
+        case types.DELETE_POST:
+            return state.filter((item, index) => index !== payload);
         default:
             return state;
     }

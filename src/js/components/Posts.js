@@ -1,11 +1,13 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import Post from '../components/Post';
 import AddPost from './AddPost';
 import Header from '../components/Header';
+import PostEdit from '../components/PostEdit';
 
 
-import { addPost, updateContentToggler } from '../actions';
+import { addPost, updateContentToggler, deletePost } from '../actions';
 
 // Функция connect является связующим между компонентом и store из redux,
 // эта функция принимает два параметра:
@@ -25,13 +27,33 @@ const mapStateToProps = state => ({ posts: state.posts });
 
 // mapDispatchToProps - передаем все нужные нам actions в оборачеваемый компонент, но перед этим оборачиваем
 // все actions в функцию dispatch
-const mapDispatchToProps = dispatch => ( bindActionCreators({ addPost, updateContentToggler }, dispatch) );
+const mapDispatchToProps = dispatch => ( bindActionCreators({ addPost, updateContentToggler, deletePost }, dispatch) );
 
 // @connect - "@" - обозначает декоратор, это es7. Функция "connect" декорирует объект, имеется ввиду что на
 // выходе мы получаем новый, измененный компонент который содержит в себе дополнительные функции и свойства,
 // а какие именно - мы определяем в функциях передаваемых внутрь функции connect.
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Posts extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.postEditFormUnmount = this.postEditFormUnmount.bind(this);
+        this.postEditForm = this.postEditForm.bind(this);
+        this.renderPosts = this.renderPosts.bind(this);
+    }
+
+    state = {
+        editedID: null,
+        edit: false
+    }
+
+    postEditForm(id) {
+        console.log(id)
+        if(id) this.setState({editedID: id, edit: !this.state.edit});
+        else return null;
+    }
+    
     renderPosts() {
         if(this.props.posts) {
             let self = this;
@@ -42,7 +64,13 @@ export default class Posts extends React.Component {
                 // Так-же, мы передаем свойство "key", оно необходимо ядру реакта для индетификации элементов которые
                 // созданы спомощью итерационных функций, в остальных случаях это делать нет необходимости.
                 return (
-                    <Post data={item} key={index} index={index} updateContentToggler={self.props.updateContentToggler} push={this.props.history.push}/>
+                    <Post data={item}
+                        key={index}
+                        index={index}
+                        updateContentToggler={self.props.updateContentToggler}
+                        push={self.props.history.push}
+                        edit={self.postEditForm}
+                        delete={self.props.deletePost} />
                 )
             })
         } else {
@@ -50,10 +78,14 @@ export default class Posts extends React.Component {
         }
     }
 
+    postEditFormUnmount() {
+        this.setState({edit: false});
+    }
+
     render() {
-        console.log(this)
         return (
             <section className="posts-container">
+                { this.state.edit ? <PostEdit ref="modal" id={this.state.editedID} unmount={this.postEditFormUnmount}/> : null }
                 <Header />
 
                 <AddPost addPost={this.props.addPost} />

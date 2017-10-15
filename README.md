@@ -102,7 +102,7 @@ function logger(store) {
     return function dispatchAndLog(action) {
       console.log('dispatching', action) // пока что наш action не сработал.
       let result = next(action) // вызвали наш action
-      console.log('next state', store.getState()) // смотрим что изменилось в store после того как мы вызвали action
+      console.log('next state', store.getState()) // смотрим что изменилось в store 
       return result;
     }
   }
@@ -120,7 +120,7 @@ export default store;
 const customMiddleware = store => next => action {
   console.log('dispatching', action) // пока что наш action не сработал.
   let result = next(action) // вызвали наш action
-  console.log('next state', store.getState()) // смотрим что изменилось в store 
+  console.log('next state', store.getState()) // смотрим что изменилось в store
   return result;
 }
 ```
@@ -144,3 +144,6 @@ const customMiddleware = store => next => action {
     - сохраненние данных в localStorage
     - детальная информация о каждом созданом todo
     - возможность посмотреть всю информацию о todo на отдельной странице
+
+ 
+Дополнительно: server-side rendering, Children API

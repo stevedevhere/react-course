@@ -24,7 +24,7 @@ export default class Post extends React.Component {
 
     contentView = (content) => {
         if(!this.props.data.contentToggle && content.length > 120) {
-            return content.lessThan(120) + '... ';
+            return content.lessThan(200) + '... ';
         } else {
             return content;
         }
@@ -39,12 +39,14 @@ export default class Post extends React.Component {
                     {(this.props.data.links) ? this.props.data.links.map((item, index) =>
                         <li key={index} className="link"><a href={item.link} target="_blank">{item.title}</a></li>) : null}
                 </ul>
-                <button onClick={this.handleShowMore}>{this.props.data.contentToggle ? "Show more" : "Show less" }</button>
-                <button >Delete</button>
-                <button>Edit</button>
-                <Link to={`/post-${this.props.index}`} className="post-view-link">
-                    View
-                </Link>
+               <div className="buttons">
+                    <button onClick={this.handleShowMore}>{this.props.data.contentToggle ? "Show more" : "Show less"}</button>
+                    <button >Delete</button>
+                    <button>Edit</button>
+                    <button onClick={() => this.props.push(`/post-${this.props.index}`)}>
+                        View
+                    </button>
+               </div>
             </article>
         );
     }

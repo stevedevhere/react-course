@@ -1,13 +1,11 @@
 import React from 'react';
 
 const Header = (props) => (
-    <header>
-        <h1>React Lesson: 4 [ practice, work with API ]</h1>
-        <h3>Урок четвертый</h3>
-        <p className="description">
-            Практика<br/>
-            <b>Задания на сегодня:</b>
-        </p>
+    <header className="header">
+        <h1 className="page-title">React Lesson: 4 [ context, ?Children API? ]</h1>
+        <h3 className="description">
+            Задания на сегодня:
+        </h3>
         <ul className="tasks">
             <li>Создать компонент меню, с рабочими пунктами - "создать пост", инпут поиска  (3 балла)</li>
             <li>Написать `middleware` который будет обновлять данные в localStorage. (данные == посты) (3 балла)</li>

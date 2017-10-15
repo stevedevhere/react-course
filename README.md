@@ -117,7 +117,7 @@ export default store;
 
 Более простой и удобный вариант написания middleware с помощью стрелочных функций:
 ```javascript
-const customMiddleware = store => next => action {
+const logger = store => next => action {
   console.log('dispatching', action) // пока что наш action не сработал.
   let result = next(action) // вызвали наш action
   console.log('next state', store.getState()) // смотрим что изменилось в store

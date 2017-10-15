@@ -1,0 +1,38 @@
+.menu-container {
+    //background-color: #fff;
+    height: 30px;
+  
+    .switch {
+      width: 30px;
+      height: 30px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      float: left;
+      margin-right: 30px;
+      transition: 0.05s;
+      &.close {
+        background-image: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-128.png');
+      }
+      &.open {
+        background-image: url('https://www.shareicon.net/data/128x128/2015/09/24/106683_menu_512x512.png');
+      }
+      &:hover {
+        background-color: #fff;
+      }
+    }
+  
+    ul {
+      li {
+        display: inline-table;
+        margin-right: 30px;
+        line-height: 29px;
+        a {
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  
+  }

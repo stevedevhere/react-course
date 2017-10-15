@@ -1,12 +1,8 @@
 import React from 'react';
 
 const Header = (props) => (
-    <header>
-        <h3>Урок второй</h3>
-        <p className="description">
-            Темы сегодняшнего урока: ReactDOM, lifecycle <br/>
-            <b>Задания на сегодня:</b>
-        </p>
+    <header className="header">
+        <h3>Задания на сегодня:</h3>
         <ul className="tasks">
             <li>Добавить возможность редактировать пост (3 балла)</li>
             <li>Добавить возможность сортировать посты  (3 балла)</li>
@@ -14,11 +10,12 @@ const Header = (props) => (
                 Исправить работу функции contentView написаной внутри компонента "Post" так,
                 чтобы развернутым был только один компонент. (4 балла)
             </li>
+            <li>
+                Дополнительно: Прочитать про react-router v4
+            </li>
         </ul>
 
-        <p>
-            Дополнительно: Прочитать про react-router v4
-        </p>
+ 
     </header>
 );
 

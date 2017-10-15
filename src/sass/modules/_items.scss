@@ -2,20 +2,14 @@
   display: flex;
   flex-flow: column;
   .item {
+    padding: 8px 15px 20px;
     width: 100%;
-    background-color: #111;
-    color: #ccc;
-    padding: 15px;
-    margin: 5px auto;
     transition: 0.2s;
-    &.active {
-      background-color: #fff;
-      color: #000;
-      padding-bottom: 30px;
-      padding-top: 30px;
-    }
-    button {
-      margin-left: 4px;
-    }
+    
+    
+    // button {
+    //   margin-top: 20px;
+    //   margin-left: 4px;
+    // }
   }
 }

@@ -34,9 +34,13 @@ export default class Post extends React.Component {
                 <ul className="links">
                     {(this.props.data.links) ? this.props.data.links.map((item, index) => <li key={index} className="link"><a href={item.link} target="_blank">{item.title}</a></li>) : null}
                 </ul>
-                <button onClick={this.handleShowMore}>{this.state.contentToggle ? "Show more" : "Show less" }</button>
-                <button>Delete</button>
-                <button>Update</button>
+                
+                <div className="buttons">
+                    <button onClick={this.handleShowMore}>{this.state.contentToggle ? "Show more" : "Show less"}</button>
+                    <button>Delete</button>
+                    <button>Edit</button>
+                </div>
+
             </article>
         );
     }

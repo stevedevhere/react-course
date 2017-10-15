@@ -64,7 +64,7 @@ export default class MainLayout extends React.Component {
     render() {
         return (
             <div className="wrapper">
-                <h1>React Lesson: 2 [ Lifecycle, state & props ]</h1>
+                <h1 className="page-title">React Lesson: 2 [ Lifecycle, state & props ]</h1>
                 <Header />
 
                 <Posts posts={this.state.posts} addPost={this.handleAddPost}/>

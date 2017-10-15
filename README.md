@@ -120,7 +120,7 @@ export default store;
 const customMiddleware = store => next => action {
   console.log('dispatching', action) // пока что наш action не сработал.
   let result = next(action) // вызвали наш action
-  console.log('next state', store.getState()) // смотрим что изменилось в store
+  console.log('next state', store.getState()) // смотрим что изменилось в store 
   return result;
 }
 ```

@@ -146,4 +146,4 @@ const logger = store => next => action {
     - возможность посмотреть всю информацию о todo на отдельной странице
 
  
-Дополнительно: server-side rendering, Children API
+**Дополнительно:** server-side rendering, Children API

@@ -1,0 +1,50 @@
+.add-post {
+  padding: 20px;
+  background-color: #191b17;
+  margin-bottom: 20px;
+  color: #eee;
+  border-radius: 4px;
+
+  h3 {
+    margin-bottom: 20px;
+  }
+
+  form {
+    width: 100%;
+    * {
+      transition: 0.2s;
+      &:not(button) {
+        color: #eee;
+      }
+    }
+
+    input {
+      padding: 7px 13px;
+      width: 100%;
+      border: none;
+      border-bottom: solid 3px $accent;
+      background-color: transparent;
+      margin-bottom: 15px;
+      &:focus {
+        border-color: #333;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      padding: 7px 13px;
+      width: 100%;
+      border: none;
+      background-color: transparent;
+      border-bottom: solid 3px $accent;
+      &:focus {
+        border-color: #333;
+      }
+    }
+    button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 10px;      
+    }
+  }
+}

@@ -1,34 +1,39 @@
 import React from 'react';
 
-import Header from '../components/Header';
 import Posts from '../components/Posts';
+import PostView from '../components/PostView';
+import PostEdit from '../components/PostEdit';
+
+// Route - компонент принимающий два свойства:
+// 1. path - url
+// 2. component - компонент который отобразиться по указаному в path url.
+// так-же присуствует возможность делать компонент парным, что дает возможность
+// вкладывать в него другие теги и компоненты.
+
+// Switch - вспомогательный компонент который позволяет групировать определенные
+// Routes и переключаться между ними
+
+// Link - необходим для того чтобы переключатся между "страницами", по факту - аналог
+// обычного <a>, но работает с помощью BrowserHistory или hashHistory
+// вместо привычного нам href нужно писать to={`/some-url`}
+
+import { Route, Switch, Link } from 'react-router-dom';
 
 export default class MainLayout extends React.Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            posts: [
-                {title: "react"},
-                {title: "react-router"},
-                {title: "redux"},
-                {title: "jsx"},
-                {title: "virtual-dom"},
-                {title: "components"}
-            ]
-        };
-    }
-
-
     render() {
         return (
-            <div className="wrapper" onClick="">
-                <h1>React Lesson: 1 [ Components, JSX, state & props ]</h1>
-                <Header />
+            <div className="wrapper">
+                {/* <Menu/> */}
+                <Switch> {/* posts group */}
+                    <Route exact path="/" component={Posts}/>
+                    <Route path="/post-:postId" component={PostView}/>
+                    {/* <Route path="/edit-:postId" component={PostEdit}/> */}
 
-                <Posts posts={ this.state.posts } />
+                    <Route path="*" component={() => <div>Page Not Found</div>}/>
+                </Switch>
+
             </div>
-        );
+        ); 
     }
 }
+

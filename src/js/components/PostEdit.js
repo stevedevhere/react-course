@@ -19,6 +19,7 @@ export default class PostEdit extends React.Component {
         }
 
         this.props.updateEditedPost(updated, this.props.id);
+        this.props.unmount();
     }
     
     stopPropagation(e) {

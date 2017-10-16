@@ -48,5 +48,28 @@ h1.page-title {
     color: #fff;
     border-radius: 0 0 7px 7px;
     margin-bottom: 35px;
-  }
-  
+}
+
+input {
+    padding: 7px 13px;
+    width: 100%;
+    border: none;
+    border-bottom: solid 3px $accent;
+    background-color: transparent;
+    margin-bottom: 15px;
+    &:focus {
+        border-color: #333;
+    }
+}
+
+textarea {
+    resize: vertical;
+    padding: 7px 13px;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    border-bottom: solid 3px $accent;
+    &:focus {
+        border-color: #333;
+    }
+}

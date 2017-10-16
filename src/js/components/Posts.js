@@ -49,7 +49,6 @@ export default class Posts extends React.Component {
     }
 
     postEditForm(id) {
-        console.log(id)
         if(id) this.setState({editedID: id, edit: !this.state.edit});
         else return null;
     }
@@ -80,6 +79,10 @@ export default class Posts extends React.Component {
 
     postEditFormUnmount() {
         this.setState({edit: false});
+    }
+
+    componentDidMount() {
+        document.title = "Simple react blog";
     }
 
     render() {

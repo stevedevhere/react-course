@@ -28,13 +28,19 @@ export default function posts(state = InitialState.posts, action) {
     switch(type) {
         case types.ADD_POST:
             return [...state, payload];
+        
+            case types.UPDATE_EDITED_POST:
+            return state.map((item, index) => index === action.index ? payload : item)
+
         case types.UPDATE_CONTENT_TOGGLER:
             return state.map((item, index) => {
                 if(index === payload) return {...item, contentToggle: !item.contentToggle}
                 else return {...item, contentToggle: false};
             });
+        
         case types.DELETE_POST:
             return state.filter((item, index) => index !== payload);
+        
         default:
             return state;
     }

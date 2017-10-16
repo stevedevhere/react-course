@@ -50,8 +50,11 @@ export default class PostView extends React.Component {
     }
 
     render() {
-        console.log(this);
         return this.renderPost();
+    }
+
+    componentDidMount() {
+        document.title = this.props.data.title;
     }
 }
 

@@ -32,7 +32,7 @@ export default class Post extends React.Component {
                         <li key={index} className="link"><a href={item.link} target="_blank">{item.title}</a></li>) : null}
                 </ul>
                <div className="buttons">
-                    <button onClick={this.handleShowMore}>{this.props.data.contentToggle ? "Show more" : "Show less"}</button>
+                    <button onClick={this.handleShowMore}>{!this.props.data.contentToggle ? "Show more" : "Show less"}</button>
                     <button onClick={() => this.props.delete(this.props.index)}>Delete</button>
                     <button onClick={() => this.props.edit(this.props.index)}>Edit</button>
                     <button 

@@ -25,8 +25,8 @@ export default class MainLayout extends React.Component {
             <div className="wrapper">
                 {/* <Menu/> */}
                 <Switch> {/* posts group */}
-                    <Route exact path="react-course/" component={Posts}/>
-                    <Route path="react-course/post-:postId" component={PostView}/>
+                    <Route exact path="/react-course/" component={Posts}/>
+                    <Route path="/react-course/post-:postId" component={PostView}/>
                     {/* <Route path="/edit-:postId" component={PostEdit}/> */}
 
                     <Route path="*" component={() => <div>Page Not Found</div>}/>

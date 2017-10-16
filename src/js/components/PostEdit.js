@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import {updateEditedPost} from '../actions';
 
-const mapStateToProps = (state, ownProps) => ({ data: state.posts.find((item, index) => index === +ownProps.id) });
+const mapStateToProps = (state, ownProps) => ({ data: state.posts.find((item, index) => index.toString() === ownProps.id.toString()) });
 @connect(mapStateToProps, { updateEditedPost })
 export default class PostEdit extends React.Component {
     

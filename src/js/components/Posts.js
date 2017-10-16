@@ -88,7 +88,10 @@ export default class Posts extends React.Component {
     render() {
         return (
             <section className="posts-container">
-                { this.state.edit ? <PostEdit ref="modal" id={this.state.editedID} unmount={this.postEditFormUnmount}/> : null }
+                { this.state.edit ? <PostEdit ref="modal" 
+                                        id={this.state.editedID}
+                                        unmount={this.postEditFormUnmount}/> 
+                                        : null }
                 <Header />
 
                 <AddPost addPost={this.props.addPost} />

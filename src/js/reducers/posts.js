@@ -30,7 +30,7 @@ export default function posts(state = InitialState.posts, action) {
             return [...state, payload];
         
             case types.UPDATE_EDITED_POST:
-            return state.map((item, index) => index === action.index ? payload : item)
+            return state.map((item, index) => index === +action.index ? {...item, payload} : item)
 
         case types.UPDATE_CONTENT_TOGGLER:
             return state.map((item, index) => {

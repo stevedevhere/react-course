@@ -30,7 +30,7 @@ export default class PostView extends React.Component {
                     
                     <header>
                         <h1 className="page-title">
-                            <Link to="/react-course/" className="go-home">home</Link>
+                            <Link to="/" className="go-home">home</Link>
                             {' / ' +this.props.data.title}
                         </h1>
                     </header>

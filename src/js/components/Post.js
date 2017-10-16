@@ -36,7 +36,7 @@ export default class Post extends React.Component {
                     <button onClick={() => this.props.delete(this.props.index)}>Delete</button>
                     <button onClick={() => this.props.edit(this.props.index+'')}>Edit</button>
                     <button 
-                        onClick={() => this.props.push(`/react-course/post-${this.props.index}`)}>
+                        onClick={() => this.props.push(`/post-${this.props.index}`)}>
                         View </button>
                </div>
             </article>

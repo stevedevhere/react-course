@@ -24,13 +24,7 @@ module.exports = {
     new OpenBrowserPlugin({ url: 'http://localhost:9090' }),
     new webpack.ProvidePlugin({
       '$': 'jquery',
-    }), 
-    new webpack.DefinePlugin({
-      'proccess.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin(),
+    })
   ],
 
   module: {

@@ -2,19 +2,25 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const mapDispatchToProps = dispatch => {
-    return {}
-};
+// const mapDispatchToProps = dispatch => {
+//     return {}
+// };
+
 const mapStateToProps = (state, ownProps) => {
     return { data: state.posts.find((item, index) => +index == +ownProps.match.params.postId) }
 };
-@connect(mapStateToProps, mapDispatchToProps)
+@connect(mapStateToProps)
 export default class PostView extends React.Component {
 
     constructor(props) {
         super(props);
+
         this.renderLinks = this.renderLinks.bind(this);
         this.renderPost = this.renderPost.bind(this);
+    }
+
+    componentDidMount() {
+        document.title = this.props.data.title;
     }
 
     renderLinks() {
@@ -29,7 +35,7 @@ export default class PostView extends React.Component {
                 <article className="post-view">
                     
                     <header>
-                        <h1 className="page-title">
+                        <h1 className="post-title">
                             <Link to="/" className="go-home">home</Link>
                             {' / ' +this.props.data.title}
                         </h1>
@@ -51,10 +57,6 @@ export default class PostView extends React.Component {
 
     render() {
         return this.renderPost();
-    }
-
-    componentDidMount() {
-        document.title = this.props.data.title;
     }
 }
 

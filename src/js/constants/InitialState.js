@@ -113,6 +113,6 @@ export default ({
             для React, может использоваться с Angular или jQuery.`,
             links: [{title: "Redux", link: "http://redux.js.org/"}],
             contentToggle: false,
-        }
+        },
     ]
 });

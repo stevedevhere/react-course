@@ -1,6 +1,7 @@
 import InitialState from '../constants/InitialState';
 import * as types from '../constants/ActionTypes';
 
+// import {} 
 /*
 *
 * Это reducer, он обрабатывает наши actions. Можно создать несколько редьюсеров для разных
@@ -21,16 +22,19 @@ import * as types from '../constants/ActionTypes';
 * возвращает одни и те же значения и не имеет видимых побочных эффектов.
 *
 */
-
-export default function posts(state = InitialState.posts, action) {
+const initial = JSON.parse(localStorage.getItem('posts')) || InitialState.posts
+export default function posts(state = initial, action) {
     let {type, payload} = action;
 
     switch(type) {
         case types.ADD_POST:
-            return [...state, payload];
+            return [ payload, ...state ];
         
-            case types.UPDATE_EDITED_POST:
-            return state.map((item, index) => index === +action.index ? {...item, payload} : item)
+        case types.UPDATE_EDITED_POST:
+            return state.map((item, index) => index === Number(action.index) ? {...item, ...payload} : item)
+
+        case types.SEARCH_POST: 
+            console.log('TODO: //search');
 
         case types.UPDATE_CONTENT_TOGGLER:
             return state.map((item, index) => {

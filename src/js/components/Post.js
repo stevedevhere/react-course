@@ -25,7 +25,7 @@ export default class Post extends React.Component {
     render() {
         return (
             <article className={this.props.data.contentToggle ? "item active" : "item"}>
-                <h1>{this.props.data.title}</h1>
+                <h1 className="post-title">{this.props.data.title}</h1>
                 <p>{this.contentView(this.props.data.description)}</p>
                 <ul className="links">
                     {(this.props.data.links) ? this.props.data.links.map((item, index) =>

@@ -5,45 +5,11 @@ article.item {
   text-decoration: none;
   display: block;
   border: solid 5px transparent;
+  min-height: 130px;
+  &:first-child {
+    margin-top: 0;
+  }  
   
-  h1 {
-    margin-bottom: 10px;
-    color: $accent;
-    text-transform: uppercase;
-    background-color: #000;
-    padding: 15px 85px 15px 50px;
-    margin-left: -20px;
-    position: relative;
-    // height: 25px;
-    display: table;
-    line-height: 20px;
-    
-    &::before {
-      content: "";
-      position: absolute;
-      left: -28px;
-      top: -13px;
-      border-bottom: solid 56px transparent;
-      border-top: solid 90px transparent;
-      border-right: solid 28px #969416;
-      display: inline-table;
-    }
-
-    &::after {
-      content: "";
-      right: -30px;
-      top: 0;
-      position: absolute;
-      display: inline-block;
-      // width: 51px;
-      // height: 51px;
-      border-top: transparent 25px solid;
-      border-bottom: transparent 25px solid;
-      border-left: #000 solid 30px;
-      // background-color: #fff;
-    }
-  }
- 
   .buttons {
     float: right;
     button {

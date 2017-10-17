@@ -10,20 +10,31 @@ import {createLogger} from 'redux-logger';
 // чтобы store знала что ей делать после полученного с помощью функции dispatch события.
 import reducers from '../reducers';
 
-import {ADD_POST} from '../actions';
+import {ADD_POST, DELETE_POST, UPDATE_EDITED_POST} from '../constants/ActionTypes';
 
 // Custom middleware !
-const extendPostData = store => next => action => {
+const postsMiddleware = store => next => action => {
     if(action.type === ADD_POST) {
         action = {...action, payload: {...action.payload, contentToggle: false}}    
+        next(action);
+        localStorage.setItem('posts', JSON.stringify(store.getState().posts));
+        return;        
+    } else if(action.type === DELETE_POST || action.type === UPDATE_EDITED_POST) {
+        next(action);
+        localStorage.setItem('posts', JSON.stringify(store.getState().posts));
+        return;
     }
     next(action);
 }
 
+// const updateLocalStorage = store => next => action {
+//     if(action.type === "")
+// }
+
 // Middleware это прослойка между вызовом события и его
 // обработкой, middleware есть готовые и есть возможность
 // написать свой.
-const middleware = applyMiddleware(extendPostData);
+const middleware = applyMiddleware(postsMiddleware);
 
 
 // Используя функцию createStore описаную в библиотеке

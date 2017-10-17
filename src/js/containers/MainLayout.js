@@ -17,23 +17,28 @@ import PostEdit from '../components/PostEdit';
 // обычного <a>, но работает с помощью BrowserHistory или hashHistory
 // вместо привычного нам href нужно писать to={`/some-url`}
 
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch, Link, IndexRoute } from 'react-router-dom';
 
-export default class MainLayout extends React.Component {
-    render() {
-        return (
-            <div className="wrapper">
-                {/* <Menu/> */}
-                <Switch> {/* posts group */}
-                    <Route exact path="/" component={Posts}/>
-                    <Route path="/post-:postId" component={PostView}/>
-                    {/* <Route path="/edit-:postId" component={PostEdit}/> */}
+import AddPost from '../components/AddPost';
+import Header from '../components/Header';
+import About from '../components/About';
 
-                    <Route path="*" component={() => <div>Page Not Found</div>}/>
-                </Switch>
 
-            </div>
-        ); 
-    }
-}
+const MainLayout = props => (
+    <div className="wrapper">
+        {/* <Menu/> */}
 
+        <Header/>
+        
+        <Switch>            
+            <Route exact path="/" component={Posts}/>
+            <Route path="/add-post" component={AddPost}/>
+            <Route path="/about" component={About}/>
+            <Route path="/post-:postId" component={PostView}/>
+
+            <Route component={() => <div>page not found</div>}/>
+        </Switch>
+    </div>
+)
+
+export default MainLayout;

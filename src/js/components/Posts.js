@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Post from '../components/Post';
-import AddPost from './AddPost';
-import Header from '../components/Header';
 import PostEdit from '../components/PostEdit';
 
 
@@ -45,7 +43,7 @@ export default class Posts extends React.Component {
 
     state = {
         editedID: null,
-        edit: false
+        edit: false,
     }
 
     postEditForm(id) {
@@ -55,7 +53,9 @@ export default class Posts extends React.Component {
     
     renderPosts() {
         if(this.props.posts) {
+            let {posts} = this.props;
             let self = this;
+
             return this.props.posts.map((item, index) => {
                 // Тут мы перебираем функцией .map() каждый объект из массива переданого в этот компонент и передаем
                 // каждый из них в новый компонент Post (экземпляр класса), который создается при каждой итерации функции map()
@@ -92,10 +92,7 @@ export default class Posts extends React.Component {
                                         id={this.state.editedID}
                                         unmount={this.postEditFormUnmount}/> 
                                         : null }
-                <Header />
-
-                <AddPost addPost={this.props.addPost} />
-                {/*<Menu/>!*/}
+                
                 <div className="items">
                     {this.renderPosts()}
                 </div>

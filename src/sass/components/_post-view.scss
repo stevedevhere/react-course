@@ -1,10 +1,19 @@
 .post-view {
+    background-color: $darkAccent;
+    header {
+        padding-top: 20px;
+        .post-title {
+            margin-left: 0;
+        }
+    }
     main {        
         margin: 5px auto;
-        background-color: #191b17;        
+        // background-color: #191b17;        
         padding: 20px;
         width: 100%;
         border-radius: 4px;
-        color: #eee;       
+        color: #eee;
+        padding-bottom: 20px;  
     }
+    padding-bottom: 20px;
 }

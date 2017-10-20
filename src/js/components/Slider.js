@@ -1,29 +1,41 @@
-import React, {Component, Children} from 'react';
+import React, {PureComponent, Children} from 'react';
+import Particles from 'react-particles-js';
 
-export default class Slider extends Component {
+export default class Slider extends PureComponent {
     constructor(props) {
         super(props);
-        // this.timer = null;
         this.state = {
             currentIndex: 0
         }
-
-        // this.updateCurrentIndex = this
     }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if(this.state.currentIndex !== nextState.currentIndex) {
+            return true
+        } else {
+            return false;
+        }
+    }
+
     updateCurrentIndex() {
         // console.log(Children.count(this.props.children))
         let self = this;
         this.timer = setTimeout(() => {
             self.setState({
                 currentIndex: self.state.currentIndex < Children.count(this.props.children)-1
-                    ? self.state.currentIndex+1 
+                    ? self.state.currentIndex+1
                     : 0})
-        }, 1500)
+        }, 2700)
     }
+
     componentDidMount() {
         this.updateCurrentIndex();
     }
+    componentWillUpdate() {
+        console.timeEnd('update')        
+    }
     componentDidUpdate() {
+        console.time('update')
         this.updateCurrentIndex();
     }
 
@@ -34,7 +46,26 @@ export default class Slider extends Component {
     render() {
         return (
             <div className="slider-container">
-                {Children.toArray(this.props.children)[this.state.currentIndex]}
+                <div className="slider-content hide">
+                    {Children.toArray(this.props.children)[this.state.currentIndex]}
+                </div>
+                <Particles height="450px" params={{
+            		particles: {
+            			line_linked: {
+            				shadow: {
+            					enable: true,
+            					color: "#fff",
+            					blur: 1
+                            },
+                        },
+                        size: {
+                            value: 2
+                        },
+                        // number: {
+                        //     value: 80
+                        // }
+            		}
+            	}} style={{backgroundColor: '#f3ef18'}} />
             </div>
         )
     }

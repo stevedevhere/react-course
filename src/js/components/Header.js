@@ -6,8 +6,7 @@ const Header = (props) => (
     <header className="header">
         <h1 className="page-title">Simple react blog</h1>
         <Slider>
-            <p>In the future</p>
-            <p>it migth be </p>
+            <p>This is</p>
             <p>a slider</p>
             <p>using the Children API</p>
         </Slider>

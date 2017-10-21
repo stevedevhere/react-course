@@ -55,7 +55,8 @@ export default class Posts extends React.Component {
             <section className="posts-container">
                 <Header />
 
-                <AddPost addPost={this.props.addPost} />
+                {/* Компоненту AddPost чего-то нехватает, выясните чего и решите проблему! */}
+                <AddPost />
                 <div className="items">
                     {this.renderPosts()}
                 </div>

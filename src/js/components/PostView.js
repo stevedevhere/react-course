@@ -2,13 +2,11 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const mapDispatchToProps = dispatch => {
-    return {}
-};
 const mapStateToProps = (state, ownProps) => {
     return { data: state.posts.find((item, index) => +index == +ownProps.match.params.postId) }
 };
-@connect(mapStateToProps, mapDispatchToProps)
+
+@connect(mapStateToProps)
 export default class PostView extends React.Component {
 
     constructor(props) {

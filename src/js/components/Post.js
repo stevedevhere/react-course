@@ -17,9 +17,17 @@ String.prototype.lessThan = function (max) {
 
 export default class Post extends React.Component {
 
-    state = {
-        contentToggle: true
-    };
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            contentToggle: true
+        };
+
+        this.handleView = this.handleView.bind(this);    
+    }
+
+    
 
     handleShowMore = () => {
         this.setState({ contentToggle: !this.state.contentToggle });
@@ -32,6 +40,10 @@ export default class Post extends React.Component {
             return content;
         }
     };
+    
+    handleView() {
+        this.props.push(`/post-${this.props.index}`)
+    }
 
     render() {
         return (
@@ -46,9 +58,7 @@ export default class Post extends React.Component {
                         <button onClick={this.handleShowMore}>{this.state.contentToggle ? "Show more" : "Show less"}</button>
                         <button>Delete</button>
                         <button>Edit</button>
-                        <button onClick={() => this.props.push(`/post-${this.props.index}`)}>
-                            View
-                        </button>
+                        <button onClick={this.handleView}>View</button>
                     </div>
             </article>
         );

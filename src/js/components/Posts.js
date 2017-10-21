@@ -28,7 +28,7 @@ export default class Posts extends React.Component {
                 // Так-же, мы передаем свойство "key", оно необходимо ядру реакта для индетификации элементов которые
                 // созданы спомощью итерационных функций, в остальных случаях это делать нет необходимости.
                 return (
-                    <Post data={item} key={index} index={index} />
+                    <Post data={item} key={index} index={index} push={this.props.history.push} />
                 )
             })
         } else {
@@ -41,7 +41,8 @@ export default class Posts extends React.Component {
             <section className="posts-container">
                 <Header />
 
-                <AddPost addPost={this.props.addPost} />
+                {/* Компоненту AddPost чего-то нехватает, выясните чего и решите проблему! */}
+                <AddPost />
                 <div className="items">
                     {this.renderPosts()}
                 </div>

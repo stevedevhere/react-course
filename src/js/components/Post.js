@@ -1,5 +1,10 @@
 import React from 'react';
+
+// Link - необходим для того чтобы переключатся между "страницами", по факту - аналог
+// обычного <a>, но работает с помощью BrowserHistory или hashHistory
+// вместо привычного нам href нужно писать to={`/some-url`}
 import {Link} from 'react-router-dom';
+
 
 String.prototype.lessThan = function (max) {
     let tmp = this;
@@ -12,11 +17,20 @@ String.prototype.lessThan = function (max) {
 
 export default class Post extends React.Component {
 
-    state = {
-        contentToggle: true
-    };
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            contentToggle: true
+        };
 
-    handleShowMore = () => {
+        this.handleShowMore = this.handleShowMore.bind(this);    
+        this.handleView = this.handleView.bind(this);    
+    }
+
+    
+
+    handleShowMore() {
         this.setState({ contentToggle: !this.state.contentToggle });
     };
 
@@ -27,20 +41,26 @@ export default class Post extends React.Component {
             return content;
         }
     };
+    
+    handleView() {
+        this.props.push(`/post-${this.props.index}`)
+    }
 
     render() {
-        console.log(this);
         return (
             <article className={this.state.contentToggle ? "item" : "item active"}>
-                <h1>{this.props.data.title}</h1>
-                <p>{this.contentView(this.props.data.description)}</p>
-                <ul className="links">
-                    {(this.props.data.links) ? this.props.data.links.map((item, index) => <li key={index} className="link"><a href={item.link} target="_blank">{item.title}</a></li>) : null}
-                </ul>
-                <button onClick={this.handleShowMore}>{this.state.contentToggle ? "Show more" : "Show less" }</button>
-                <button>Delete</button>
-                <button>Update</button>
-                <Link to={`/post-${this.props.index}`}>View</Link>
+                    <h1>{this.props.data.title}</h1>
+                    <p>{this.contentView(this.props.data.description)}</p>
+                    <ul className="links">
+                        {(this.props.data.links) ? this.props.data.links.map((item, index) =>
+                            <li key={index} className="link"><a href={item.link} target="_blank">{item.title}</a></li>) : null}
+                    </ul>
+                    <div className="buttons">
+                        <button onClick={this.handleShowMore}>{this.state.contentToggle ? "Show more" : "Show less"}</button>
+                        <button>Delete</button>
+                        <button>Edit</button>
+                        <button onClick={this.handleView}>View</button>
+                    </div>
             </article>
         );
     }

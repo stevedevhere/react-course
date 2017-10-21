@@ -22,6 +22,15 @@ const middleware = applyMiddleware(createLogger());
 
 // Store это общее связуемое звено. Когда мы вызываем событие которое должно
 // обработаться, оно обращается к store, а точнее, вызывает один из его методов (dispatch)
+
+// Здесь мы конфигурируем глобальный store:
+//  - reducers это все reducers собраные в один большой reducer с помощью функции
+//    combineReducers, это нужно для коректной работы store. (каждый reducer отвечает за какую-то частичку данных в store)
+//  - middleware это дополнительный функционал который сработает перед тем как action дойдет до reducer'a
+//    это своего рода прослойка между функцией dispatch и reducer'ом
 const store = createStore(reducers, middleware);
 
 export default store;
+
+
+

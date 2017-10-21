@@ -2,18 +2,25 @@ import React from 'react';
 
 export default class AddPost extends React.Component {
 
-    handleOnSubmit = (e) => {
-        e.preventDefault();
+    constructor(props) {
+        super(props);
 
-        if(this.title.value.trim() !== '' || this.description.value.trim() !== '') {
+        this.handleOnSubmit = this.handleOnSubmit.bind(this); 
+    }
+
+    handleOnSubmit(event) {
+        event.preventDefault();
+
+        if(this.refs.title.value.trim() !== '' || this.refs.description.value.trim() !== '') {
             let new_post = {
-                title: this.title.value,
-                description: this.description.value
+                title: this.refs.title.value,
+                description: this.refs.description.value
             };
 
             this.props.addPost(new_post);
-            this.title.value = '';
-            this.description.value = '';
+
+            this.refs.title.value = '';
+            this.refs.description.value = '';
         }
     };
 
@@ -21,9 +28,10 @@ export default class AddPost extends React.Component {
         return (
             <div className="add-post">
                 <h3>Add new post</h3>
+                
                 <form onSubmit={this.handleOnSubmit}>
-                    <input type="text" ref={instance => this.title = instance} placeholder="Post title"/>
-                    <textarea ref={instance => this.description = instance} placeholder="Post content"/>
+                    <input type="text" ref="title" placeholder="Post title"/>
+                    <textarea ref="description" placeholder="Post content"/>
                     <button type="submit">Создать новый пост</button>
                 </form>
             </div>

@@ -27,4 +27,8 @@
 - **readme** - в каждой ветке этого курса этот файл содержит материалы относящиеся к конкретному уроку этого репозитория.
 - **webpack** - webpack это сборщик проекта, в нашем случае он нужен нам для того чтобы скомпилировать наш js и транспилировать новые возможности js стандартов es6 и выше в понятный браузер es5 стандарт. В зависимости от того какую команду из package.json мы вызовем, исполниться определенный файл конфигурации webpack. Узнать больше о webpack можно на бесплатном видеокурсе от [monsterlessons](https://monsterlessons.com/project/series/sborshik-modulej-webpack)
 
-### git-tips - https://github.com/Imangazaliev/git-tips
+**Дополнительные материалы:**
+- [**ReactCasts**](https://www.youtube.com/channel/UCZkjWyyLvzWeoVWEpRemrDQ/videos)
+- [**Prefomence in React - React Kiev (Катерина Поршнева)**](https://www.youtube.com/watch?v=5pIUicKWyrQ)
+- [**CodeDogo - базовая информация о React**](https://www.youtube.com/watch?v=fQAKKXc6BCM&list=PLqHlAwsJRxAONt5CnjMMeKdYGv1CDRUOl)
+- [**Git tips**](https://github.com/Imangazaliev/git-tips)

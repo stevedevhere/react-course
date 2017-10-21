@@ -1,10 +1,12 @@
 import React from 'react';
+import {findDOMNode} from 'react-dom';
+
 import {connect} from 'react-redux';
 import {addPost} from '../actions';
 import Notify from './Notify';
 
 @connect(null, {addPost})
-export default class AddPost extends React.Component {
+export default class AddPost extends React.PureComponent {
     
     constructor(props) {
         super(props);
@@ -18,10 +20,10 @@ export default class AddPost extends React.Component {
     handleOnSubmit(e) {
         e.preventDefault();
 
-        if(this.title.value.trim() !== '' || this.description.value.trim() !== '') {
+        if(this.refs.title.value.trim() !== '' || this.refs.description.value.trim() !== '') {
             let new_post = {
-                title: this.title.value,
-                description: this.description.value
+                title: this.refs.title.value,
+                description: this.refs.description.value
             };
 
             this.props.addPost(new_post);
@@ -30,26 +32,26 @@ export default class AddPost extends React.Component {
     };
 
     componentDidUpdate() {
-        this.title.value = '';
-        this.description.value = '';
+        this.refs.title.value = '';
+        this.refs.description.value = '';
+    }
+
+    componentDidMount() {
+        findDOMNode(this.refs.title).focus();
     }
 
     unmountNotify() {
         this.setState({notify: false});
     }
 
-    // componentWillUnmount() {
-    //     this.setState({notify: false});
-    // }
-
     render() {
         return (
             <div className="add-post">
-                { this.state.notify ? <Notify title={this.title.value} unmount={this.unmountNotify} /> : null }
+                { this.state.notify ? <Notify title={this.refs.title.value} unmount={this.unmountNotify} /> : null }
                 <h3>Add new post</h3>
                 <form onSubmit={this.handleOnSubmit}>
-                    <input type="text" ref={instance => this.title = instance} placeholder="Post title"/>
-                    <textarea ref={instance => this.description = instance} placeholder="Post content"/>
+                    <input type="text" ref="title" placeholder="Post title"/>
+                    <textarea ref="description" placeholder="Post content"/>
                     <button type="submit">Создать новый пост</button>
                 </form>
             </div>

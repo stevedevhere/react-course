@@ -6,9 +6,10 @@ const Header = (props) => (
     <header className="header">
         <h1 className="page-title">Simple react blog</h1>
         <Slider>
-            <p>This is</p>
-            <p>a slider</p>
-            <p>using the Children API</p>
+            <p>React</p>
+            <p>is easy</p>
+            <p>to learn.</p>
+            <p>Use Children API for this slider </p>
         </Slider>
         
         <Navigation/>

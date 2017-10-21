@@ -9,9 +9,18 @@ String.prototype.lessThan = function (max) {
 };
 
 export default class Post extends React.Component {
-    handleShowMore = () => {
+
+    constructor(props) {
+        super(props);
+
+        this.handleShowMore = this.handleShowMore.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+        this.handleView = this.handleView.bind(this);
+    }
+
+    handleShowMore() {
         this.props.updateContentToggler(this.props.index);
-        // this.setState({ contentToggle: !this.state.contentToggle });
     };
 
     contentView = (content) => {
@@ -21,6 +30,18 @@ export default class Post extends React.Component {
             return content;
         }
     };
+
+    handleEdit() {
+        this.props.edit(String(this.props.index));
+    }
+    
+    handleDelete() {
+        this.props.delete(this.props.index);
+    }
+    
+    handleView() {
+        this.props.push(`/post-${this.props.index}`);
+    }
 
     render() {
         return (
@@ -33,14 +54,11 @@ export default class Post extends React.Component {
                 </ul>
                <div className="buttons">
                     <button onClick={this.handleShowMore}>{!this.props.data.contentToggle ? "Show more" : "Show less"}</button>
-                    <button onClick={() => this.props.delete(this.props.index)}>Delete</button>
-                    <button onClick={() => this.props.edit(this.props.index+'')}>Edit</button>
-                    <button 
-                        onClick={() => this.props.push(`/post-${this.props.index}`)}>
-                        View </button>
+                    <button onClick={this.handleDelete}>Delete</button>
+                    <button onClick={this.handleEdit}>Edit</button>
+                    <button onClick={this.handleView}>View</button>
                </div>
             </article>
         );
     }
 }
-

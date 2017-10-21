@@ -18,7 +18,6 @@ export default class Slider extends PureComponent {
     }
 
     updateCurrentIndex() {
-        // console.log(Children.count(this.props.children))
         let self = this;
         this.timer = setTimeout(() => {
             self.setState({
@@ -31,11 +30,8 @@ export default class Slider extends PureComponent {
     componentDidMount() {
         this.updateCurrentIndex();
     }
-    componentWillUpdate() {
-        console.timeEnd('update')        
-    }
+
     componentDidUpdate() {
-        console.time('update')
         this.updateCurrentIndex();
     }
 
@@ -46,7 +42,7 @@ export default class Slider extends PureComponent {
     render() {
         return (
             <div className="slider-container">
-                <div className="slider-content hide">
+                <div className="slider-content">
                     {Children.toArray(this.props.children)[this.state.currentIndex]}
                 </div>
                 <Particles height="450px" params={{
@@ -60,10 +56,7 @@ export default class Slider extends PureComponent {
                         },
                         size: {
                             value: 2
-                        },
-                        // number: {
-                        //     value: 80
-                        // }
+                        }
             		}
             	}} style={{backgroundColor: '#f3ef18'}} />
             </div>

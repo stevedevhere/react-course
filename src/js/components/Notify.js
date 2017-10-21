@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 
 export default class Notify extends Component {
-    
-    // componentWillUnmount() {
-    //     console.log('notify unmounted');
-    // }
-
+    componentWillUnmount() {
+        clearTimeout(this.timer);
+    }
     componentDidMount() {
-        setTimeout(this.props.unmount, 1300);
+        this.timer = setTimeout(this.props.unmount, 3000);
     }
 
     render() {

@@ -1,9 +1,8 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {searchPost} from '../actions';
-@connect(null, {searchPost})
-export default class Search extends React.Component {
+import {withRouter} from 'react-router';
+
+@withRouter
+export default class Search extends React.PureComponent {
     
     constructor(props) {
         super(props);
@@ -13,9 +12,8 @@ export default class Search extends React.Component {
 
     handleOnKeyDown(e) {
         if(e.keyCode === 13 && this.refs.search.value.trim() != "") {
-            this.props.searchPost();
-            // this.props..push('/');
-            // this.context.search(this.refs.search.value);
+            this.props.history.push(`/search/${this.refs.search.value}`);
+            this.refs.search.value = '';
         }
     }
 

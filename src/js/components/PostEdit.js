@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {findDOMNode} from 'react-dom';
 
 import {connect} from 'react-redux';
 import {updateEditedPost} from '../actions';
@@ -34,7 +34,8 @@ export default class PostEdit extends React.Component {
     }
 
     componentDidMount() {
-        document.title = "Edit post => " + this.props.data.title;
+        document.title = "Editing the post: " + this.props.data.title;
+        findDOMNode(this.refs.title).focus();
     }
 
     render() {

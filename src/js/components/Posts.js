@@ -5,6 +5,9 @@ import Post from '../components/Post';
 import PostEdit from '../components/PostEdit';
 
 
+// Декоратор, нужен для того чтобы в нашем компоненте была возможность использовать функции роутера. 
+import {withRouter} from 'react-router';
+
 import { addPost, updateContentToggler, deletePost } from '../actions';
 
 // Функция connect является связующим между компонентом и store из redux,
@@ -21,7 +24,14 @@ import { bindActionCreators } from 'redux';
 
 // mapStateToProps - выбираем какие данные нам нужны из store, которые в дальнейшем запишутся в props
 // компонента который мы оборачиваем.
-const mapStateToProps = state => ({ posts: state.posts });
+const mapStateToProps = (state, ownProps) => { 
+    let search = ownProps.match.params.search;
+    return { 
+        posts: search
+            ? state.posts.filter(item => item.title.toLowerCase().includes(search.toLowerCase())) 
+            : state.posts 
+    }
+};
 
 // mapDispatchToProps - передаем все нужные нам actions в оборачеваемый компонент, но перед этим оборачиваем
 // все actions в функцию dispatch
@@ -30,20 +40,21 @@ const mapDispatchToProps = dispatch => ( bindActionCreators({ addPost, updateCon
 // @connect - "@" - обозначает декоратор, это es7. Функция "connect" декорирует объект, имеется ввиду что на
 // выходе мы получаем новый, измененный компонент который содержит в себе дополнительные функции и свойства,
 // а какие именно - мы определяем в функциях передаваемых внутрь функции connect.
+@withRouter
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Posts extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.postEditFormUnmount = this.postEditFormUnmount.bind(this);
+        this.state = {
+            editedID: null,
+            edit: false,
+        }
+
+        this.handleEditFormUnmount = this.handleEditFormUnmount.bind(this);
         this.postEditForm = this.postEditForm.bind(this);
         this.renderPosts = this.renderPosts.bind(this);
-    }
-
-    state = {
-        editedID: null,
-        edit: false,
     }
 
     postEditForm(id) {
@@ -53,31 +64,40 @@ export default class Posts extends React.Component {
     
     renderPosts() {
         if(this.props.posts) {
-            let {posts} = this.props;
             let self = this;
+            let error = null;
+            let {posts} = this.props;
+            let search = this.props.match.params.search;
+            if(!posts.length && search) error = "No posts find, sorry, try another request.";
+            else if(!posts.length) error = "No posts yet, you can create a new or wait.";
+            if(!error) {
+                return this.props.posts.map((item, index) => {
+                    if(typeof item === "string") {
+                        return <p key={index}>Error: {item}</p>
+                    }
+                    // Тут мы перебираем функцией .map() каждый объект из массива переданого в этот компонент и передаем
+                    // каждый из них в новый компонент Post (экземпляр класса), который создается при каждой итерации функции map()
 
-            return this.props.posts.map((item, index) => {
-                // Тут мы перебираем функцией .map() каждый объект из массива переданого в этот компонент и передаем
-                // каждый из них в новый компонент Post (экземпляр класса), который создается при каждой итерации функции map()
-
-                // Так-же, мы передаем свойство "key", оно необходимо ядру реакта для индетификации элементов которые
-                // созданы спомощью итерационных функций, в остальных случаях это делать нет необходимости.
-                return (
-                    <Post data={item}
-                        key={index}
-                        index={index}
-                        updateContentToggler={self.props.updateContentToggler}
-                        push={self.props.history.push}
-                        edit={self.postEditForm}
-                        delete={self.props.deletePost} />
-                )
-            })
-        } else {
-            return <p>Empty yet, or something was wrong.</p>
+                    // Так-же, мы передаем свойство "key", оно необходимо ядру реакта для индетификации элементов которые
+                    // созданы спомощью итерационных функций, в остальных случаях это делать нет необходимости.
+                    return (
+                        <Post data={item}
+                            key={index}
+                            index={index}
+                            updateContentToggler={self.props.updateContentToggler}
+                            push={self.props.history.push}
+                            edit={self.postEditForm}
+                            delete={self.props.deletePost} />
+                    )
+                })
+            } else {
+                return <p>Error: {error}</p>;
+            }
+            
         }
     }
 
-    postEditFormUnmount() {
+    handleEditFormUnmount() {
         this.setState({edit: false});
     }
 
@@ -88,10 +108,10 @@ export default class Posts extends React.Component {
     render() {
         return (
             <section className="posts-container">
-                { this.state.edit ? <PostEdit ref="modal" 
-                                        id={this.state.editedID}
-                                        unmount={this.postEditFormUnmount}/> 
-                                        : null }
+                { this.state.edit ? 
+                    <PostEdit
+                        id={this.state.editedID}
+                        unmount={this.handleEditFormUnmount}/> : null }
                 
                 <div className="items">
                     {this.renderPosts()}

@@ -3,8 +3,8 @@
 // createStore - нужен чтобы создать store.
 import { createStore, applyMiddleware } from 'redux';
 
-// createLogger это готовый логер для redux
-import {createLogger} from 'redux-logger';
+// createLogger это готовый логер для redux, в продакшене его будет неправильным и нет в этом нужды.
+// import {createLogger} from 'redux-logger';
 
 // Получаем все собранные в один большой редьюсеры, которые мы должены передать в store при создании
 // чтобы store знала что ей делать после полученного с помощью функции dispatch события.
@@ -12,7 +12,7 @@ import reducers from '../reducers';
 
 import {ADD_POST, DELETE_POST, UPDATE_EDITED_POST} from '../constants/ActionTypes';
 
-// Custom middleware !
+// custom middleware for posts actions ( updateLocalStorage & modify post when create )
 const postsMiddleware = store => next => action => {
     if(action.type === ADD_POST) {
         action = {...action, payload: {...action.payload, contentToggle: false}}    
@@ -27,8 +27,8 @@ const postsMiddleware = store => next => action => {
     next(action);
 }
 
-// const updateLocalStorage = store => next => action {
-//     if(action.type === "")
+// const yourCustomMiddlewareExample = store => next => action {
+//     // code here...
 // }
 
 // Middleware это прослойка между вызовом события и его
@@ -39,7 +39,6 @@ const middleware = applyMiddleware(postsMiddleware);
 
 // Используя функцию createStore описаную в библиотеке
 // redux мы можем создать store.
-
 
 // Здесь мы конфигурируем глобальный store:
 //  - reducers это все reducers собраные в один большой reducer с помощью функции

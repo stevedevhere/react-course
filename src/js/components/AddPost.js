@@ -11,7 +11,7 @@ export default class AddPost extends React.Component {
     handleOnSubmit(event) {
         event.preventDefault();
 
-        if(this.title.refs.value.trim() !== '' || this.description.refs.value.trim() !== '') {
+        if(this.refs.title.value.trim() !== '' || this.refs.description.value.trim() !== '') {
             let new_post = {
                 title: this.refs.title.value,
                 description: this.refs.description.value

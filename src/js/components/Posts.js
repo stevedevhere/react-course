@@ -5,8 +5,7 @@ import AddPost from './AddPost';
 
 export default class Posts extends React.Component {
 
-    // lifecycle methods !
-
+    // lifecycle methods START!
     componentWillMount() {
         console.log("Component Will Mount | Posts.js")
     }
@@ -35,8 +34,10 @@ export default class Posts extends React.Component {
     componentWillReceiveProps(nextProps) {
         console.log("Component Will Receive Props | Posts.js", nextProps);
     }
+    //lifecycle methods END!
 
-    //lifecycle methods ends here ~~~
+    // Это не все функции жизненного цикла, остальные вы можете узнать 
+    // посмотрев в документацию реакта (https://reactjs.org) 
 
     render() {
         return (

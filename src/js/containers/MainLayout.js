@@ -23,16 +23,15 @@ export default class MainLayout extends React.Component {
     handleDelete() {
         // нам нужно удалить пост. но так как все посты хранятся в state - нам нужно
         // его менять.
-
     }
 
     handleUpdate() {
-        // Ну вы поняли.. )
-
+        // в нашем текущем случае, поскольку данные находятся в state, то для 
+        // обновления данных нам опять же, нужно менять state чтобы обновить, 
+        // тоже нужно менять state.
     }
 
-    // lifecycle methods !
-
+    // lifecycle methods START
     componentWillMount() {
         console.log("Component Will Mount | MainLayout.js");
     }
@@ -57,9 +56,10 @@ export default class MainLayout extends React.Component {
     componentWillUnmount() {
         console.log("componentWillUnmount | MainLayout.js");
     }
+    //lifecycle methods END!
 
-    //lifecycle methods ends here ~~~
-
+    // Это не все функции жизненного цикла, остальные вы можете узнать 
+    // посмотрев в документацию реакта (https://reactjs.org) 
 
     render() {
         return (

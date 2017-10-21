@@ -24,12 +24,13 @@ export default class Post extends React.Component {
             contentToggle: true
         };
 
+        this.handleShowMore = this.handleShowMore.bind(this);    
         this.handleView = this.handleView.bind(this);    
     }
 
     
 
-    handleShowMore = () => {
+    handleShowMore() {
         this.setState({ contentToggle: !this.state.contentToggle });
     };
 

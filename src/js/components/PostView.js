@@ -11,6 +11,7 @@ export default class PostView extends React.Component {
 
     constructor(props) {
         super(props);
+
         this.renderLinks = this.renderLinks.bind(this);
         this.renderPost = this.renderPost.bind(this);
     }
@@ -47,7 +48,6 @@ export default class PostView extends React.Component {
     }
 
     render() {
-        console.log(this);
         return this.renderPost();
     }
 }

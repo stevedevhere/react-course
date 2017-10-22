@@ -1,34 +1,24 @@
 # react-course
-## React Lesson: 5 [ react top-level api, build ]
+## React Lesson: 5 [ build ]
 
 `npm install` - Устанавливаем все необходимые для работы пакеты из package.json (зависимости) <br/>
 `npm run dev` - Запускаем проект (запускается скрипт прописаный внутри package.json с ключем "dev")
 <br/>
 
 ---
-<!-- ## HOC - High-ordered component -->
-
-## [React top-level API](https://reactjs.org/docs/react-api.html)
-### cloneElement
-### Children
-### isValidElement
-### PureComponent
-
 ## Build
-В наличии: папка с приложением которое содержит js файлы с использованием es6 и es7 фич, изображения, шрифты и стили, а так-же webpack выступающий в роли сборщика приложения.
+Для того чтобы собрать наше приложение нам нужен сборщик, таковым в нашем репозитории выступает webpack который берет на себя все задачи связаные с сборкой и транспиляцией. Разумеется не сам из коробки а с помощью прописаных настроек и дополнительных плагинов.
+
+Рассказывать об особенностях и возможностях вебпака в этом курсе я не буду, так как это отдельная тема для изучения и займет сравнительно не мало времени, по этому для новичков я лично советую принять на веру возможности этого сборщика и использовать его с уже готовыми starter-kit'aми. Но если вам все-же интересно, то предлагаю посмотреть поверхностный обучающий видеокурс от [mosterlessons](https://www.youtube.com/watch?v=mU_vRythpgY&list=PLIcAMDxr6tpoydz_xjYlcFdZ1ZzFIMGtE)
 
 Webpack собирает наши файлы в соответствии с прописаными ему правилами (в файле webpack.config.js) и выдает нам собранный файл js, который вместе с необходимыми для работы файлами мы должны будем залить на сервер.
 
-<!-- #### TODO: 
->
-  Top-level API's
-    - cloneElement
-    - Children
-    - isValidElement
-    - PureComponent
+**Задания:**
+На сегодня вашим заданием будет доделать все задания которые вы не успели реализовать, или же просто разобратья в чем-то что вы не поняли.
 
-  How build react app.
-    - webpack config (short)
-    - seo, server-side rendering (short)
-    - ReactCasts [ https://www.youtube.com/channel/UCZkjWyyLvzWeoVWEpRemrDQ/playlists ]
--->
+**Важные темы которые по желанию можно изучить в документации или видеоуроках:**
+- React top-level api
+- Server-side rendering
+- Optimization (PureComponent, shouldComponentUpdate, webpack plugins and babel presets)
+- High-ordered component
+- Function as child component (just a trick)

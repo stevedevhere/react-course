@@ -23,15 +23,12 @@ export default class MainLayout extends React.Component {
     render() {
         return (
             <div className="wrapper">
-                {/* <Menu/> */}
-                <Switch> {/* posts group */}
+                <Switch>
                     <Route exact path="/" component={Posts}/>
                     <Route path="/post-:postId" component={PostView}/>
-                    {/* <Route path="/edit-:postId" component={PostEdit}/> */}
 
                     <Route path="*" component={() => <div>Page Not Found</div>}/>
                 </Switch>
-
             </div>
         ); 
     }

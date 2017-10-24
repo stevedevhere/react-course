@@ -1,0 +1,26 @@
+.todo-list {
+   .item {
+        margin: 10px 0;
+        padding: 20px;
+        background-color: #fff;
+        position: relative;
+        &.completed {
+            background-color: #ccc;
+            h2 {
+                text-decoration: line-through;      
+            }
+            
+            p {
+                text-decoration: line-through;          
+            }
+        }
+       .buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            button {
+                padding: 4px;
+            }
+       }
+   }
+}

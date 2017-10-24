@@ -1,0 +1,31 @@
+.clean {
+    padding: 7px;
+    width: 100%;
+    border: none;
+}
+.add-todo {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: $darkAccent;
+    input, textarea {
+        color: #fff;
+        background-color: transparent;
+        border-bottom: solid 2px yellow;
+        @extend .clean;     
+    }
+
+    textarea {
+        margin-top: 10px;
+        resize: vertical;
+    }
+    
+    button {
+        margin-top: 10px;
+        background-color: yellow;
+        @extend .clean;
+        &:active {
+          background: #2a2c28;
+          color: #fff;  
+        }
+    }
+}

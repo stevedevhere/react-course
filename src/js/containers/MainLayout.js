@@ -1,5 +1,6 @@
 import React from 'react';
 import Menu from '../components/Menu';
+import Form from '../components/Form';
 
 export default class MainLayout extends React.Component {
     
@@ -12,9 +13,8 @@ export default class MainLayout extends React.Component {
                 <p>Начало: сейчас мы сделаем самый простой компонент меню, который можно будет скрыть и отобразить.</p>
                 <ul>
                     <Menu data={bla} />
-                    
-                    
                 </ul>
+                <Form />
             </div>
         );
 

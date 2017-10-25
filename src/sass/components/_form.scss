@@ -1,0 +1,16 @@
+ .enter-form input{
+    display: block;
+    width: 200px;
+    height: 30px;
+    outline: none;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    background: #e2dddd;
+    border: 1px solid #c5c2c2;
+    border-radius: 5px;
+    &:hover, &:focus{
+        background: #fff0f0;
+        opacity: 0.7
+    }
+ }
+ 

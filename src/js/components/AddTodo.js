@@ -1,29 +1,31 @@
 import React from 'react';
 
 export default class AddTodo extends React.Component {
-
-    handleSubmit = (event) => {
+    
+    handleAddTodo = (event) => {
         event.preventDefault();
-        let {descr, title} = this.refs;
-        if(descr.value.trim() != "" && title.value.trim() != "") {
+        let {title, descr} = this.refs;
+        
+        if(title.value.trim() != "" && descr.value.trim() != "") {
             let todo = {
                 title: title.value,
-                descr: descr.value,
-                completed: false
+                descr: descr.value
             }
 
             this.props.addTodo(todo);
-            descr.value = '';
+
             title.value = '';
+            descr.value = '';
         }
+
     }
 
     render() {
         return (
-            <form className="add-todo" onSubmit={this.handleSubmit}>
+            <form className="add-todo" onSubmit={this.handleAddTodo} >
                 <input type="text" ref="title" placeholder="Title..." />
-                <textarea ref="descr" placeholder="Description..." />
-                <button children="Add Todo"/>
+                <textarea ref="descr" placeholder="Description here..." />
+                <button type="submit" children="Add Todo" />
             </form>
         )
     }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-export default class TodoItem extends React.Component {
+export default class Item extends React.Component {
     
     constructor(props) {
         super(props);
@@ -23,17 +23,16 @@ export default class TodoItem extends React.Component {
         this.props.delete(this.props.index);
     }
 
+    componentWillReceiveProps() {
+        console.log(this.props);
+        // this.props.fetchData(this.props.match.params.id);
+    }
+
     render() {
-        let {data} = this.props;
+        //  console.log(this.props);
         return (
-            <div className={data.complete ? "item completed" : "item" }>
-                <h2>{data.title}</h2>
-                <p>{data.descr}</p>
-                <div className="buttons">
-                    <button children={data.complete ? "undo" : "done"} onClick={this.handleComplete} />
-                    <button children="delete" onClick={this.handleDelete} />
-                    <Link to={`item${this.props.index + 1}`}>View</Link>
-                </div>
+            <div className="item">
+                <h3>Item {this.props.match.params.id}</h3>
             </div>
         )
     }

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {Children} from 'react';
 
 export default class TodoList extends React.Component {
+    
     render() {
         return (
             <div className="todo-list">

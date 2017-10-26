@@ -5,11 +5,10 @@ import { Link } from 'react-router-dom';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {del, complete} from '../actions';
 
-const del = (payload) => ({ type: "DELETE_TODO", payload })
-const complete = (payload) => ({ type: "TOGGLE_COMPLETE_TODO", payload })
-
-const mapDispatchToProps = dispatch => bindActionCreators({ del, complete }, dispatch)
+const mapDispatchToProps = dispatch => 
+    bindActionCreators({ del, complete }, dispatch)
 
 @connect(null, mapDispatchToProps)
 export default class TodoItem extends React.Component {

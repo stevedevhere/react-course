@@ -1,6 +1,5 @@
 import React, {Children} from 'react';
 import TodoItem from './TodoItem';
-
 import {connect} from 'react-redux';
 
 const mapStateToProps = state => ({data: state.todos.data});

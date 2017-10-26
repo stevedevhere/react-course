@@ -1,8 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-
-const addTodo = (payload) => ({type: "ADD_TODO", payload})
+import {addTodo} from '../actions';
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({ addTodo }, dispatch);

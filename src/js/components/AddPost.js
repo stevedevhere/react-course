@@ -1,8 +1,9 @@
 import React from 'react';
 
-// Мне кажется, чтобы у нас заработало добавление, нам нужно присоединить 
+// Мне кажется что, чтобы у нас заработало добавление, нам нужно присоединить 
 // наш компонент к store и передать в компонент обернутуюю в dispatch функцию 
-// результат которой попадет в reducer который это обработает
+// результат которой попадет в reducer который это обработает....... но 
+// ..но... я бы рекомендовал вам зайти в компонент в котором используется этот компонент и прочитать коментарий там
 
 export default class AddPost extends React.Component {
 
@@ -20,7 +21,7 @@ export default class AddPost extends React.Component {
                 description: this.refs.description.value
             };
 
-            // this.props.addPost(new_post);
+            this.props.addPost(new_post);
 
             this.refs.title.value = '';
             this.refs.description.value = '';

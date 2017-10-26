@@ -4,11 +4,11 @@ import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(ownProps)
-    return { data: state.data.find((item, i) => Number(ownProps.match.params.id) - 1 == i) };
+    let _id = Number(ownProps.match.params.id) - 1;
+    return { data: state.todos.data.find((item, i) =>  _id === i) };
 }
-
-class Item extends React.Component {
+@connect(mapStateToProps)
+export default class Item extends React.Component {
     
     constructor(props) {
         super(props);
@@ -17,9 +17,13 @@ class Item extends React.Component {
         this.handleDelete = this.handleDelete.bind(this);
     }
 
-    // static defaultProps = {
-    //     data: { title: "Default", descr: "default", complete: true }
-    // }
+    static defaultProps = {
+        data: {
+            title: "Default", 
+            descr: "default", 
+            complete: false 
+        }
+    }
 
     handleComplete() {
         this.props.complete(this.props.index);
@@ -29,13 +33,7 @@ class Item extends React.Component {
         this.props.delete(this.props.index);
     }
 
-    componentWillReceiveProps() {
-        console.log(this.props);
-    }
-    
-
     render() {
-        //  console.log(this.props);
         let {data} = this.props;
         return (
             <div className="item">
@@ -46,13 +44,4 @@ class Item extends React.Component {
     }
 }
 
-export default connect(mapStateToProps)(Item);
-
-// function connect(mapStateToProps, mapDispatchToProps) {
-    
-//     return function(WrappedComponent) {
-//         // return class
-//     }
-// }
-
-// console.log(<Item/>);
+//  (Item);

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import {Provider} from 'react-redux';
 
-import {createStore} from 'redux';
+import {createStore, combineReducers} from 'redux';
 
 const FAKE_DATA = [
     {title: 'Learn React.js', descr: '1 descr for this.', completed: false},
@@ -13,22 +13,33 @@ const FAKE_DATA = [
     {title: 'Make a little shop', descr: '4 descr for this.', completed: false},
 ];
 
-function reducer(state = { data: FAKE_DATA }, action) {
-    let { payload, type } = action;
+// const middleware = store => next => action => {
+//     console.log(action);
+//     next(action);
+// }
 
+function todos(state = { data: FAKE_DATA }, action) {
+    let {payload, type} = action;
     switch(type) {
-        case "ADD_TODO": {
-            return {...state, payload};
-        }
+        case "ADD_TODO":
+            return {...state, data: [ payload, ...state.data ] };
+        case "DELETE_TODO":
+            return { ...state, data: state.data.filter((item, i) => i !== payload) } 
+        case "TOGGLE_COMPLETE_TODO":
+            return { ...state, data: state.data.map((item, i) => i === payload 
+                ? {...item, complete: !item.complete}
+                : item )} 
         default: {
             return state;
         }
     }
 }
 
-const store = createStore(reducer);
+const reducers = combineReducers({
+    todos,
+})
 
-console.log(store);
+const store = createStore(reducers);
 
 import '../sass/common.scss';
 import App from './App';
@@ -40,5 +51,3 @@ ReactDOM.render(
         </Router>
     </Provider>
     , document.getElementById("app"));
-
-    

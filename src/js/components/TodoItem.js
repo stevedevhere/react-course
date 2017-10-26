@@ -3,6 +3,15 @@ import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+
+const del = (payload) => ({ type: "DELETE_TODO", payload })
+const complete = (payload) => ({ type: "TOGGLE_COMPLETE_TODO", payload })
+
+const mapDispatchToProps = dispatch => bindActionCreators({ del, complete }, dispatch)
+
+@connect(null, mapDispatchToProps)
 export default class TodoItem extends React.Component {
     
     constructor(props) {
@@ -10,10 +19,6 @@ export default class TodoItem extends React.Component {
 
         this.handleComplete = this.handleComplete.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
-    }
-    
-    static propTypes = {
-        delete: PropTypes.func.isRequired
     }
 
     static defaultProps = {
@@ -29,13 +34,10 @@ export default class TodoItem extends React.Component {
     }
 
     handleDelete() {
-        this.props.delete(this.props.index);
+        this.props.del(this.props.index);
     }
 
-
-
     render() {
-        console.log(this);
         let {data} = this.props;
         return (
             <div className={data.complete ? "item completed" : "item" }>

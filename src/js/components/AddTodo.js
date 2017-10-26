@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-const addTodo = (data) => ({type: "ADD_TODO", todo: data})
+const addTodo = (payload) => ({type: "ADD_TODO", payload})
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({ addTodo }, dispatch);
@@ -20,10 +20,8 @@ export default class AddTodo extends React.Component {
                 title: title.value,
                 descr: descr.value
             }
-            
-            // this.props.dispatch({type: "ADD_TODO", todo});
+            console.log(this.props)
             this.props.addTodo(todo);
-            // this.props.addTodo(todo);
 
             title.value = '';
             descr.value = '';
@@ -32,7 +30,6 @@ export default class AddTodo extends React.Component {
     }
 
     render() {
-        // console.log(this)
         return (
             <form className="add-todo" onSubmit={this.handleAddTodo} >
                 <input type="text" ref="title" placeholder="Title..." />

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
@@ -10,9 +11,17 @@ export default class TodoItem extends React.Component {
         this.handleComplete = this.handleComplete.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
     }
+    
+    static propTypes = {
+        delete: PropTypes.func.isRequired
+    }
 
     static defaultProps = {
-        data: { title: "Default", descr: "default", complete: true }
+        data: {
+            title: "Default", 
+            descr: "default", 
+            complete: false 
+        }
     }
 
     handleComplete() {
@@ -23,7 +32,10 @@ export default class TodoItem extends React.Component {
         this.props.delete(this.props.index);
     }
 
+
+
     render() {
+        console.log(this);
         let {data} = this.props;
         return (
             <div className={data.complete ? "item completed" : "item" }>

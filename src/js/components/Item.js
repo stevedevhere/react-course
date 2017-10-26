@@ -1,8 +1,14 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 import { Link } from 'react-router-dom';
 
-export default class Item extends React.Component {
+const mapStateToProps = (state, ownProps) => {
+    console.log(ownProps)
+    return { data: state.data.find((item, i) => Number(ownProps.match.params.id) - 1 == i) };
+}
+
+class Item extends React.Component {
     
     constructor(props) {
         super(props);
@@ -11,9 +17,9 @@ export default class Item extends React.Component {
         this.handleDelete = this.handleDelete.bind(this);
     }
 
-    static defaultProps = {
-        data: { title: "Default", descr: "default", complete: true }
-    }
+    // static defaultProps = {
+    //     data: { title: "Default", descr: "default", complete: true }
+    // }
 
     handleComplete() {
         this.props.complete(this.props.index);
@@ -25,15 +31,28 @@ export default class Item extends React.Component {
 
     componentWillReceiveProps() {
         console.log(this.props);
-        // this.props.fetchData(this.props.match.params.id);
     }
+    
 
     render() {
         //  console.log(this.props);
+        let {data} = this.props;
         return (
             <div className="item">
-                <h3>Item {this.props.match.params.id}</h3>
+                <h3>{data.title}</h3>
+                <p>{data.descr}</p>
             </div>
         )
     }
 }
+
+export default connect(mapStateToProps)(Item);
+
+// function connect(mapStateToProps, mapDispatchToProps) {
+    
+//     return function(WrappedComponent) {
+//         // return class
+//     }
+// }
+
+// console.log(<Item/>);

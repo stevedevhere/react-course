@@ -4,9 +4,15 @@ import TodoItem from './components/TodoItem';
 import AddTodo from './components/AddTodo';
 import Item from './components/Item';
 
+import PropTypes from 'prop-types';
+
 import { Route, Link, Switch } from 'react-router-dom';
 
 export default class App extends React.Component {
+
+    static PropTypes = {
+        method: PropTypes.func.isRequired
+    }
 
     constructor(props) {
         super(props);
@@ -16,13 +22,13 @@ export default class App extends React.Component {
         this.handleComplete = this.handleComplete.bind(this);
     }
 
+    // static 
+
     state = {
         data: FAKE_DATA,
         menu: [
             {title: "Home", href: "/"},
-            {title: "Add", href: "/add"},
-            {title: "Item", href: "/item"},
-            {title: "Item-2 custom", href: "/item-2"}
+            {title: "Add", href: "/add"}
         ]
     }
 
@@ -46,10 +52,10 @@ export default class App extends React.Component {
             <TodoList>
                 {this.state.data.map((item, i) =>
                     <TodoItem key={i} 
-                        data={item}
+                        data={undefined}
                         index={i} 
                         complete={this.handleComplete} 
-                        delete={this.handleDelete} />)}
+                        />)}
             </TodoList>
         )
     }
@@ -68,9 +74,8 @@ export default class App extends React.Component {
 
                 <Switch>
                     <Route exact path="/" component={this.renderTodoList} />
-                    <Route path="/add" component={() => <AddTodo addTodo={this.handleAddTodo}/>}/>
+                    <Route path="/add" component={AddTodo}/>
                     <Route path="/item:id" component={Item} />
-                    {/* <Route render={ () => <h2>Not found!</h2> }/> */}
                 </Switch>
             </div>
         )

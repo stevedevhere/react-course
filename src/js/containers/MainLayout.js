@@ -44,9 +44,8 @@ export default class MainLayout extends React.Component {
 
                 <Switch>
                     <Route exact path="/" component={Posts}/>
-                    <Route path="/post-:postId" component={PostView}/>
-
-                    <Route path="*" component={() => <div>Page Not Found</div>}/>
+                                        
+                    <Route render={() => <div>Page Not Found</div>}/>
                 </Switch>
 
             </div>

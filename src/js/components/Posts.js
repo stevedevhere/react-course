@@ -4,7 +4,6 @@ import Post from '../components/Post';
 import AddPost from './AddPost';
 import Header from '../components/Header';
 
-
 import { addPost, updateContentToggler } from '../actions';
 
 // Функция connect является связующим между компонентом и store из redux,
@@ -51,16 +50,15 @@ export default class Posts extends React.Component {
     }
 
     render() {
-        console.log(this)
         return (
             <section className="posts-container">
                 <Header />
-
                 <AddPost addPost={this.props.addPost} />
-                {/*<Menu/>!*/}
+
                 <div className="items">
                     {this.renderPosts()}
                 </div>
+
             </section>
         )
     }

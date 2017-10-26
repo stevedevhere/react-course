@@ -20,7 +20,6 @@ import * as types from '../constants/ActionTypes';
 * Чистая функция — это функция, которая при одинаковых аргументах всегда
 * возвращает одни и те же значения и не имеет видимых побочных эффектов.
 *
-*
 */
 
 export default function posts(state = InitialState.posts, action) {

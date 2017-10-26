@@ -31,4 +31,5 @@
 - [**ReactCasts**](https://www.youtube.com/channel/UCZkjWyyLvzWeoVWEpRemrDQ/videos)
 - [**Prefomence in React - React Kiev (Катерина Поршнева)**](https://www.youtube.com/watch?v=5pIUicKWyrQ)
 - [**CodeDogo - базовая информация о React**](https://www.youtube.com/watch?v=fQAKKXc6BCM&list=PLqHlAwsJRxAONt5CnjMMeKdYGv1CDRUOl)
+- [**Самые типичные ошибки и вопросы, связанные с Git, и удобные способы их решения**](https://tproger.ru/translations/most-common-git-screwupsquestions-and-solutions/)
 - [**Git tips**](https://github.com/Imangazaliev/git-tips)

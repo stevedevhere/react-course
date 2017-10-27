@@ -16,7 +16,7 @@ import PostView from '../components/PostView';
 // обычного <a>, но работает с помощью BrowserHistory или hashHistory
 // вместо привычного нам href нужно писать to={`/some-url`}
 
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 
 export default class MainLayout extends React.Component {
     render() {
@@ -24,6 +24,7 @@ export default class MainLayout extends React.Component {
             <div className="wrapper">
                 <Switch>
                     <Route exact path="/" component={Posts}/>     
+                    <Route path="/post/:id" component={PostView}/>     
                     <Route render={() => <div>Page Not Found</div>}/>
                 </Switch>
             </div>

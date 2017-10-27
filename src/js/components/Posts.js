@@ -3,6 +3,7 @@ import React from 'react';
 import Post from '../components/Post';
 import AddPost from './AddPost';
 import Header from '../components/Header';
+import EditPost from '../components/EditPost';
 
 
 import { addPost } from '../actions';
@@ -33,6 +34,14 @@ const mapDispatchToProps = dispatch => ( bindActionCreators({ addPost }, dispatc
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Posts extends React.Component {
 
+    state = {
+        editId: null
+    }
+
+    toggleEditPost = (id) => {
+        this.setState({ editId: id });
+    }
+
     renderPosts() {
         if(this.props.posts) {
             return this.props.posts.map((item, index) => {
@@ -42,12 +51,21 @@ export default class Posts extends React.Component {
                 // Так-же, мы передаем свойство "key", оно необходимо ядру реакта для индетификации элементов которые
                 // созданы спомощью итерационных функций, в остальных случаях это делать нет необходимости.
                 return (
-                    <Post data={item} key={index} index={index} push={this.props.history.push} />
+                    <Post 
+                        data={item}
+                        key={index}
+                        index={index}
+                        push={this.props.history.push} 
+                        edit={this.toggleEditPost}/>
                 )
             })
         } else {
             return <p>Empty yet, or something was wrong.</p>
         }
+    }
+
+    unmountEditPost = () => {
+        this.setState({ editId: null });
     }
 
     render() {
@@ -56,7 +74,10 @@ export default class Posts extends React.Component {
                 <Header />
 
                 {/* Компоненту AddPost чего-то нехватает, выясните чего и решите проблему! */}
-                <AddPost />
+                <AddPost addPost={this.props.addPost}/>
+                {this.state.editId !== null ? <EditPost 
+                    id={this.state.editId}
+                    unmount={this.unmountEditPost}/> : null}
                 <div className="items">
                     {this.renderPosts()}
                 </div>

@@ -23,11 +23,16 @@ import * as types from '../constants/ActionTypes';
 */
 
 export default function posts(state = InitialState.posts, action) {
-    let {type, payload} = action;
+    let {type, payload, id} = action;
 
     switch(type) {
         case types.ADD_POST:
-            return [...state, payload];
+            return [payload, ...state];
+        case types.EDIT_POST:
+            return state.map((item, i) => {
+                if(id === i) return {...item, ...payload}
+                return item;
+            })
         default:
             return state;
     }

@@ -49,3 +49,35 @@ h1.page-title {
     margin-bottom: 35px;
   }
   
+
+  .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      z-index: 45;
+      display: table;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.49);
+      .add-post {
+          display: table-cell;
+          vertical-align: middle;
+          form textarea {
+              height: 60vh;
+          }
+      }
+  }
+
+.notify {
+    z-index: 1000;
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background-color: #fff;
+    color: #000;
+    display: table;
+    padding: 7px;
+}

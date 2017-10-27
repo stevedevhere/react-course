@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state, ownProps) => {
-    return { data: state.posts.find((item, index) => +index == +ownProps.match.params.postId) }
+    return { data: state.posts.find((item, index) => +index == +ownProps.match.params.id) }
 };
 
 @connect(mapStateToProps)

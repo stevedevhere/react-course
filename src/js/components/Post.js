@@ -42,8 +42,12 @@ export default class Post extends React.Component {
         }
     };
     
-    handleView() {
-        this.props.push(`/post-${this.props.index}`)
+    handleEdit = () => {
+        this.props.edit(this.props.index);
+    }
+
+    handleView = () => {
+        this.props.push(`/post/${this.props.index}`)
     }
 
     render() {
@@ -58,7 +62,7 @@ export default class Post extends React.Component {
                     <div className="buttons">
                         <button onClick={this.handleShowMore}>{this.state.contentToggle ? "Show more" : "Show less"}</button>
                         <button>Delete</button>
-                        <button>Edit</button>
+                        <button onClick={this.handleEdit}>Edit</button>
                         <button onClick={this.handleView}>View</button>
                     </div>
             </article>

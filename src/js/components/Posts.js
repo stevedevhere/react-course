@@ -26,10 +26,10 @@ import { bindActionCreators } from 'redux';
 // компонента который мы оборачиваем.
 const mapStateToProps = (state, ownProps) => { 
     let search = ownProps.match.params.search;
-    return { 
+    return {
         posts: search
             ? state.posts.filter(item => item.title.toLowerCase().includes(search.toLowerCase())) 
-            : state.posts 
+            : state.posts
     }
 };
 
@@ -40,7 +40,8 @@ const mapDispatchToProps = dispatch => ( bindActionCreators({ addPost, updateCon
 // @connect - "@" - обозначает декоратор, это es7. Функция "connect" декорирует объект, имеется ввиду что на
 // выходе мы получаем новый, измененный компонент который содержит в себе дополнительные функции и свойства,
 // а какие именно - мы определяем в функциях передаваемых внутрь функции connect.
-@withRouter
+
+// @withRouter
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Posts extends React.Component {
 
@@ -49,7 +50,6 @@ export default class Posts extends React.Component {
 
         this.state = {
             editedID: null,
-            edit: false,
         }
 
         this.handleEditFormUnmount = this.handleEditFormUnmount.bind(this);
@@ -58,7 +58,7 @@ export default class Posts extends React.Component {
     }
 
     postEditForm(id) {
-        if(id) this.setState({editedID: id, edit: !this.state.edit});
+        if(id) this.setState({editedID: id});
         else return null;
     }
     
@@ -98,7 +98,7 @@ export default class Posts extends React.Component {
     }
 
     handleEditFormUnmount() {
-        this.setState({edit: false});
+        this.setState({editedID: null});
     }
 
     componentDidMount() {
@@ -108,7 +108,7 @@ export default class Posts extends React.Component {
     render() {
         return (
             <section className="posts-container">
-                { this.state.edit ? 
+                { this.state.editedID !== null ? 
                     <PostEdit
                         id={this.state.editedID}
                         unmount={this.handleEditFormUnmount}/> : null }

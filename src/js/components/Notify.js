@@ -4,6 +4,7 @@ export default class Notify extends Component {
     componentWillUnmount() {
         clearTimeout(this.timer);
     }
+    
     componentDidMount() {
         this.timer = setTimeout(this.props.unmount, 3000);
     }

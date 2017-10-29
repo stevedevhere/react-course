@@ -9,7 +9,7 @@ const Header = (props) => (
             <p>React</p>
             <p>is easy</p>
             <p>to learn.</p>
-            <p>Use Children API for this slider </p>
+            <p>Use Children API for this slider.</p>
         </Slider>
         
         <Navigation/>

@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import Post from '../components/Post';
 import PostEdit from '../components/PostEdit';
 
-
 // Декоратор, нужен для того чтобы в нашем компоненте была возможность использовать функции роутера. 
 import {withRouter} from 'react-router';
 

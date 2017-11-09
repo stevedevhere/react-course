@@ -1,0 +1,28 @@
+h1 {
+    line-height: 0em;
+    font-family: Tahoma;
+    font-size: 115px;
+    text-align: center;
+    color: #111;
+}
+
+.spacer {
+    height: 1000px;
+}
+
+.wrapper {
+    background: #efefef;    
+}
+
+.position-info {
+    position: fixed;
+    top: 0px;
+    left: 40px;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}

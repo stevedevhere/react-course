@@ -8,7 +8,7 @@ export default class ScrollPost extends React.Component {
         super();
 
         this.state = {
-            position: null
+            position: 0
         }
     }
 
@@ -25,7 +25,7 @@ export default class ScrollPost extends React.Component {
     }
 
     handleScroll = (event) => {
-        const position = event.target.scrollingElement.scrollTop;
+        const position = Math.floor(event.target.scrollingElement.scrollTop);
         this.setState({ position });
     }
 

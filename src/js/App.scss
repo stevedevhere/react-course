@@ -1,11 +1,21 @@
+* {
+    font-family: Tahoma;    
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
 h1 {
-    line-height: 0em;
-    font-family: Tahoma;
     font-size: 115px;
     text-align: center;
     color: #111;
 }
-
+h4 {
+    position: fixed;
+    right: 30px;
+    top: 30px;
+    font-size: 32px;
+    color: #ccc;
+}
 .spacer {
     height: 1000px;
 }

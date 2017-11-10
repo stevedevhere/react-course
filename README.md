@@ -1,5 +1,5 @@
 # react-course
-## Function as child component example.
+## Function as child component & High order component examples
 
 `npm install` -- Устанавливаем все необходимые для работы пакеты из package.json (зависимости) <br/>
 `npm run dev` -- Запускаем проект (запускается скрипт прописаный внутри package.json с ключем "dev") <br/>
@@ -8,4 +8,7 @@
 ---
 
 ### Function as child component
+    ...
+
+### High-ordered components
     ...

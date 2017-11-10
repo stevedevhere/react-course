@@ -8,7 +8,7 @@ export default class ScrollPost extends React.Component {
         super();
 
         this.state = {
-            position: 0
+            position: window.pageYOffset
         }
     }
 

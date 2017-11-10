@@ -7,7 +7,7 @@ export default function scrollPosHOC(WrappedComponent) {
             super();
     
             this.state = {
-                position: 0
+                position: window.pageYOffset
             }
         }
 

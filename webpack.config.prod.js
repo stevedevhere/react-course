@@ -1,31 +1,29 @@
-'use strict';
-
-var path = require('path');
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var autoprefixer = require('autoprefixer');
+const path = require('path');
+const webpack = require('webpack');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: './src/js/index',
   node: {
-    fs: "empty"
+    fs: 'empty',
   },
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
-    publicPath: '/assets/js/'
+    publicPath: '/assets/js/',
   },
 
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
-      compressor: { warnings: false }
+      compressor: { warnings: false },
     }),
     new webpack.DefinePlugin({
-      "process.env": {
+      'process.env': {
         // This has effect on the react lib size
-        "NODE_ENV": JSON.stringify("production")
-      }
-    })
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
   ],
 
   module: {
@@ -33,14 +31,13 @@ module.exports = {
       {
         test: /\.js$/,
         loaders: ['babel'],
-        include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'src'),
       },
       {
         test: /(\.css|\.scss)$/,
         include: path.join(__dirname, 'src'),
-        loaders: ['style', 'css?sourceMap', 'postcss', 'sass']
+        loaders: ['style', 'css?sourceMap', 'postcss', 'sass'],
       },
-    ]
-  }
+    ],
+  },
 };
-

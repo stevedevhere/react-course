@@ -1,6 +1,6 @@
 article.item {
-  margin: 5px auto;
-  background: linear-gradient(45deg, red, blue);
+  margin: 15px auto;
+  background: #302578;
   transition: 0.1s;
   text-decoration: none;
   display: block;
@@ -49,7 +49,7 @@ article.item {
       display: list-item;
       margin: 5px 0;
       a {
-        color: #deda00;
+        color: #165fbf;
         text-decoration: none;
         &:hover {
           text-decoration: underline;

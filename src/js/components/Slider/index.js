@@ -1,5 +1,6 @@
 import React, { Component, Children } from 'react';
 import PropTypes from 'prop-types';
+import s from './styles';
 
 export default class Slider extends Component {
   static propTypes = {
@@ -42,8 +43,8 @@ export default class Slider extends Component {
 
   render() {
     return (
-      <div className="slider-container">
-        <div className="slider-content">
+      <div className={s.container()}>
+        <div className={s.content()}>
           {Children.toArray(this.props.children)[this.state.currentIndex]}
         </div>
       </div>

@@ -25,7 +25,7 @@ ul li {
 
 body {
     min-height: 100%;
-    background: linear-gradient(-85deg, red, blue);
+    background: linear-gradient(-85deg, #261142, #3838b1);
     background-size: 100% 100%;
     * {
         box-sizing: border-box;
@@ -44,8 +44,8 @@ h1.page-title {
     margin: auto;
     text-align: center;
     padding: 20px 50px;
-    background: #fff;
-    color: #d8053f;
+    background: rgba(0, 0, 0, 0.070);
+    color: #3a3ac1;
     border-radius: 0 0 7px 7px;
     margin-bottom: 35px;
 }
@@ -54,7 +54,7 @@ input {
     padding: 7px 13px;
     width: 100%;
     border: none;
-    border-bottom: solid 3px $accent;
+    border-bottom: solid 3px #3736aa;
     background-color: transparent;
     &:focus {
         border-color: #333;
@@ -75,9 +75,9 @@ textarea {
 
 h1.post-title {
     margin-bottom: 10px;
-    color: $accent;
+    color: #e7e6f1;
     text-transform: uppercase;
-    background-color: #d8053f;
+    background-color: #271d65;
     padding: 15px 85px 15px 50px;
     margin-left: -20px;
     position: relative;
@@ -89,10 +89,10 @@ h1.post-title {
       content: "";
       position: absolute;
       left: -28px;
-      top: 3px;
+      top: -7px;
       border-bottom: solid 56px transparent;
       border-top: solid 90px transparent;
-      border-right: solid 28px #d8053f;
+      border-right: solid 28px #271d65;
       display: inline-table;
     }
 
@@ -106,7 +106,7 @@ h1.post-title {
       // height: 51px;
       border-top: transparent 25px solid;
       border-bottom: transparent 25px solid;
-      border-left: #d8053f solid 30px;
+      border-left: #271d65 solid 30px;
       // background-color: #fff;
     }
   }

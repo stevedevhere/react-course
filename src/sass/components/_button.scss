@@ -1,13 +1,14 @@
 button {
   cursor: pointer;
-  background-color: $accent;
+  background-color:#2d1e65;
+  color: #b6b5dc;
   padding: 7px 10px;
   border-radius: 4px;  
   border: none;
   outline: none;
   
   &:hover {
-    background-color: lighten($accent, 20);
+    background-color: #2b1857;
   }
 
   &:active {

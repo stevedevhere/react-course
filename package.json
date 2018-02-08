@@ -17,6 +17,7 @@
   "dependencies": {
     "babel-preset-react-optimize": "^1.0.1",
     "emotion": "^9.0.0",
+    "lodash": "^4.17.5",
     "prop-types": "^15.6.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",

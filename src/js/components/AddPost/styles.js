@@ -1,4 +1,6 @@
-.add-post {
+import { css } from 'emotion';
+
+const addPost = () => css`
   padding: 20px;
   background-color: #191b17;
   margin-bottom: 20px;
@@ -47,4 +49,8 @@
       padding: 10px;      
     }
   }
-}
+`;
+
+export default ({
+  addPost,
+});

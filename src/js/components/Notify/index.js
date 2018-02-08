@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import s from './styles';
 
 export default class Notify extends Component {
   componentDidMount() {
@@ -12,8 +13,8 @@ export default class Notify extends Component {
 
   render() {
     return (
-      <div className="notify">
-        The post {`"${this.props.title}"`} was successfuly created.
+      <div className={s.notify()}>
+        {`The post "${this.props.title}" was successfuly created.`}
       </div>
     );
   }

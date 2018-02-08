@@ -3,6 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import s from './styles';
+
 class PostView extends React.Component {
   constructor(props) {
     super(props);
@@ -26,18 +28,18 @@ class PostView extends React.Component {
   renderPost() {
     if (this.props.data) {
       return (
-        <article className="post-view">
+        <article className={s.container()}>
 
-          <header>
-            <h1 className="post-title">
+          <header className={s.header()}>
+            <h1 className={s.title()}>
               <Link to="/" className="go-home">home</Link>
               {' / ' + this.props.data.title}
             </h1>
           </header>
 
-          <main>
+          <main className={s.content()}>
             <p>{this.props.data.description}</p>
-            <ul className="links">
+            <ul>
               {this.renderLinks()}
             </ul>
           </main>

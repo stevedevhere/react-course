@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'uuid';
+import s from './styles';
 
 // eslint-disable-next-line no-extend-native
 String.prototype.lessThan = function lessThan(max) {
@@ -53,13 +54,13 @@ export default class Post extends React.Component {
   render() {
     const moreOrLess = !this.props.data.contentToggle ? 'Show more' : 'Show less';
     return (
-      <article className={this.props.data.contentToggle ? 'item active' : 'item'}>
-        <h1 className="post-title">{this.props.data.title}</h1>
+      <article className={s.postContainer(this.props.data.contentToggle)}>
+        <h1 className={s.title()}>{this.props.data.title}</h1>
         <p>{this.contentView(this.props.data.description)}</p>
-        <ul className="links">
+        <ul className={s.linksContainer()}>
           {
             this.props.data.links ? this.props.data.links.map(item => (
-              <li key={uuid.v4()} className="link">
+              <li key={uuid.v4()} className={s.link()}>
                 <a href={item.link} target="_blank">
                   {item.title}
                 </a>
@@ -68,7 +69,7 @@ export default class Post extends React.Component {
               : null
           }
         </ul>
-        <div className="buttons">
+        <div className={s.buttonsContainer()}>
           <button onClick={this.handleShowMore}>{moreOrLess}</button>
           <button onClick={this.handleDelete}>Delete</button>
           <button onClick={this.handleEdit}>Edit</button>

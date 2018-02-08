@@ -2,12 +2,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { updateEditedPost } from '../actions';
+import { updateEditedPost } from '../../actions';
+import s from './styles';
 
 class PostEdit extends React.Component {
   static propTypes = {
-    id: PropTypes.number.isRequired,
-    data: PropTypes.shape.isRequired,
+    id: PropTypes.string.isRequired,
+    data: PropTypes.object.isRequired,
     updateEditedPost: PropTypes.func.isRequired,
     unmount: PropTypes.func.isRequired,
   }
@@ -26,7 +27,8 @@ class PostEdit extends React.Component {
     document.title = 'Simple react blog';
   }
 
-  saveAndClose() {
+  saveAndClose(e) {
+    e.preventDefault();
     const updated = {
       title: this.title.value,
       description: this.description.value,
@@ -36,9 +38,9 @@ class PostEdit extends React.Component {
     this.props.unmount();
   }
 
-  stopPropagation() { // eslint recommend use 'this' instead of 'event' object.
-    this.stopPropagation();
-    this.nativeEvent.stopImmediatePropagation();
+  stopPropagation(e) {
+    e.stopPropagation();
+    e.nativeEvent.stopImmediatePropagation();
   }
 
   handleOnKeyPress() {
@@ -55,18 +57,18 @@ class PostEdit extends React.Component {
 
     return (
       <div // eslint-disable-line
-        className="post-edit-container"
+        className={s.postEditContainer()}
         onClick={this.props.unmount}
         onKeyPress={this.handleOnKeyPress}
       >
-        <div // eslint-disable-line
-          className="post-edit"
+        <form // eslint-disable-line
+          className={s.postEdit()}
           onClick={this.stopPropagation}
         >
           <input ref={(node) => { this.title = node; }} type="text" defaultValue={title} />
           <textarea ref={(node) => { this.description = node; }} defaultValue={description} />
           <button onClick={this.saveAndClose}>Save & Close</button>
-        </div>
+        </form>
       </div>
     );
   }

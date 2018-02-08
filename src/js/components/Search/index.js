@@ -1,5 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import { debounce } from 'lodash';
+import s from './styles';
 
 class Search extends React.Component {
   constructor(props) {
@@ -7,20 +9,20 @@ class Search extends React.Component {
     this.handleOnKeyDown = this.handleOnKeyDown.bind(this);
   }
 
-  handleOnKeyDown(e) {
-    if (e.keyCode === 13 && this.search.value.trim() !== '') {
+  handleOnKeyDown() {
+    if (this.search.value.trim() !== '') {
       this.props.history.push(`/search/${this.search.value}`); // eslint-disable-line react/prop-types
-      this.search.value = '';
-    }
+    } else this.props.history.push('/'); // eslint-disable-line react/prop-types
   }
 
   render() {
     return (
       <input
+        className={s.search()}
         type="text"
         ref={(search) => { this.search = search; }}
         placeholder="Search.."
-        onKeyDown={this.handleOnKeyDown}
+        onKeyDown={debounce(this.handleOnKeyDown, 450)}
       />
     );
   }

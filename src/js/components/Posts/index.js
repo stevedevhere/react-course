@@ -20,10 +20,11 @@ import { connect } from 'react-redux';
 // будет идти обработка этого action'a
 import { bindActionCreators } from 'redux';
 
-import Post from '../components/Post';
-import PostEdit from '../components/PostEdit';
+import Post from '../../components/Post';
+import PostEdit from '../../components/PostEdit';
 
-import { addPost, updateContentToggler, deletePost } from '../actions';
+import { addPost, updateContentToggler, deletePost } from '../../actions';
+import s from './styles';
 
 // mapStateToProps - выбираем какие данные нам нужны из store, которые в
 // дальнейшем запишутся в props компонента который мы оборачиваем.
@@ -118,16 +119,15 @@ class Posts extends React.Component {
 
   render() {
     return (
-      <section className="posts-container">
-        {this.state.editedID !== null
-        ? (
+      <section>
+        {this.state.editedID && (
           <PostEdit
             id={this.state.editedID}
             unmount={this.handleEditFormUnmount}
           />
-        ) : null}
+        )}
 
-        <div className="items">
+        <div className={s.posts()}>
           {this.renderPosts()}
         </div>
       </section>

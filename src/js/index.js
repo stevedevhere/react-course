@@ -1,6 +1,7 @@
 /* global document */
 import React from 'react';
 import { render } from 'react-dom';
+import { injectGlobal } from 'emotion';
 
 // BrowserRouter это основной компонент react-router'a который
 // дает нашему приложению работать с url
@@ -18,6 +19,18 @@ import store from './store';
 import '../sass/common.scss';
 
 import RootComponent from './containers/RootComponent';
+
+// eslint-disable-next-line no-unused-expressions
+injectGlobal`
+  input, textarea {
+    border-bottom: solid 3px #333;
+    padding: 10px;    
+    font-size: 0.8rem;
+    &:focus {
+      border-color: #3736aa;
+    }
+  }
+`;
 
 render(
   <Provider store={store}>

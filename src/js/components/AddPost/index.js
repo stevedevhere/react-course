@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addPost } from '../actions';
-import Notify from './Notify';
+import { addPost } from '../../actions';
+import Notify from '../Notify';
+import s from './styles';
 
 class AddPost extends React.Component {
   static propTypes = {
@@ -26,6 +27,7 @@ class AddPost extends React.Component {
     this.title.value = '';
     this.description.value = '';
   }
+
   unmountNotify() {
     this.setState({ notify: false });
   }
@@ -46,14 +48,13 @@ class AddPost extends React.Component {
 
   render() {
     return (
-      <div className="add-post">
-
-        { this.state.notify ?
+      <div className={s.addPost()}>
+        {this.state.notify && (
           <Notify
             title={this.title.value}
             unmount={this.unmountNotify}
           />
-          : null }
+        )}
 
         <h3>Add new post</h3>
         <form onSubmit={this.handleOnSubmit}>

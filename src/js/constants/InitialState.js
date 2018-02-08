@@ -1,21 +1,24 @@
 export default ({
-    posts: [
-        {
-            title: "react",
-            description: `React — это Front-end JavaScript библиотека для создания пользовательских интерфейсов от компании
+  posts: [
+    {
+      title: 'react',
+      description: `React — это Front-end JavaScript библиотека для создания пользовательских интерфейсов от компании
             Facebook. ReactJS позволяет создавать многократно используемые UI компоненты (компоненты пользовательского
             интерфейса). В настоящее время, является одной из самых популярных JavaScript библиотек, имеет большой
             фундамент и огромное сообщество разработчиков.`,
-            links: [{title: "React", link: "https://facebook.github.io/react/"}, {
-                title: "MonsterLessons",
-                link: "https://monsterlessons.com/project/lessons/?page=2&search=react"
-            }],
-            contentToggle: false,
+      links: [{
+        title: 'React',
+        link: 'https://facebook.github.io/react/',
+      }, {
+        title: 'MonsterLessons',
+        link: 'https://monsterlessons.com/project/lessons/?page=2&search=react',
+      }],
+      contentToggle: false,
 
-        },
-        {
-            title: "Virtual DOM",
-            description: `DOM до безобразия медленный. Это не секрет. Особенно хорошо вы можете это заметить при работе
+    },
+    {
+      title: 'Virtual DOM',
+      description: `DOM до безобразия медленный. Это не секрет. Особенно хорошо вы можете это заметить при работе
             с большими объемами данных. Долгое время разработчикам с этим приходилось мириться, пока не пришёл он,
             супергерой React. В наши руки попал очень мощный инструмент — виртуальный DOM, который позволяет значительно
             уменьшить количество перерисовок и обращений к DOM дереву.
@@ -42,13 +45,16 @@ export default ({
             виртуальным DOM. Таким образом, вы получаете возможность не думать о производительности при работе с DOM
             элементами — React всё сделает за вас максимально качественно и быстро, и вы сможете сосредоточиться на
             действительно важных задачах, а не бороться с оптимизацией.`,
-            links: [{title: "habr: Что такое Virtual DOM?", link: "https://habrahabr.ru/post/256965/"}],
-            contentToggle: false,
+      links: [{
+        title: 'habr: Что такое Virtual DOM?',
+        link: 'https://habrahabr.ru/post/256965/',
+      }],
+      contentToggle: false,
 
-        },
-        {
-            title: "jsx",
-            description: `Непривычно писать HTML-разметку в JavaScript коде? Вы скоро привыкните и поймёте, что это
+    },
+    {
+      title: 'jsx',
+      description: `Непривычно писать HTML-разметку в JavaScript коде? Вы скоро привыкните и поймёте, что это
             очень удобно. На самом деле, всё, что возвращает метод компонентов render не более, чем шаблон, который
             вы хотите увидеть на странице. Другими словами, здесь работает обычная шаблонизация, которую, ко всему
             прочему, ещё и чрезвычайно удобна в использовании. На примере кнопки можно проследить немногое из того,
@@ -58,16 +64,16 @@ export default ({
             в {фигурных скобках} будут вычислены. Например, в любом месте вы можете написать {2 + 3} и
             получить число 5. Разумеется, вы можете использовать и более сложные вычисления, вставлять
             свои переменные и функции`,
-            links: [{
-                title: "habr: Перевод официальной документации React про JSX",
-                link: "https://habrahabr.ru/post/319270"
-            }],
-            contentToggle: false,
+      links: [{
+        title: 'habr: Перевод официальной документации React про JSX',
+        link: 'https://habrahabr.ru/post/319270',
+      }],
+      contentToggle: false,
 
-        },
-        {
-            title: "components",
-            description: `Есть два типа компонентов, простые и сложные.
+    },
+    {
+      title: 'components',
+      description: `Есть два типа компонентов, простые и сложные.
             Простые компоненты могут это функции которые должны возвращать JSX структуру. Они принимают на вход один
             параметр в который прилетают все передаваемые свойства.
             Такой компонент не имеет в жизненного цикла, state, методов для работы с ним и прочих привилегий сложного
@@ -76,43 +82,51 @@ export default ({
 
             Сложный же компонент, является классом, который расширяется от специального React класса Component который
             добавляет в наш класс компонента жизненный цикл и функцию для работы с state (setState);`,
-            links: [
-                {
-                    title: "Simple component example",
-                    link: "https://github.com/uppermanis/react-course/blob/components-examples/src/js/components/simple-component.js"
-                },
-                {
-                    title: "Complex component example",
-                    link: "https://github.com/uppermanis/react-course/blob/components-examples/src/js/components/complex-component.js"
-                }
-            ],
-            contentToggle: false,
-
+      links: [
+        {
+          title: 'Simple component example',
+          link: 'https://github.com/uppermanis/react-course/blob/components-examples/src/js/components/simple-component.js',
         },
         {
-            title: "react-router",
-            description: `Если вам уже приходилось использовать какой-либо маршрутизатор, многие понятия вам будут
+          title: 'Complex component example',
+          link: 'https://github.com/uppermanis/react-course/blob/components-examples/src/js/components/complex-component.js',
+        }
+      ],
+      contentToggle: false,
+    },
+    {
+      title: 'react-router',
+      description: `Если вам уже приходилось использовать какой-либо маршрутизатор, многие понятия вам будут
             знакомы. Но в отличие от любого другого маршрутизатора, React Router использует JSX, который может выглядеть
             немного странно на первый взгляд.`,
-            links: [
-                {
-                    title: "Learning react-router (getinstance.info)",
-                    link: "http://getinstance.info/articles/react/learning-react-router/"
-                },
-                {title: "REACT TRAINING (video)", link: "https://reacttraining.com/react-router/"},
-                {title: "npm", link: "https://www.npmjs.com/package/react-router"}
-            ],
-            contentToggle: false,
-
+      links: [
+        {
+          title: 'Learning react-router (getinstance.info)',
+          link: 'http://getinstance.info/articles/react/learning-react-router/',
         },
         {
-            title: "redux",
-            description: `Redux — это инструмент управления как состоянием данных, так и состоянием интерфейса в
+          title: 'REACT TRAINING (video)',
+          link: 'https://reacttraining.com/react-router/',
+        },
+        {
+          title: 'npm',
+          link: 'https://www.npmjs.com/package/react-router',
+        }
+      ],
+      contentToggle: false,
+
+    },
+    {
+      title: 'redux',
+      description: `Redux — это инструмент управления как состоянием данных, так и состоянием интерфейса в
             JavaScript-приложениях. Он подходит для одностраничных приложений, в которых управление состоянием может
             со временем становиться сложным. Redux не связан с каким-то определенным фреймворком, и хотя разрабатывался
             для React, может использоваться с Angular или jQuery.`,
-            links: [{title: "Redux", link: "http://redux.js.org/"}],
-            contentToggle: false,
-        },
-    ]
+      links: [{
+        title: 'Redux',
+        link: 'http://redux.js.org/',
+      }],
+      contentToggle: false,
+    }
+  ],
 });

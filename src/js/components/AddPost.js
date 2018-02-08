@@ -1,60 +1,69 @@
 import React from 'react';
-import {findDOMNode} from 'react-dom';
-
-import {connect} from 'react-redux';
-import {addPost} from '../actions';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { addPost } from '../actions';
 import Notify from './Notify';
 
-@connect(null, {addPost})
-export default class AddPost extends React.PureComponent {
-    
-    constructor(props) {
-        super(props);
-        this.state = {
-            notify: false
-        }
-        this.handleOnSubmit = this.handleOnSubmit.bind(this);
-        this.unmountNotify = this.unmountNotify.bind(this);
-    }
+class AddPost extends React.Component {
+  static propTypes = {
+    addPost: PropTypes.func.isRequired,
+  }
 
-    handleOnSubmit(e) {
-        e.preventDefault();
-
-        if(this.refs.title.value.trim() !== '' || this.refs.description.value.trim() !== '') {
-            let new_post = {
-                title: this.refs.title.value,
-                description: this.refs.description.value
-            };
-
-            this.props.addPost(new_post);
-            this.setState({notify: true});
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      notify: false,
     };
+    this.handleOnSubmit = this.handleOnSubmit.bind(this);
+    this.unmountNotify = this.unmountNotify.bind(this);
+  }
 
-    componentDidUpdate() {
-        this.refs.title.value = '';
-        this.refs.description.value = '';
-    }
+  componentDidMount() {
+    this.title.focus();
+  }
 
-    componentDidMount() {
-        findDOMNode(this.refs.title).focus();
-    }
+  componentDidUpdate() {
+    this.title.value = '';
+    this.description.value = '';
+  }
+  unmountNotify() {
+    this.setState({ notify: false });
+  }
 
-    unmountNotify() {
-        this.setState({notify: false});
-    }
+  handleOnSubmit(e) {
+    e.preventDefault();
 
-    render() {
-        return (
-            <div className="add-post">
-                { this.state.notify ? <Notify title={this.refs.title.value} unmount={this.unmountNotify} /> : null }
-                <h3>Add new post</h3>
-                <form onSubmit={this.handleOnSubmit}>
-                    <input type="text" ref="title" placeholder="Post title"/>
-                    <textarea ref="description" placeholder="Post content"/>
-                    <button type="submit">Создать новый пост</button>
-                </form>
-            </div>
-        );
+    if (this.title.value.trim() !== '' || this.description.value.trim() !== '') {
+      const newPost = {
+        title: this.title.value,
+        description: this.description.value,
+      };
+
+      this.props.addPost(newPost);
+      this.setState({ notify: true });
     }
+  }
+
+  render() {
+    return (
+      <div className="add-post">
+
+        { this.state.notify ?
+          <Notify
+            title={this.title.value}
+            unmount={this.unmountNotify}
+          />
+          : null }
+
+        <h3>Add new post</h3>
+        <form onSubmit={this.handleOnSubmit}>
+          <input type="text" ref={(title) => { this.title = title; }} placeholder="Post title" />
+          <textarea ref={(descr) => { this.description = descr; }} placeholder="Post content" />
+          <button type="submit">Создать новый пост</button>
+        </form>
+      </div>
+    );
+  }
 }
+
+export default connect(null, { addPost })(AddPost);

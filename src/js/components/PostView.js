@@ -1,60 +1,62 @@
 import React from 'react';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const mapStateToProps = (state, ownProps) => {
-    return { data: state.posts.find((item, index) => +index == +ownProps.match.params.postId) }
-};
+class PostView extends React.Component {
+  constructor(props) {
+    super(props);
 
-@connect(mapStateToProps)
-export default class PostView extends React.Component {
+    this.renderLinks = this.renderLinks.bind(this);
+    this.renderPost = this.renderPost.bind(this);
+  }
 
-    constructor(props) {
-        super(props);
+  componentDidMount() {
+    document.title = this.props.data.title;
+  }
 
-        this.renderLinks = this.renderLinks.bind(this);
-        this.renderPost = this.renderPost.bind(this);
+  renderLinks() {
+    if (this.props.data.links) {
+      this.props.data.links.map(item =>
+        <li key={item.link + item.title}><a href={item.link}>{item.title}</a></li>);
+    }
+    return null;
+  }
+
+  renderPost() {
+    if (this.props.data) {
+      return (
+        <article className="post-view">
+
+          <header>
+            <h1 className="post-title">
+              <Link to="/" className="go-home">home</Link>
+              {' / ' + this.props.data.title}
+            </h1>
+          </header>
+
+          <main>
+            <p>{this.props.data.description}</p>
+            <ul className="links">
+              {this.renderLinks()}
+            </ul>
+          </main>
+
+        </article>
+      );
     }
 
-    componentDidMount() {
-        document.title = this.props.data.title;
-    }
+    return <p>{`Post with id ${this.props.match.params.postId} doesn't exists!`}<br /><Link to="/">Go home</Link></p>;
+  }
 
-    renderLinks() {
-        if(this.props.data.links) {
-            this.props.data.links.map((item, index) => <li key={index}><a href={item.link}>{item.title}</a></li>);
-        } else return null;
-    }
-
-    renderPost() {
-        if(this.props.data) {
-            return (
-                <article className="post-view">
-                    
-                    <header>
-                        <h1 className="post-title">
-                            <Link to="/" className="go-home">home</Link>
-                            {' / ' +this.props.data.title}
-                        </h1>
-                    </header>
-
-                    <main>
-                        <p>{this.props.data.description}</p>
-                        <ul className="links">
-                            {this.renderLinks()}
-                        </ul>
-                    </main>
-
-                </article>
-            );
-        } else {
-            return <div>Post with id {this.props.match.params.postId} doesn't exists! <br/><Link to={`/`}>Go home</Link></div>
-        }
-    }
-
-    render() {
-        return this.renderPost();
-    }
+  render() {
+    return this.renderPost();
+  }
 }
 
+const mapStateToProps = (state, ownProps) => ({
+  data: state.posts.find((item, index) =>
+    +index === +ownProps.match.params.postId)
+});
+
+export default connect(mapStateToProps)(PostView);

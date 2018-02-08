@@ -1,9 +1,5 @@
 import React from 'react';
 
-import Posts from '../components/Posts';
-import PostView from '../components/PostView';
-import PostEdit from '../components/PostEdit';
-
 // Route - компонент принимающий два основных свойства:
 // 1. path - url
 // 2. component - компонент который отобразиться по указаному в path url.
@@ -17,29 +13,30 @@ import PostEdit from '../components/PostEdit';
 // обычного <a>, но работает с помощью BrowserHistory или hashHistory
 // вместо привычного нам href нужно писать to={`/some-url`}
 
-import { Route, Switch, Link, IndexRoute } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import AddPost from '../components/AddPost';
 import Header from '../components/Header';
 import About from '../components/About';
 
+import Posts from '../components/Posts';
+import PostView from '../components/PostView';
 
-const MainLayout = props => (
-    <div className="wrapper">
-        
-        <Header/>
-        
-        <Switch>            
-            <Route exact path="/" component={Posts}/>
-            <Route exact path="/search/:search" component={Posts}/>
-            <Route path="/add-post" component={AddPost}/>
-            <Route path="/about" component={About}/>
-            <Route path="/post-:postId" component={PostView}/>
+const RootComponent = () => (
+  <div className="wrapper">
+    <Header />
 
-            <Route component={() => <div>page not found</div>}/>
-        </Switch>
+    <Switch>
+      <Route exact={true} path="/" component={Posts} />
+      <Route exact={true} path="/search/:search" component={Posts} />
+      <Route path="/add-post" component={AddPost} />
+      <Route path="/about" component={About} />
+      <Route path="/post-:postId" component={PostView} />
 
-    </div>
-)
+      <Route component={() => <div>page not found</div>} />
+    </Switch>
 
-export default MainLayout;
+  </div>
+);
+
+export default RootComponent;

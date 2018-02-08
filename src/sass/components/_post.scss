@@ -1,10 +1,9 @@
 article.item {
   margin: 5px auto;
-  background-color: #191b17;
+  background: linear-gradient(45deg, red, blue);
   transition: 0.1s;
   text-decoration: none;
   display: block;
-  border: solid 5px transparent;
   min-height: 130px;
   &:first-child {
     margin-top: 0;

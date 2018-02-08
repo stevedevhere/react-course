@@ -1,9 +1,10 @@
 header.header {
   
   .page-title {
-    margin-bottom: 200px;
-    text-transform: capitalize;
-    background-color: $darkAccent;
+    margin-bottom: 250px;
+    font-variant: small-caps;
+    text-transform: lowercase;
+    font-size: 2.3rem;
   }
 
   ul.tasks {

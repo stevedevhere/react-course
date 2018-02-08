@@ -25,7 +25,7 @@ ul li {
 
 body {
     min-height: 100%;
-    background: $accent;
+    background: linear-gradient(-85deg, red, blue);
     background-size: 100% 100%;
     * {
         box-sizing: border-box;
@@ -44,8 +44,8 @@ h1.page-title {
     margin: auto;
     text-align: center;
     padding: 20px 50px;
-    background: #000;
-    color: #fff;
+    background: #fff;
+    color: #d8053f;
     border-radius: 0 0 7px 7px;
     margin-bottom: 35px;
 }
@@ -77,7 +77,7 @@ h1.post-title {
     margin-bottom: 10px;
     color: $accent;
     text-transform: uppercase;
-    background-color: #000;
+    background-color: #d8053f;
     padding: 15px 85px 15px 50px;
     margin-left: -20px;
     position: relative;
@@ -89,10 +89,10 @@ h1.post-title {
       content: "";
       position: absolute;
       left: -28px;
-      top: -13px;
+      top: 3px;
       border-bottom: solid 56px transparent;
       border-top: solid 90px transparent;
-      border-right: solid 28px #969416;
+      border-right: solid 28px #d8053f;
       display: inline-table;
     }
 
@@ -106,7 +106,7 @@ h1.post-title {
       // height: 51px;
       border-top: transparent 25px solid;
       border-bottom: transparent 25px solid;
-      border-left: #000 solid 30px;
+      border-left: #d8053f solid 30px;
       // background-color: #fff;
     }
   }

@@ -1,17 +1,15 @@
-$blue: #006ec5;
-$grey: #585858;
-$accent: #f3ef18;
-$darkAccent: #191b17;
 
 * {
     margin: 0;
     padding: 0;
     outline: none;
+    box-sizing: border-box;
 }
 
 html, body {
-    font-family: "Tahoma";
-    font-size:16px;
+    font-family: helvetica;
+    font-weight: 200;
+    font-size: 16px;
     line-height: 1.125;
 }
 
@@ -21,26 +19,6 @@ ul {
 
 ul li {
     display: table;
-}
-
-body {
-    min-height: 100%;
-    background: linear-gradient(-85deg, #261142, #3838b1);
-    background-size: 100% 100%;
-    * {
-        box-sizing: border-box;
-    }
-}
-
-.wrapper {
-    margin: auto;
-    width: 80%;
-    display: table;
-    // padding-top: 30px;
-}
-
-h1.page-title {
-   
 }
 
 input {
@@ -58,8 +36,4 @@ textarea {
     width: 100%;
     border: none;
     background-color: transparent;
-    border-bottom: solid 3px $accent;
-    &:focus {
-        border-color: #333;
-    }
 }

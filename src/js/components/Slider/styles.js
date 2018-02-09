@@ -4,9 +4,8 @@ const container = () => css`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
   width: 100%;
-  height: 350px;
+  height: 332px;
 `;
 
 const content = () => css`
@@ -17,7 +16,7 @@ const content = () => css`
   right: 0;
   margin: auto;
   width: 100%;
-  height: 350px;
+  height: 332px;
   display: table;
   font-size: 38px;
   text-align: center;

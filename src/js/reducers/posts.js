@@ -25,6 +25,7 @@ import * as types from '../constants/ActionTypes';
 /* global localStorage */
 
 const initial = JSON.parse(localStorage.getItem('posts')) || InitialState.posts;
+
 export default function posts(state = initial, action) {
   const { type, payload } = action;
   switch (type) {
@@ -42,8 +43,8 @@ export default function posts(state = initial, action) {
       return state;
 
     case types.UPDATE_CONTENT_TOGGLER:
-      return state.map((item, index) => {
-        if (index === payload) return { ...item, contentToggle: !item.contentToggle };
+      return state.map((item) => {
+        if (item.id === payload) return { ...item, contentToggle: !item.contentToggle };
         return { ...item, contentToggle: false };
       });
 

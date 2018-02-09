@@ -1,8 +1,9 @@
 import { css } from 'emotion';
 
 const container = () => css`
-  background-color: $darkAccent;
-  padding-bottom: 20px;
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 55px;
 `;
 
 const header = () => css`
@@ -10,7 +11,9 @@ const header = () => css`
 `;
 
 const title = () => css`
-  margin-left: 0;
+  padding: 20px;
+  font-weight: 900;
+  font-size: 1.4rem;
 `;
 
 const content = () => css`
@@ -18,7 +21,7 @@ const content = () => css`
   padding: 20px;
   width: 100%;
   border-radius: 4px;
-  color: #eee;
+  color: #000;
   padding-bottom: 20px;  
 `;
 

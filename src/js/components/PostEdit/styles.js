@@ -26,6 +26,9 @@ const postEdit = () => css`
   background-color: #140b27;
   border-radius: 4px;
 
+  display: flex;
+  flex-flow: column;
+
   input {
     width: 100%;
     color: #fff;
@@ -41,7 +44,8 @@ const postEdit = () => css`
   }
 
   button {
-    width: 100%;
+    width: 90%;
+    margin: 5px auto;
   }
 `;
 

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions';
 import Notify from '../Notify';
+import Button from '../Button';
 import s from './styles';
 
 class AddPost extends React.Component {
@@ -60,7 +61,7 @@ class AddPost extends React.Component {
         <form onSubmit={this.handleOnSubmit}>
           <input type="text" ref={(title) => { this.title = title; }} placeholder="Post title" />
           <textarea ref={(descr) => { this.description = descr; }} placeholder="Post content" />
-          <button type="submit">Создать новый пост</button>
+          <Button type="submit" text="Создать новый пост" />
         </form>
       </div>
     );

@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updateEditedPost } from '../../actions';
+import Button from '../Button';
 import s from './styles';
 
 class PostEdit extends React.Component {
@@ -43,10 +44,6 @@ class PostEdit extends React.Component {
     e.nativeEvent.stopImmediatePropagation();
   }
 
-  handleOnKeyPress() {
-    this.focus();
-  }
-
   render() {
     let { title, description } = this.props.data; // eslint-disable-line prefer-const
     description = description.split(' ')
@@ -59,7 +56,6 @@ class PostEdit extends React.Component {
       <div // eslint-disable-line
         className={s.postEditContainer()}
         onClick={this.props.unmount}
-        onKeyPress={this.handleOnKeyPress}
       >
         <form // eslint-disable-line
           className={s.postEdit()}
@@ -67,7 +63,7 @@ class PostEdit extends React.Component {
         >
           <input ref={(node) => { this.title = node; }} type="text" defaultValue={title} />
           <textarea ref={(node) => { this.description = node; }} defaultValue={description} />
-          <button onClick={this.saveAndClose}>Save & Close</button>
+          <Button onClick={this.saveAndClose} text="Save & Close" />
         </form>
       </div>
     );

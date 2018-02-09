@@ -1,4 +1,6 @@
-button {
+import { css } from 'emotion';
+
+const button = () => css`
   cursor: pointer;
   background-color:#2d1e65;
   color: #b6b5dc;
@@ -15,4 +17,8 @@ button {
     background-color: #000;
     color: #fff;
   }
-}
+`;
+
+export default ({
+  button,
+});

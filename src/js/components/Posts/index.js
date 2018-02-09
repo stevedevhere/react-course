@@ -86,7 +86,7 @@ class Posts extends React.Component {
       if (!posts.length && search) error = 'No posts find, sorry, try another request.';
       else if (!posts.length) error = 'No posts yet, you can create a new or wait.';
       if (!error) {
-        return this.props.posts.map((item, index) => {
+        return this.props.posts.map((item) => {
           if (typeof item === 'string') {
             return <p key={uuid.v4()}>Error: {item}</p>;
           }
@@ -103,7 +103,6 @@ class Posts extends React.Component {
             <Post
               data={item}
               key={uuid.v4()}
-              index={index}
               updateContentToggler={self.props.updateContentToggler}
               push={self.props.history.push}
               edit={self.postEditForm}

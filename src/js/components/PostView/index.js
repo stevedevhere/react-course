@@ -57,8 +57,8 @@ class PostView extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  data: state.posts.find((item, index) =>
-    +index === +ownProps.match.params.postId)
+  data: state.posts.find(item =>
+    +item.id === +ownProps.match.params.postId)
 });
 
 export default connect(mapStateToProps)(PostView);

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'uuid';
+import Button from '../Button';
 import s from './styles';
 
 // eslint-disable-next-line no-extend-native
@@ -16,7 +17,7 @@ export default class Post extends React.Component {
   static propTypes = {
     updateContentToggler: PropTypes.func.isRequired,
     index: PropTypes.number.isRequired,
-    data: PropTypes.shape.isRequired,
+    data: PropTypes.object.isRequired,
     edit: PropTypes.func.isRequired,
     delete: PropTypes.func.isRequired,
     push: PropTypes.func.isRequired,
@@ -31,7 +32,7 @@ export default class Post extends React.Component {
   }
 
   handleShowMore() {
-    this.props.updateContentToggler(this.props.index);
+    this.props.updateContentToggler(this.props.data.id);
   }
 
   contentView = (content) => {
@@ -48,7 +49,7 @@ export default class Post extends React.Component {
   }
 
   handleView() {
-    this.props.push(`/post-${this.props.index}`);
+    this.props.push(`/post-${this.props.data.id}`);
   }
 
   render() {
@@ -70,10 +71,10 @@ export default class Post extends React.Component {
           }
         </ul>
         <div className={s.buttonsContainer()}>
-          <button onClick={this.handleShowMore}>{moreOrLess}</button>
-          <button onClick={this.handleDelete}>Delete</button>
-          <button onClick={this.handleEdit}>Edit</button>
-          <button onClick={this.handleView}>View</button>
+          <Button onClick={this.handleShowMore} text={moreOrLess} />
+          <Button onClick={this.handleDelete} text="Delete" />
+          <Button onClick={this.handleEdit} text="Edit" />
+          <Button onClick={this.handleView} text="View" />
         </div>
       </article>
     );

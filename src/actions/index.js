@@ -10,10 +10,12 @@ export const deletePost = payload => ({
   payload
 });
 
-export const updateEditedPost = (payload, index) => ({
+export const updateEditedPost = (payload, id) => ({
   type: types.UPDATE_EDITED_POST,
-  payload,
-  index
+  payload: {
+    ...payload,
+    id: +id
+  }
 });
 
 export const searchPost = payload => ({

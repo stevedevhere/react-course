@@ -71,7 +71,7 @@ class PostEdit extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => (
-  { data: state.posts.find((item, index) => index === Number(ownProps.id)) }
+  { data: state.posts.find(item => item.id === Number(ownProps.id)) }
 );
 
 export default connect(mapStateToProps, { updateEditedPost })(PostEdit);

@@ -6,6 +6,7 @@ const addPost = () => css`
   margin-bottom: 20px;
   color: #eee;
   border-radius: 4px;
+  margin-bottom: 120px;
 
   h3 {
     margin-bottom: 20px;
@@ -13,6 +14,8 @@ const addPost = () => css`
 
   form {
     width: 100%;
+    display: flex;
+    flex-flow: column;
     * {
       transition: 0.2s;
       &:not(button) {
@@ -45,8 +48,9 @@ const addPost = () => css`
     }
     button {
       margin-top: 15px;
-      width: 100%;
-      padding: 10px;      
+      width: 90%;
+      padding: 10px;  
+      margin: 25px auto 0;    
     }
   }
 `;

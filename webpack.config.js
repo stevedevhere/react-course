@@ -8,7 +8,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:9090',
     'webpack/hot/only-dev-server',
-    './src/js/index'
+    './src/index'
   ],
 
   output: {
@@ -59,7 +59,7 @@ module.exports = {
         test: /(\.css|\.scss)$/,
         include: path.join(__dirname, 'src'),
         loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap'],
-      },
+      }
     ],
   },
   postcss: [autoprefixer({ browsers: ['last 50 versions'] })],

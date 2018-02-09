@@ -16,6 +16,9 @@ const postContainer = toggler => css`
     color: ${toggler ? '#000' : '#eee'};
     margin-left: 20px;
   }
+  &:first-child {
+    margin-top: 0;
+  }
 `;
 
 const title = () => css`

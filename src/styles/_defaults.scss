@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  transition: 0.08s;
+}
+
+html,
+body {
+  font-family: helvetica;
+  font-weight: 200;
+  font-size: 16px;
+  line-height: 1.125;
+}
+
+ul {
+  margin: 10px 0;
+}
+
+ul li {
+  display: table;
+}
+
+input {
+  padding: 7px 13px;
+  width: 100%;
+  border: none;
+  border-bottom: solid 3px #3736aa;
+  background-color: transparent;
+}
+
+input,
+textarea {
+  border-bottom: solid 3px #333;
+  padding: 10px;
+  font-size: 0.8rem;
+  &:focus {
+    border-color: #3736aa;
+  }
+}
+
+textarea {
+  resize: vertical;
+  padding: 7px 13px;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}

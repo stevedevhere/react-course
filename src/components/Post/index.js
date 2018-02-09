@@ -16,7 +16,6 @@ String.prototype.lessThan = function lessThan(max) {
 export default class Post extends React.Component {
   static propTypes = {
     updateContentToggler: PropTypes.func.isRequired,
-    index: PropTypes.number.isRequired,
     data: PropTypes.object.isRequired,
     edit: PropTypes.func.isRequired,
     delete: PropTypes.func.isRequired,
@@ -41,11 +40,11 @@ export default class Post extends React.Component {
   };
 
   handleEdit() {
-    this.props.edit(String(this.props.index));
+    this.props.edit(String(this.props.data.id));
   }
 
   handleDelete() {
-    this.props.delete(this.props.index);
+    this.props.delete(this.props.data.id);
   }
 
   handleView() {

@@ -32,7 +32,7 @@ class PostView extends React.Component {
 
           <header className={s.header()}>
             <h1 className={s.title()}>
-              <Link to="/" className="go-home">home</Link>
+              <Link to="/" className="go-home">HOME</Link>
               {' / ' + this.props.data.title}
             </h1>
           </header>

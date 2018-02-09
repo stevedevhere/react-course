@@ -83,7 +83,7 @@ class Posts extends React.Component {
       let error = null;
       const { posts } = this.props;
       const { search } = this.props.match.params;
-      if (!posts.length && search) error = 'No posts find, sorry, try another request.';
+      if (!posts.length && search) error = 'No posts find, try another request.';
       else if (!posts.length) error = 'No posts yet, you can create a new or wait.';
       if (!error) {
         return this.props.posts.map((item) => {
@@ -111,7 +111,7 @@ class Posts extends React.Component {
           );
         });
       }
-      return <p>Error: {error}</p>;
+      return <p className={s.error()}>{`Error: ${error}`}</p>;
     }
     return null;
   }

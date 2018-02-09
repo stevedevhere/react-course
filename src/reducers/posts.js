@@ -30,11 +30,11 @@ export default function posts(state = initial, action) {
   const { type, payload } = action;
   switch (type) {
     case types.ADD_POST:
-      return [payload, ...state];
+      return [{ ...payload, id: state[state.length - 1].id + 1 }, ...state];
 
     case types.UPDATE_EDITED_POST:
-      return state.map((item, index) => {
-        if (index === Number(action.index)) return { ...item, ...payload };
+      return state.map((item) => {
+        if (item.id === Number(payload.id)) return { ...item, ...payload };
         return item;
       });
 
@@ -49,7 +49,7 @@ export default function posts(state = initial, action) {
       });
 
     case types.DELETE_POST:
-      return state.filter((item, index) => index !== payload);
+      return state.filter(item => item.id !== payload);
 
     default:
       return state;

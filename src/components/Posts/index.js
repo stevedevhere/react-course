@@ -88,7 +88,7 @@ class Posts extends React.Component {
       if (!error) {
         return this.props.posts.map((item) => {
           if (typeof item === 'string') {
-            return <p key={uuid.v4()}>Error: {item}</p>;
+            return <p key={uuid.v4()}>{`Error: ${item}`}</p>;
           }
 
           // Тут мы перебираем функцией .map() каждый объект из массива переданого в

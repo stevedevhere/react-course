@@ -2,12 +2,17 @@ import { css } from 'emotion';
 
 const postContainer = toggler => css`
   margin: 15px auto;
-  background: ${toggler ? '#fff' : '#302578'};
-  transition: 0.1s;
+  background: #302578;
+  transition: 12s;
   text-decoration: none;
   display: block;
   min-height: 130px;
-  padding: ${toggler ? '30px 20px 30px' : ' 20px 20px 20px'};
+  padding: 20px 20px 20px;
+  &.active {
+    animation: test 0.1s linear;
+    background: #fff;
+    padding: 30px 20px 30px;
+  }
   width: 100%;
   min-height: 170px;
   p {
@@ -18,6 +23,17 @@ const postContainer = toggler => css`
   }
   &:first-child {
     margin-top: 0;
+  }
+
+  @keyframes test {
+    0% {
+      background: #302578;
+      padding: 20px 20px 20px;
+    }
+    100% {
+      background: #fff;
+      padding: 30px 20px 30px;
+    }
   }
 `;
 
@@ -75,7 +91,6 @@ const buttonsContainer = () => css`
     margin-left: 8px;
   }
 `;
-
 
 export default ({
   postContainer,

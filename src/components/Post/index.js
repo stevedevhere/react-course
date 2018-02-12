@@ -54,19 +54,21 @@ export default class Post extends React.Component {
   render() {
     const moreOrLess = !this.props.data.contentToggle ? 'Show more' : 'Show less';
     return (
-      <article className={s.postContainer(this.props.data.contentToggle)}>
+      <article
+        className={`${s.postContainer(this.props.data.contentToggle)} ${!!this.props.data.contentToggle && 'active'}`}
+      >
         <h1 className={s.title()}>{this.props.data.title}</h1>
         <p>{this.contentView(this.props.data.description)}</p>
         <ul className={s.linksContainer()}>
           {
-            this.props.data.links ? this.props.data.links.map(item => (
+            this.props.data.links &&
+            this.props.data.links.map(item => (
               <li key={uuid.v4()} className={s.link()}>
                 <a href={item.link} target="_blank">
                   {item.title}
                 </a>
               </li>
-              ))
-              : null
+            ))
           }
         </ul>
         <div className={s.buttonsContainer()}>

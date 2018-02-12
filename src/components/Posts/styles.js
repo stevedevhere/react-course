@@ -3,6 +3,7 @@ import { css } from 'emotion';
 const posts = () => css`
   display: flex;
   flex-flow: column;
+  transition: 0.3s;
 `;
 
 const error = () => css`
